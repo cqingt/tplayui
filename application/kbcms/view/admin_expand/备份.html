@@ -12,22 +12,33 @@
                             <tr>
                                 <th class="table-id">ID</th>
                                 <th>名称</th>
-                                <th>标识</th>
-                                <th width="120px" style="text-align:center">操作</th>
+                                <th>表名</th>
+                                <th>状态</th>
+                                <th width="176px" style="text-align:center">操作</th>
                             </tr>
                             </thead>
                             <tbody>
                             {foreach name="list" item="vo"}
                             <tr class="gradeX">
-                                <td>{$vo.fragment_id}</td>
+                                <td>{$vo.fieldset_id}</td>
                                 <td>{$vo.name}</td>
-                                <td>{$vo.label}</td>
+                                <td>{$vo.table}</td>
+                                <td>
+                                    {if condition="$vo.status eq 1"}
+                                    <i class="am-icon-check am-text-warning"></i>
+                                    {else /}
+                                    <i class="am-icon-close am-text-primary"></i>
+                                    {/if}
+                                </td>
                                 <td>
                                     <div class="tpl-table-black-operation">
-                                        <a href="{:url('edit',array('fragment_id'=>$vo['fragment_id']))}">
+                                        <a href="{:url('AdminExpandField/index',array('fieldset_id'=>$vo['fieldset_id']))}">
+                                            <i class="am-icon-th"></i> 管理
+                                        </a>
+                                        <a href="{:url('edit',array('fieldset_id'=>$vo['fieldset_id']))}">
                                             <i class="am-icon-pencil"></i> 编辑
                                         </a>
-                                        <a href="javascript:;" class="tpl-table-black-operation-del" onclick="del(this,'{$vo.fragment_id}','{:url(\'del\')}')" >
+                                        <a href="javascript:;" class="tpl-table-black-operation-del" onclick="del(this,'{$vo.fieldset_id}','{:url(\'del\')}')" >
                                             <i class="am-icon-trash"></i> 删除
                                         </a>
                                     </div>
@@ -37,12 +48,6 @@
                             <!-- more data -->
                             </tbody>
                         </table>
-                    </div>
-                    <div class="am-u-lg-12 am-cf">
-
-                        <div class="am-fr">
-                            {$_page}
-                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_category\index.html";i:1500625895;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500346786;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_fragment\index.html";i:1500900377;s:79:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500899445;s:73:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500899445;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,28 +56,23 @@
         <tr>
             <th width="80">ID</th>
             <th>名称</th>
-            <th width="180">类型</th>
-            <th width="80">排序</th>
-            <th width="80">状态</th>
+            <th>标识</th>
             <th width="240">操作</th>
         </tr>
         </thead>
         <tbody>
         <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
         <tr>
-            <td><?php echo $vo['class_id']; ?></td>
-            <td><?php echo $vo['cname']; ?></td>
-            <td><?php echo $vo['model_name']; if($vo['model_name'] == '文章'): ?>（<?php echo $type[$vo['type']]; ?>）<?php endif; ?></td>
-            <td><input type="text" class="layui-input ajax-blur" name="field_value" value="<?php echo $vo['sequence']; ?>" data-params='{"url":"<?php echo url("api/api/upField"); ?>","data":"table=category&id_name=class_id&id_value=<?php echo $vo['class_id']; ?>&field=sequence","loading":"false","complete":"up"}'> </td>
-            <td class="layui-form">
-                <input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="显示|关闭" <?php if($vo['show'] == '1'): ?>checked<?php endif; ?>  lay-filter="ajax" data-params='{"url":"<?php echo url("api/api/upField"); ?>","confirm":"true","data":"table=category&id_name=class_id&id_value=<?php echo $vo['class_id']; ?>&field=show","complete":"up"}'></td>
+            <td><?php echo $vo['fragment_id']; ?></td>
+            <td><?php echo $vo['name']; ?></td>
+            <td><?php echo $vo['label']; ?></td>
             <td>
-                <a href="<?php echo url($vo['app'].'/AdminCategory/info',array('id'=>$vo['class_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                <a href="<?php echo url('info',array('fragment_id'=>$vo['fragment_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
                 </a>
                 <a class="layui-btn layui-btn-mini layui-btn-danger ajax"
-                   data-list='{"key":"id=<?php echo $vo['class_id']; ?>","msg":true,"render":"true","action":"del"}'
-                   data-params='{"url": "<?php echo url($vo['app']."/AdminCategory/del"); ?>","confirm":"true","data":"id=<?php echo $vo['class_id']; ?>","complete":"del"}'>
+                   data-list='{"key":"id=<?php echo $vo['fragment_id']; ?>","msg":true,"render":"true","action":"del"}'
+                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['fragment_id']; ?>","complete":"del"}'>
                     <i class="iconfont">&#xe626;</i>删除
                 </a>
 

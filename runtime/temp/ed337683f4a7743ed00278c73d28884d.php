@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_form_data\index.html";i:1483513770;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500346786;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"D:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_expand\info.html";i:1500902355;s:79:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500899445;s:73:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500899445;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,11 +27,8 @@
 </head>
 
 
-<div class="row-content am-cf">
-    <div class="row">
-        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-            <div class="widget am-cf">
-                <div class="container-fluid larry-wrapper">
+<body>
+<div class="container-fluid larry-wrapper">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <!--列表-->
@@ -53,46 +50,42 @@
         </div>
     </div>
 </div>
-                <div class="widget-body  am-fr">
-                    <div class="am-u-sm-12">
-                        <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
-                            <thead>
-                            <tr>
-                                <th class="table-id">ID</th>
-                                <?php if(is_array($tableTh) || $tableTh instanceof \think\Collection || $tableTh instanceof \think\Paginator): if( count($tableTh)==0 ) : echo "" ;else: foreach($tableTh as $key=>$vo): ?>
-                                <th><?php echo $vo; ?></th>
-                                <?php endforeach; endif; else: echo "" ;endif; ?>
-                                <th width="120px" style="text-align:center">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
-                            <tr class="gradeX">
-                                <td><?php echo $vo['data_id']; ?></td>
-                                <?php if(is_array($fieldList) || $fieldList instanceof \think\Collection || $fieldList instanceof \think\Paginator): if( count($fieldList)==0 ) : echo "" ;else: foreach($fieldList as $key=>$val): if($val['show'] == '1'): ?>
-                                <td><?php echo model('kbcms/FieldData')->showListField($vo[$val['field']],$val['type'],$val['config']); ?></td>
-                                <?php endif; endforeach; endif; else: echo "" ;endif; ?>
-                                <td>
-                                    <div class="tpl-table-black-operation">
-                                        <a href="<?php echo url('edit',array('data_id'=>$vo['data_id'],'fieldset_id'=>$formInfo['fieldset_id'])); ?>">
-                                            <i class="am-icon-pencil"></i> 编辑
-                                        </a>
-                                        <a href="javascript:;" class="tpl-table-black-operation-del" onclick="del(this,'<?php echo $vo['data_id']; ?>','<?php echo url('del',array('fieldset_id'=>$formInfo['fieldset_id'])); ?>')"  >
-                                            <i class="am-icon-trash"></i> 删除
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php endforeach; endif; else: echo "" ;endif; ?>
-                            <!-- more data -->
-                            </tbody>
-                        </table>
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <section class="panel panel-padding">
+                <form id="form1" class="layui-form layui-form-pane" action="<?php echo url(''); ?>">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="<?php echo (isset($info['name']) && ($info['name'] !== '')?$info['name']:''); ?>" jq-verify="" jq-error=" 当前扩展模型的描述" placeholder="当前扩展模型的描述" autocomplete="off" class="layui-input ">
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">表名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="table" value="<?php echo (isset($info['table']) && ($info['table'] !== '')?$info['table']:''); ?>" jq-verify="" jq-error="请输入表名" placeholder="请输入表名" autocomplete="off" class="layui-input ">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="status" <?php if($info['status'] == '1'): ?>checked<?php endif; ?> title="正常" value="1" checked />
+                            <input type="radio" name="status" <?php if($info['status'] == '2'): ?>checked<?php endif; ?> title="禁用" value="2" />
+                        </div>
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="fieldset_id" value="<?php echo (isset($info['fieldset_id']) && ($info['fieldset_id'] !== '')?$info['fieldset_id']:''); ?>">
+                        <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </form>
+            </section>
         </div>
     </div>
 </div>
+</body>
 
 <script src="__ADMIN__/js/layui/layui.js"></script>
 <script>
@@ -116,24 +109,7 @@
 <!--脚本文件开始-->
 
 <script>
-    /**
-     * 删除操作
-     */
-    function del(obj,id,url) {
-        //此处请求后台程序，下方是成功后的前台处理……
-        if(confirm("确定要删除吗？")) {
-            $.post(url, {
-                id: id,
-            }, function (data) {
-                //console.log(data);
-                if (data.code == 1) {
-                    $(obj).parents("tr").remove();
-                } else {
-                    di_alert(data.msg,2);
-                }
-            })
-        }
-    }
+    layui.use('myform');
 </script>
 
 <!--脚本文件结束-->

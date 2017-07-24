@@ -43,7 +43,4 @@ class AdminCategory extends Admin{
 		$this->assign('count',count($list));
 		return $this->fetch();
 	}
-    public function test(){
-        return $this->fetch();
-    }
 }

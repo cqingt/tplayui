@@ -84,9 +84,9 @@ class AdminContent extends Admin{
      * 详情
      */
     public function info(){
+        $content_id=input('post.content_id');
+        $model = model('ContentArticle');
         if (input('post.')){
-            $content_id=input('post.content_id');
-            $model = model('ContentArticle');
             if ($content_id){
                 $status=$model->edit();
             }else{
@@ -101,7 +101,7 @@ class AdminContent extends Admin{
             $this->assign('category_list',model('kbcms/Category')->loadList());
             $this->assign('position_list',model('kbcms/Position')->loadList());
             $this->assign('tplList',model('admin/Config')->tplList());//模板文件
-            $this->assign('info',model('ContentArticle')->getInfo(input('id')));//页面信息
+            $this->assign('info',$model->getInfo(input('id')));//页面信息
             return $this->fetch();
         }
     }

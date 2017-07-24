@@ -28,9 +28,9 @@ class AdminExpandField extends Admin
                     ),
 
                 ),
-            'add' => array(
+            '_info' => array(
                 array('name' => '增加字段',
-                    'url' => url('add', array('fieldset_id' => $fieldsetId)),
+                    'url' => url('info', array('fieldset_id' => $fieldsetId)),
                     ),
                 )
             );

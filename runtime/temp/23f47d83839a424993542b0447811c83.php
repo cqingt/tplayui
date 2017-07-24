@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_fragment\index.html";i:1500625901;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500346786;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_position\index.html";i:1500900380;s:79:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500899445;s:73:"D:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1500899445;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,23 +56,23 @@
         <tr>
             <th width="80">ID</th>
             <th>名称</th>
-            <th>标识</th>
+            <th>顺序</th>
             <th width="240">操作</th>
         </tr>
         </thead>
         <tbody>
         <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
         <tr>
-            <td><?php echo $vo['fragment_id']; ?></td>
+            <td><?php echo $vo['position_id']; ?></td>
             <td><?php echo $vo['name']; ?></td>
-            <td><?php echo $vo['label']; ?></td>
+            <td><?php echo $vo['sequence']; ?></td>
             <td>
-                <a href="<?php echo url('info',array('fragment_id'=>$vo['fragment_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                <a href="<?php echo url('info',array('position_id'=>$vo['position_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
                 </a>
                 <a class="layui-btn layui-btn-mini layui-btn-danger ajax"
-                   data-list='{"key":"id=<?php echo $vo['fragment_id']; ?>","msg":true,"render":"true","action":"del"}'
-                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['fragment_id']; ?>","complete":"del"}'>
+                   data-list='{"key":"id=<?php echo $vo['position_id']; ?>","msg":true,"render":"true","action":"del"}'
+                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['position_id']; ?>","complete":"del"}'>
                     <i class="iconfont">&#xe626;</i>删除
                 </a>
 

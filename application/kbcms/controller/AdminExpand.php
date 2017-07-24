@@ -23,9 +23,9 @@ class AdminExpand extends Admin
                     ),
                 
                 ),
-            'add' => array(
+            '_info' => array(
                 array('name' => '添加模型',
-                    'url' => url('add'),
+                    'url' => url('info'),
                     ),
                 )
             );
@@ -41,71 +41,30 @@ class AdminExpand extends Admin
         $this->assign('list', model('FieldsetExpand')->loadList());
         return $this->fetch();
     }
-
-    /**
-     * 增加
-     */
-    public function add(){
-        if (input('post.')){
-            $validate=validate('FieldsetExpand');
-            if(!$validate->check(input('post.'))){
-                $this->error($validate->getError());
-            }
-            $model = model('FieldsetExpand');
-            if ($model->add()){
-                $this->success('扩展模型添加成功！');
-            }
-            else{
-                $this->error('扩展模型添加失败');
-            }
-        }else{
-            $breadCrumb = array('扩展模型列表' => url('index'), '扩展模型添加' => url());
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '添加');
-            return $this->fetch();
-        }
-    }
-
-    /**
-     * 修改
-     */
-    public function edit(){
+    public function info(){
         $model = model('FieldsetExpand');
+        $fieldsetId = input('fieldset_id');
         if (input('post.')){
-            $validate=validate('FieldsetExpand');
-            if(!$validate->check(input('post.'))){
-                $this->error($validate->getError());
+            if ($fieldsetId){
+                $status=$model->edit();
+            }else{
+                $status=$model->add();
             }
-            if ($model->edit()){
-                $this->success('扩展模型修改成功！',url('index'));
-            }
-            else{
-                $this->error('扩展模型修改失败');
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index'));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            $fieldsetId = input('fieldset_id');
-            if (empty($fieldsetId))
-            {
-                $this->error('参数不能为空！');
-            }
-            $info = $model->getInfo($fieldsetId);
-            if (!$info)
-            {
-                $this->error($model->getError());
-            }
-            $breadCrumb = array('扩展模型列表' => url('index'), '扩展模型修改' => url('edit', array('fieldset_id' => $fieldsetId)));
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '修改');
-            $this->assign('info', $info);
+            $this->assign('info', $model->getInfo($fieldsetId));
             return $this->fetch();
         }
     }
-
     /**
      * 删除
      */
     public function del(){
-        $fieldsetId = input('post.id');
+        $fieldsetId = input('id');
         if (empty($fieldsetId)){
             $this->error('参数不能为空！');
         }
@@ -117,10 +76,10 @@ class AdminExpand extends Admin
         // 删除操作
         $model = model('FieldsetExpand');
         if ($model->del($fieldsetId)){
-            $this->success('扩展模型删除成功！');
+            return ajaxReturn(200,'扩展模型删除成功！');
         }
         else{
-            $this->error('扩展模型删除失败！');
+            return ajaxReturn(0,'扩展模型删除失败！');
         }
     }
 

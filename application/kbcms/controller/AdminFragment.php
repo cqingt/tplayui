@@ -42,23 +42,22 @@ class AdminFragment extends Admin {
         return $this->fetch();
     }
     public function info(){
+        $fragment_id=input('post.fragment_id');
+        $model = model('Fragment');
         if (input('post.')){
-            $fragment_id=input('post.fragment_id');
-            $_POST['app'] = request()->module();
-            $model = model('Fragment');
             if ($fragment_id){
                 $status=$model->edit();
             }else{
                 $status=$model->add();
             }
-            if($status){
+            if($status!==false){
                 return ajaxReturn(200,'操作成功',url('index'));
             }else{
                 return ajaxReturn(0,'操作失败');
             }
         }else{
 
-            $this->assign('info',model('Fragment')->getInfo(input('fragment_id')));
+            $this->assign('info',$model->getInfo(input('fragment_id')));
             return $this->fetch();
         }
     }

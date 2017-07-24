@@ -22,10 +22,10 @@ class AdminPosition extends Admin {
                         'icon' => 'list',
                     ),
                 ),
-            'add' => array(
+            '_info' => array(
                     array(
                         'name' => '添加推荐位',
-                        'url' => url('add'),
+                        'url' => url('info'),
                     ),
                 ),
             );
@@ -41,81 +41,42 @@ class AdminPosition extends Admin {
     }
 
     /**
-     * 增加
+     * 详情
      */
-    public function add(){
-        if (input('post.')){
-            $validate=validate('Position');
-            if(!$validate->check(input('post.'))){
-                $this->error($validate->getError());
-            }
-            $model = model('Position');
-            if($model->add('add')){
-                $this->success('推荐位添加成功！',url('index'));
-            }else{
-                $msg = $model->getError();
-                if(empty($msg)){
-                    $this->error('推荐位添加失败');
-                }else{
-                    $this->error($msg);
-                }
-            }
-        }else{
-            $breadCrumb = array('推荐位列表'=>url('index'),'添加'=>url());
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('name','添加');
-            return $this->fetch();
-        }
-    }
-
-    /**
-     * 修改
-     */
-    public function edit(){
+    public function info(){
+        $position_id=input('post.position_id');
         $model = model('Position');
         if (input('post.')){
-            $validate=validate('Position');
-            if(!$validate->check(input('post.'))){
-                $this->error($validate->getError());
-            }
-            if($model->edit()){
-                $this->success('推荐位修改成功！');
+            if ($position_id){
+                $status=$model->edit();
             }else{
-                $this->error('推荐位修改失败');
+                $status=$model->add();
+            }
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index'));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            $positionId = input('position_id');
-            if(empty($positionId)){
-                $this->error('参数不能为空！');
-            }
-            //获取记录
-            $info = $model->getInfo($positionId);
-            if(!$info){
-                $this->error($model->getError());
-            }
-            $breadCrumb = array('推荐位列表'=>url('index'),'修改'=>url('',array('position_id'=>$positionId)));
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('name','修改');
-            $this->assign('info',$info);
+            $this->assign('info',$model->getInfo(input('position_id')));
             return $this->fetch();
         }
     }
-
     /**
      * 删除
      */
     public function del(){
-        $positionId = input('post.id');
+        $positionId = input('id');
         if(empty($positionId)){
             $this->error('参数不能为空！');
         }
         //获取用户数量
         $map = array();
-        $map['A.position_id'] = $positionId;
+        $map['position_id'] = $positionId;
         if(model('Position')->del($positionId)){
-            $this->success('推荐位删除成功！');
+            return ajaxReturn(200,'推荐位删除成功！');
         }else{
-            $this->error('推荐位删除失败！');
+            return ajaxReturn(0,'推荐位删除失败！');
         }
     }
 

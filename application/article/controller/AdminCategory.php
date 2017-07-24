@@ -38,10 +38,10 @@ class AdminCategory extends Admin
      * 详情
      */
     public function info(){
+        $class_id=input('post.class_id');
+        $model = model('CategoryArticle');
         if (input('post.')){
-            $class_id=input('post.class_id');
             $_POST['app'] = request()->module();
-            $model = model('CategoryArticle');
             if ($class_id){
                 $status=$model->edit();
             }else{
@@ -56,7 +56,7 @@ class AdminCategory extends Admin
             $this->assign('categoryList',model('kbcms/Category')->loadList());//分类
             $this->assign('tplList',model('admin/Config')->tplList());//模板文件
             $this->assign('expandList',model('kbcms/FieldsetExpand')->loadList());//扩展字段
-            $this->assign('info',model('CategoryArticle')->getInfo(input('id')));//页面信息
+            $this->assign('info',$model->getInfo(input('id')));//页面信息
             return $this->fetch();
         }
     }

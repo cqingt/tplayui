@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1500538495;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"D:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1500899445;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
