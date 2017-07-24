@@ -1,0 +1,149 @@
+<?php
+namespace app\admin\service;
+/**
+ * 后台菜单接口
+ */
+class Menu{
+	/**
+	 * 获取菜单结构
+	 */
+	public function getAdminMenu(){
+        //获取表单列表
+        $formList = model('kbcms/FieldsetForm')->loadList();
+        $formMenu = array();
+        if(!empty($formList)){
+            foreach ($formList as $key => $value) {
+                $formMenu[] = array(
+                    'id'=>$key,
+                    'url' => url('kbcms/AdminFormData/index',array('fieldset_id'=>$value['fieldset_id'])),
+                    'name' => $value['name'],
+                    'iconfont' => '&#xe62a;'
+                );
+            }
+        }
+		return array(
+            array(
+                'id'=>1,
+                'url'=>'',
+                'name'=>'首页',
+                'iconfont'=>'&#xe637;',
+                'sub'=>array(
+                    array(
+                        'id'=>1,
+                        'url'=>url('admin/Index/home'),
+                        'name'=>'管理首页',
+                        'iconfont'=>'&#xe62a;'
+                    )
+                )
+            ),
+            array(
+                'id'=>2,
+                'url'=>'',
+                'name'=>'内容',
+                'iconfont'=>'&#xe637;',
+                'sub'=>array(
+                    array(
+                        'id'=>1,
+                        'url'=>url('kbcms/AdminCategory/index'),
+                        'name'=>'栏目管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>2,
+                        'url'=>url('article/AdminContent/index'),
+                        'name'=>'文章管理',
+                        'iconfont'=>'&#xe62a;'
+                    )
+                )
+            ),
+            array(
+                'id'=>3,
+                'url'=>'',
+                'name'=>'表单',
+                'iconfont'=>'&#xe637;',
+                'sub'=>$formMenu
+            ),
+            array(
+                'id'=>4,
+                'url'=>'',
+                'name'=>'功能',
+                'iconfont'=>'&#xe637;',
+                'sub'=>array(
+                    array(
+                        'id'=>1,
+                        'url'=>url('kbcms/AdminFragment/index'),
+                        'name'=>'碎片管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>2,
+                        'url'=>url('kbcms/AdminPosition/index'),
+                        'name'=>'推荐位管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>3,
+                        'url'=>url('kbcms/AdminExpand/index'),
+                        'name'=>'扩展模型管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>4,
+                        'url'=>url('kbcms/AdminForm/index'),
+                        'name'=>'表单管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+
+                )
+            ),
+            array(
+                'id'=>5,
+                'url'=>'',
+                'name'=>'系统',
+                'iconfont'=>'&#xe637;',
+                'sub'=>array(
+                    array(
+                        'id'=>1,
+                        'url'=>url('admin/Setting/site'),
+                        'name'=>'系统设置',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>2,
+                        'url'=>url('admin/AdminUser/index'),
+                        'name'=>'用户管理',
+                        'iconfont'=>'&#xe62a;'
+                    ),
+                    array(
+                        'id'=>3,
+                        'url'=>url('admin/AdminUserGroup/index'),
+                        'name'=>'用户组管理',
+                        'iconfont'=>'&#xe62a;'
+                    )
+                )
+            ),
+            array(
+                'id'=>6,
+                'url'=>'',
+                'name'=>'插件中心',
+                'iconfont'=>'&#xe637;',
+                'sub'=>array(
+                    array(
+                        'id'=>11,
+                        'url'=>'',
+                        'name'=>'插件管理',
+                        'iconfont'=>'&#xe62a;',
+                        'sub'=>array(
+                            array(
+                                'id'=>12,
+                                'url'=>url('plug/Plugin/index'),
+                                'name'=>'插件工具',
+                                'iconfont'=>'&#xe62a;',
+                            )
+                        )
+                    )
+                )
+            ),
+        );
+	}
+}

@@ -1,0 +1,24 @@
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <!--列表-->
+            <section class="panel panel-padding" style="height:40px;margin-bottom:4px">
+                <div class="group-button">
+                    {notempty name="infoModule.menu"}{foreach name="infoModule.menu" item="vo"}
+                    <a href="{$vo.url}" class="layui-btn layui-btn-small modal-catch">{$vo.name}</a>
+                    {/foreach}{/notempty}
+
+                    {notempty name="infoModule._info.1"}{foreach name="infoModule._info" item="vo"}
+                    <a href="{$vo.url}" class="layui-btn layui-btn-small modal-catch" style="float:right;">
+                        {$vo.name}
+                    </a>
+                    {/foreach}{else /}
+                    <a href="{$infoModule['_info'][0]['url']}" target="{$infoModule['_info'][0]['target']|default=''}" class="layui-btn layui-btn-small modal-catch" style="float:right">
+                        {$infoModule['_info'][0]['name']}
+                    </a>
+                    {/notempty}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
