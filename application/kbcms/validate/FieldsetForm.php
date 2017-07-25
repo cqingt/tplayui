@@ -20,7 +20,7 @@ class FieldsetForm extends Validate{
     );
 
     protected function fieldForm(){
-        $where['fieldset_id']=['eq',input('post.id')];
+        $where['fieldset_id']=['eq',input('id')];
         $check_info=model('Field')->getWhereInfo($where);
         if (!empty($check_info)){
             return false;

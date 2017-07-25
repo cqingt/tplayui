@@ -27,9 +27,9 @@ class AdminFormData extends Admin {
                     'icon' => 'list',
                     ),
                 ),
-            'add' => array(
+            '_info' => array(
                 array('name' => '添加内容',
-                    'url' => url('add',array('fieldset_id' => $this->formInfo['fieldset_id'])),
+                    'url' => url('info',array('fieldset_id' => $this->formInfo['fieldset_id'])),
                     ),
                 ),
             'cutNav' => array(

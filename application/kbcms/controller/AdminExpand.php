@@ -41,6 +41,10 @@ class AdminExpand extends Admin
         $this->assign('list', model('FieldsetExpand')->loadList());
         return $this->fetch();
     }
+
+    /**
+     * 详情
+     */
     public function info(){
         $model = model('FieldsetExpand');
         $fieldsetId = input('fieldset_id');
@@ -66,12 +70,12 @@ class AdminExpand extends Admin
     public function del(){
         $fieldsetId = input('id');
         if (empty($fieldsetId)){
-            $this->error('参数不能为空！');
+            return ajaxReturn(0,'参数不能为空');
         }
         $where['A.fieldset_id'] = $fieldsetId;
         $list = model('FieldExpand')->loadList($where);
         if (!empty($list)){
-            $this->error('请先删除管理字段!');
+            return ajaxReturn(0,'请先删除管理字段');
         }
         // 删除操作
         $model = model('FieldsetExpand');
@@ -79,7 +83,7 @@ class AdminExpand extends Admin
             return ajaxReturn(200,'扩展模型删除成功！');
         }
         else{
-            return ajaxReturn(0,'扩展模型删除失败！');
+            return ajaxReturn(0,'扩展模型删除失败');
         }
     }
 

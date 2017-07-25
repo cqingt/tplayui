@@ -25,7 +25,7 @@ class FieldExpand extends Model {
      * @param int $FieldId ID
      * @return array 信息
      */
-    public function getInfo($FieldId = 1)
+    public function getInfo($FieldId)
     {
         $map = array();
         $map['A.field_id'] = $FieldId;
@@ -45,55 +45,6 @@ class FieldExpand extends Model {
                     ->field('B.*,A.*')
                     ->where($where)
                     ->find();
-    }
-
-    /**
-     * 更新信息
-     * @param string $type 更新类型
-     * @return bool 更新状态
-     */
-    public function saveData($type = 'add'){
-        
-        //事务处理
-        $this->beginTransaction();
-        $model = model('kbcms/Field');
-        $fieldId = $model->saveData($type);
-        if(!$fieldId){
-            $this->error = $model->getError();
-            $this->rollBack();
-            return false;
-        }
-        //分表处理
-        $data = $this->create();
-        if(!$data){
-            $this->rollBack();
-            return false;
-        }
-        if($type == 'add'){
-            //写入数据
-            $data['field_id'] = $fieldId;
-            $status = $this->add($data);
-            if($status){
-                $this->commit();
-            }else{
-                $this->rollBack();
-            }
-            return $status;
-        }
-        if($type == 'edit'){
-            //修改数据
-            $where = array();
-            $where['field_id'] = $data['field_id'];
-            $status = $this->where($where)->save($data);
-            if($status === false){
-                $this->rollBack();
-                return false;
-            }
-            $this->commit();
-            return true;
-        }
-        $this->rollBack();
-        return false;
     }
 
     /**

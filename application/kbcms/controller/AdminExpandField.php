@@ -60,84 +60,36 @@ class AdminExpandField extends Admin
     }
 
     /**
-     * 增加
+     * 详细
      */
-    public function add(){
-        if (input('post.')){
-            $validate=validate('FieldExpand');
-            if(!$validate->scene('add')->check(input('post.'))){
-                $this->error($validate->getError());
-            }
-            $model = model('FieldExpand');
-            if ($model->add()){
-                $this->success('字段添加成功！',url('index', array('fieldset_id' => input('post.fieldset_id'))));
-            }
-            else{
-                $msg = $model->getError();
-                if (empty($msg)){
-                    $this->error('字段添加失败');
-                }
-                else{
-                    $this->error($msg);
-                }
-            }
-        }else{
-            $fieldsetId = input('fieldset_id');
-            if (empty($fieldsetId)){
-                $this->error('参数不能为空！');
-            }
-            $model = model('FieldsetExpand');
-            $fieldsetInfo = $model->getInfo($fieldsetId);
-            if (!$fieldsetInfo){
-                $this->error($model->getError());
-            }
-            $breadCrumb = array('模型列表' => url('AdminExpand/index'), '字段列表' => url('index', array('fieldset_id' => $fieldsetId)), '字段添加' => url());
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '添加');
-            $this->assign('fieldsetInfo', $fieldsetInfo);
-            $this->assign('typeField', model('Field')->typeField());
-            $this->assign('propertyField', model('Field')->propertyField());
-            $this->assign('typeVerify', model('Field')->typeVerify());
-            $this->assign('ruleVerify', model('Field')->ruleVerify());
-            $this->assign('ruleVerifyJs', model('Field')->ruleVerifyJs());
-            return $this->fetch();
-        }
-    }
+    public function info(){
 
-    /**
-     * 修改
-     */
-    public function edit(){
+        $fieldId = input('field_id');
+        $fieldsetId = input('fieldset_id');
         $model = model('FieldExpand');
+        $model_set=model('FieldsetExpand');
+        $model_file=model('Field');
         if (input('post.')){
-            $validate=validate('FieldExpand');
-            if(!$validate->scene('edit')->check(input('post.'))){
-                $this->error($validate->getError());
+            if ($fieldId){
+                $status=$model->edit();
+            }else{
+                $status=$model->add();
             }
-            if ($model->edit()){
-                $this->success('字段修改成功！');
-            }
-            else{
-                $this->error('字段修改失败');
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index',array('fieldset_id'=>$fieldsetId)));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            $fieldId = input('field_id');
-            if (empty($fieldId)){
-                $this->error('参数不能为空！');
-            }
             $info = $model->getInfo($fieldId);
-            $fieldsetInfo = model('FieldsetExpand')->getInfo($info['fieldset_id']);
-            $breadCrumb = array('模型列表' => url('AdminExpand/index'), '字段列表' => url('index', array('fieldset_id' => $fieldsetInfo['fieldset_id'])), '字段修改' => url('edit',array('field_id'=>$fieldId,'fieldset_id'=>$fieldsetInfo['fieldset_id'])));
-
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '修改');
+            $fieldsetInfo = $model_set->getInfo($fieldsetId);
             $this->assign('info', $info);
             $this->assign('fieldsetInfo', $fieldsetInfo);
-            $this->assign('typeField', model('Field')->typeField());
-            $this->assign('propertyField', model('Field')->propertyField());
-            $this->assign('typeVerify', model('Field')->typeVerify());
-            $this->assign('ruleVerify', model('Field')->ruleVerify());
-            $this->assign('ruleVerifyJs', model('Field')->ruleVerifyJs());
+            $this->assign('typeField', $model_file->typeField());
+            $this->assign('propertyField', $model_file->propertyField());
+            $this->assign('typeVerify', $model_file->typeVerify());
+            $this->assign('ruleVerify', $model_file->ruleVerify());
+            $this->assign('ruleVerifyJs', $model_file->ruleVerifyJs());
             return $this->fetch();
         }
     }
@@ -146,17 +98,17 @@ class AdminExpandField extends Admin
      * 删除
      */
     public function del(){
-        $fieldId = input('post.id');
+        $fieldId = input('id');
         if (empty($fieldId)){
-            $this->error('参数不能为空！');
+            return ajaxReturn(0,'参数不能为空');
         } 
         // 删除操作
         $model = model('FieldExpand');
         if ($model->del($fieldId)){
-            $this->success('字段删除成功！');
+            return ajaxReturn(200,'字段删除成功！');
         }
         else{
-            $this->error('字段删除失败！');
+            return ajaxReturn(0,'字段删除失败');
         }
     }
 }

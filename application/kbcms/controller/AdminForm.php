@@ -20,9 +20,9 @@ class AdminForm extends Admin
                     'icon' => 'list',
                     ),
                 ),
-            'add' => array(
+            '_info' => array(
                 array('name' => '添加表单',
-                    'url' => url('add'),
+                    'url' => url('info'),
                     ),
                 ),
                 
@@ -40,79 +40,48 @@ class AdminForm extends Admin
         $this->assign('list', model('FieldsetForm')->loadList());
         return $this->fetch();
     }
-
     /**
-     * 增加
+     * 详情
      */
-    public function add(){
-        if (input('post.')){
-            $validate=validate('FieldsetForm');
-            if(!$validate->scene('add')->check(input('post.'))){
-                $this->error($validate->getError());
-            }
-            $model = model('FieldsetForm');
-            if ($model->add()){
-                $this->success('表单添加成功！');
-            }
-            else{
-                $this->error('表单添加失败');
-            }
-        }else{
-            $breadCrumb = array('表单列表' => url('index'), '表单添加' => url());
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '添加');
-            //$this->assign('tplList',model('admin/Config')->tplList());
-            return $this->fetch();
-        }
-    }
-
-    /**
-     * 修改
-     */
-    public function edit()
-    {
+    public function info(){
         $model = model('FieldsetForm');
+        $fieldsetId = input('fieldset_id');
         if (input('post.')){
-            if ($model->edit()){
-                $this->success('表单修改成功！');
+            if ($fieldsetId){
+                $status=$model->edit();
+            }else{
+                $status=$model->add();
             }
-            else{
-                $this->error('表单修改失败');
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index'));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            $fieldsetId = input('fieldset_id');
-            if (empty($fieldsetId)){
-                $this->error('参数不能为空！');
-            }
-            $info = $model->getInfo($fieldsetId);
-            $breadCrumb = array('表单列表' => url('index'), '表单修改' => url('edit', array('fieldset_id' => $fieldsetId)));
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '修改');
-            $this->assign('info', $info);
-            //$this->assign('tplList',model('admin/Config')->tplList());
+            $this->assign('info', $model->getInfo($fieldsetId));
+            $this->assign('tplList',model('admin/Config')->tplList());
             return $this->fetch();
         }
     }
-
     /**
      * 删除
      */
     public function del(){
-        $fieldsetId = input('post.id');
+        $fieldsetId = input('id');
         if (empty($fieldsetId)){
-            $this->error('参数不能为空！');
+            return ajaxReturn(0,'参数不能为空');
         }
         $validate=validate('FieldsetForm');
-        if(!$validate->scene('del')->check(input('post.'))){
-            $this->error($validate->getError());
+        if(!$validate->scene('del')->check(input(''))){
+            return ajaxReturn(0,$validate->getError());
         }
         // 删除操作
         $model = model('FieldsetForm');
         if ($model->del($fieldsetId)){
-            $this->success('表单删除成功！');
+            return ajaxReturn(200,'表单删除成功！');
         }
         else{
-            $this->error('表单删除失败！');
+            return ajaxReturn(0,'表单删除失败');
         }
     }
 }
