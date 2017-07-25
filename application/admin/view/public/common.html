@@ -9,13 +9,15 @@
                     {/foreach}{/notempty}
 
                     {notempty name="infoModule._info.1"}{foreach name="infoModule._info" item="vo"}
-                    <a href="{$vo.url}" class="layui-btn layui-btn-small modal-catch" style="float:right;">
-                        {$vo.name}
-                    </a>
-                    {/foreach}{else /}
-                    <a href="{$infoModule['_info'][0]['url']}" target="{$infoModule['_info'][0]['target']|default=''}" class="layui-btn layui-btn-small modal-catch" style="float:right">
-                        {$infoModule['_info'][0]['name']}
-                    </a>
+                        <a href="{$vo.url}" class="layui-btn layui-btn-small modal-catch" style="float:right;">
+                            {$vo.name}
+                        </a>
+                        {/foreach}{else /}
+                        {notempty name="infoModule._info.0"}
+                        <a href="{$infoModule['_info'][0]['url']}" target="{$infoModule['_info'][0]['target']|default=''}" class="layui-btn layui-btn-small modal-catch" style="float:right">
+                            {$infoModule['_info'][0]['name']}
+                        </a>
+                        {/notempty}
                     {/notempty}
                 </div>
             </section>

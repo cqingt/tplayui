@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"D:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1500899445;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"D:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1500980038;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +47,7 @@
         <div class="header-right">
 
             <a href="<?php echo url('admin/Admin/delcache'); ?>" class="layui-btn  layui-btn-small" style="position: absolute; top: 14px; right:220px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
-            <a class="layui-btn  layui-btn-small  layui-btn-danger" style="position: absolute; top: 14px; right:340px;" href="http://www.kancloud.cn/jqcool/jqadmin" target="_blank">使用手册</a>
+
             <ul class="layui-nav jqadmin-header-item right-menu">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
@@ -113,7 +113,7 @@
     <div class="layui-footer jqadmin-foot">
         <div class="layui-mian">
             <p class="jqadmin-copyright">
-                <span class="layui">2017 &copy;</span> Write by Paco,<a href="http://www.jqcool.net">jQAdmin</a>. 版权所有 <span class="layui">依赖前端框架layui</span>
+                <span class="layui">2017 &copy;</span> Write by hongkai.wang,<a href="http://www.yikaiba.com">壹凯巴</a>. 版权所有 <span class="layui">依赖前端框架layui</span>
             </p>
         </div>
     </div>
