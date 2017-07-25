@@ -83,72 +83,28 @@ class AdminFormData extends Admin {
         $this->assign('url', url('index',array('fieldset_id' => $this->formInfo['fieldset_id'])));
         return $this->fetch();
     }
-
     /**
-     * 增加
+     * 详细
      */
-    public function add(){
+    public function info(){
         //设置模型
         $model = model('kbcms/FieldData');
         $model->setTable(config('database.prefix').'ext_'.$this->formInfo['table']);
         $fieldsetId=input('fieldset_id');
+        $dataId = input('data_id');
         if (input('post.')){
-            if ($model->saveData('add',input('post.fieldset_id'))){
-                $this->success('表单内容添加成功！');
+            if ($dataId){
+                $status=$model->saveData('edit',$_POST['fieldset_id']);
             }else{
-                $this->error('表单内容添加失败');
+                $status=$model->saveData('add',input('post.fieldset_id'));
+            }
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index',array('fieldset_id'=>$fieldsetId)));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            //字段列表
-            $where = array();
-            $where['A.fieldset_id'] = $this->formInfo['fieldset_id'];
-            $fieldList = model('FieldForm')->loadList($where);
-            //获取HTML
-            $html='';
-            foreach ($fieldList as $value) {
-                $html .= model('Field')->htmlFieldFull($value);
-            }
-            if(empty($html)){
-                $this->error('请先添加字段！');
-            }
-            /*ob_start();
-            $this->show($html);
-            $html = ob_get_clean();*/
-            //面包屑
-            $breadCrumb = array($this->formInfo['name'].'列表' => url('index',array('fieldset_id' => $this->formInfo['fieldset_id'])), '字段列表' => url('index', array('fieldset_id' => $fieldsetId)));
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '添加');
-            $this->assign('formInfo', $this->formInfo);
-            $this->assign('html', $html);
-
-            return $this->fetch();
-        }
-    }
-
-    /**
-     * 修改
-     */
-    public function edit(){
-        //设置模型
-        $model = model('kbcms/FieldData');
-        $model->setTable(config('database.prefix').'ext_'.$this->formInfo['table']);
-        $fieldsetId=input('fieldset_id');
-        if (input('post.')){
-            if ($model->saveData('edit',$_POST['fieldset_id'])){
-                $this->success('表单修改成功！',url('index', array('fieldset_id' => input('post.fieldset_id'))));
-            }
-            else{
-                $this->error('表单修改失败');
-            }
-        }else{
-            $dataId = input('data_id');
-            if (empty($dataId)){
-                $this->error('参数不能为空！');
-            }
             $info = $model->getInfo($dataId);
-            if (!$info){
-                $this->error($model->getError());
-            }
             //字段列表
             $where = array();
             $where['A.fieldset_id'] = $this->formInfo['fieldset_id'];
@@ -159,15 +115,8 @@ class AdminFormData extends Admin {
                 $html .= model('Field')->htmlFieldFull($value,$info[$value['field']]);
             }
             if(empty($html)){
-                $this->error('请先添加字段！');
+                return ajaxReturn(0,'请先添加字段！');
             }
-            /*ob_start();
-            $this->show($html);
-            $html = ob_get_clean();*/
-            //面包屑
-            $breadCrumb = array('表单列表' => url('index'), '表单修改' => url('edit', array('fieldset_id' => $fieldsetId)));
-            $this->assign('breadCrumb', $breadCrumb);
-            $this->assign('name', '修改');
             $this->assign('info', $info);
             //$this->assign('tplList',model('admin/Config')->tplList());
             $this->assign('formInfo', $this->formInfo);
@@ -180,7 +129,7 @@ class AdminFormData extends Admin {
      * 删除
      */
     public function del(){
-        $dataId = input('post.id');
+        $dataId = input('id');
         if (empty($dataId))
         {
             $this->error('参数不能为空！');
@@ -190,10 +139,10 @@ class AdminFormData extends Admin {
         $model->setTable(config('database.prefix').'ext_'.$this->formInfo['table']);
         // 删除操作
         if ($model->del($dataId)){
-            $this->success('内容删除成功！');
+            return ajaxReturn(200,'删除成功！');
         }
         else{
-            $this->error('内容删除失败！');
+            return ajaxReturn(0,'删除失败');
         }
     }
 }

@@ -562,11 +562,11 @@ class Field extends Model {
                 break;
             case 'textTime':
                 if(!empty($config['value'])){
-                    $config['value'] = date('Y/m/d H:i:s',$config['value']);
+                    $config['value'] = date('Y-m-d H:i:s',$config['value']);
                 }
                 $html .= '<div class="layui-input-block">
-                    <input class="jqdate" value="'.$config['value'].'" name="'.$config['name'].'" id="'.$config['name'].'" name="time" placeholder="'.$config['tip'].'"  type="date">
-                    </div>';
+                            <input value="'.$config['value'].'" name="'.$config['name'].'" id="date" lay-verify="date" placeholder="'.$config['tip'].'" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: \'YYYY-MM-DD hh:mm\'})" type="text">
+                        </div>';
                 break;
             case 'currency':
                 $html .= '<div class="layui-input-block">
