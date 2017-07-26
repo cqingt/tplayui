@@ -67,6 +67,9 @@ class AdminUser extends Admin {
         $userId = input('user_id');
         $model = model('AdminUser');
         if (input('post.')){
+            if($userId == 1){
+                return ajaxReturn(0,'保留用户无法编辑');
+            }
             if ($userId){
                 $status=$model->edit();
             }else{
@@ -78,9 +81,6 @@ class AdminUser extends Admin {
                 return ajaxReturn(0,'操作失败');
             }
         }else{
-            if($userId == 1){
-                return ajaxReturn(0,'保留用户无法编辑');
-            }
             $this->assign('info', $model->getInfo($userId));
             $this->assign('groupList',model('AdminGroup')->loadList());
             return $this->fetch();

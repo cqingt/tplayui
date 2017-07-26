@@ -45,6 +45,9 @@ class AdminUserGroup extends Admin {
         $groupId = input('group_id');
         $model = model('AdminGroup');
         if (input('post.')){
+            if($groupId == 1){
+                return $this->error('保留用户组无法编辑');
+            }
             if ($groupId){
                 $status=$model->edit();
             }else{
@@ -56,9 +59,6 @@ class AdminUserGroup extends Admin {
                 return ajaxReturn(0,'操作失败');
             }
         }else{
-            if($groupId == 1){
-                return $this->error('保留用户组无法编辑');
-            }
             $this->assign('info', $model->getInfo($groupId));
             $this->assign('groupList',model('AdminGroup')->loadList());
             return $this->fetch();
