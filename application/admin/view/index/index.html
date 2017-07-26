@@ -41,7 +41,6 @@
             </ul>
 
         </div>
-
         <!-- 头部右侧导航 -->
         <div class="header-right">
 
@@ -103,7 +102,7 @@
             </div>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <iframe class="jqadmin-iframe" data-id='0' src="{:url('home')}"></iframe>
+                    <iframe class="jqadmin-iframe" name="yk_iframe" id="yk_iframe" data-id='0' src="{:url('home')}"></iframe>
                 </div>
             </div>
         </div>
@@ -182,7 +181,6 @@
 <script>
     layui.config({
         base: '__ADMIN__/js/',
-        version: "1.3.4r2"
     }).extend({
         elem: 'jqmodules/elem',
         tabmenu: 'jqmodules/tabmenu',

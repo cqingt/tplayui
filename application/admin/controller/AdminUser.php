@@ -20,10 +20,10 @@ class AdminUser extends Admin {
                         'icon' => 'list',
                     ),
                 ),
-            'add' => array(
+            '_info' => array(
                     array(
                         'name' => '添加用户',
-                        'url' => url('add'),
+                        'url' => url('info'),
                     ),
                 ),
             );
@@ -60,56 +60,29 @@ class AdminUser extends Admin {
         $this->assign('groupId',$groupId);
         return $this->fetch();
     }
-
     /**
-     * 增加
+     * 详情
      */
-    public function add(){
+    public function info(){
+        $userId = input('user_id');
+        $model = model('AdminUser');
         if (input('post.')){
-            if(model('AdminUser')->add('add')){
-                $this->success('用户添加成功！');
+            if ($userId){
+                $status=$model->edit();
             }else{
-                $this->error('用户添加失败');
+                $status=$model->add();
+            }
+            if($status!==false){
+                return ajaxReturn(200,'操作成功',url('index'));
+            }else{
+                return ajaxReturn(0,'操作失败');
             }
         }else{
-            $breadCrumb = array('用户列表'=>url('index'),'添加'=>url());
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('name','添加');
-            $this->assign('groupList',model('AdminGroup')->loadList());
-            return $this->fetch();
-        }
-    }
-
-    /**
-     * 修改
-     */
-    public function edit(){
-        if (input('post.')){
-            if(model('AdminUser')->edit()){
-                return $this->success('用户修改成功！');
-            }else{
-                return $this->error('用户修改失败');
-            }
-        }else{
-            $userId = input('user_id');
             if($userId == 1){
-                return $this->error('保留用户无法编辑！');
+                return ajaxReturn(0,'保留用户无法编辑');
             }
-            if(empty($userId)){
-                return $this->error('参数不能为空！');
-            }
-
-            //获取记录
-            $model = model('AdminUser');
-            $info = $model->getInfo($userId);
-            if(!$info){
-                $this->error('错误');
-            }
-            $breadCrumb = array('用户列表'=>url('index'),'修改'=>url('',array('user_id'=>$userId)));
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('name','修改');
+            $this->assign('info', $model->getInfo($userId));
             $this->assign('groupList',model('AdminGroup')->loadList());
-            $this->assign('info',$info);
             return $this->fetch();
         }
     }
@@ -118,21 +91,18 @@ class AdminUser extends Admin {
      * 删除
      */
     public function del(){
-        $userId = input('post.id');
+        $userId = input('id');
         if(empty($userId)){
-            $this->error('参数不能为空！');
+            return ajaxReturn(0,'参数不能为空');
         }
         if($userId == 1){
-            $this->error('保留用户无法删除！');
+            return ajaxReturn(0,'保留用户无法删除');
         }
-        //获取用户数量
         if(model('AdminUser')->del($userId)){
-            $this->success('用户删除成功！');
+            return ajaxReturn(200,'用户删除成功！');
         }else{
-            $this->error('用户删除失败！');
+            return ajaxReturn(0,'用户删除失败');
         }
     }
-
-
 }
 

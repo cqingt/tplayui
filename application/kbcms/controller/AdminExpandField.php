@@ -106,8 +106,7 @@ class AdminExpandField extends Admin
         $model = model('FieldExpand');
         if ($model->del($fieldId)){
             return ajaxReturn(200,'字段删除成功！');
-        }
-        else{
+        }else{
             return ajaxReturn(0,'字段删除失败');
         }
     }

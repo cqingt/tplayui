@@ -22,7 +22,7 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], func
         "complete":"abc"
     }).init();
     form.abc = function(ret, options, that) {
-          console.log(ret);
+          //console.log(ret);
          // console.log(options);
          // console.log(that);
         if (ret.status==200){
@@ -37,8 +37,15 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], func
                 ,moveType: 1 //拖拽模式，0或者1
                 ,content: '<div style="padding: 20px;text-align: center; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;font-size: 16px">'+ret.msg+'</div>'
                 ,success: function(layero){
+                    //yk_iframe.window.location.href='http://www.baidu.com';
                     var btn = layero.find('.layui-layer-btn');
                     btn.css('text-align', 'center');
+                    /*btn.on('click', '.layui-layer-btn0', function() {
+                        window.location.href=ret.url;
+                    });
+                    btn.on('click', '.layui-layer-btn1', function() {
+                        window.location.href=window.location.href;
+                    });*/
                     btn.find('.layui-layer-btn0').attr({
                         href: ret.url
                     });

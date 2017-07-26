@@ -50,9 +50,9 @@ class Setting extends Admin {
     public function site(){
         if (input('post.')){
             if(model('Config')->edit()){
-                $this->success('站点配置成功！');
+                return ajaxReturn(200,'站点配置成功！');
             }else{
-                $this->error('站点配置失败');
+                return ajaxReturn(0,'站点配置失败！');
             }
         }else{
             $breadCrumb = array('站点信息'=>url());
@@ -74,9 +74,9 @@ class Setting extends Admin {
             $this->adminDisplay();
         }else{
             if(model('Config')->saveData()){
-                $this->success('模板配置成功！');
+                return ajaxReturn(200,'模板配置成功！');
             }else{
-                $this->error('模板配置失败');
+                return ajaxReturn(0,'模板配置失败！');
             }
         }
     }
@@ -86,9 +86,9 @@ class Setting extends Admin {
     public function tpl(){
         if (input('post.')){
             if(model('Config')->edit()){
-                $this->success('模板配置成功！');
+                return ajaxReturn(200,'模板配置成功！');
             }else{
-                $this->error('模板配置失败');
+                return ajaxReturn(0,'模板配置失败！');
             }
         }else{
             $breadCrumb = array('模板设置'=>url());

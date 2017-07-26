@@ -155,7 +155,7 @@ function array_order($array, $key, $type = 'asc', $reset = false)
     return $new_array;
 }
 //ajaxReturn返回json数据
-function ajaxReturn($code,$msg='操作成功',$url='reload',$data=array(array('name'=>'paco','url'=>'yikaiba.com')),$render=true){
+function ajaxReturn($code,$msg='操作成功',$url='',$data=array(array('name'=>'paco','url'=>'yikaiba.com')),$render=true){
     $tmp['status']=$code;
     $tmp['msg']=$msg;
     $tmp['url']=$url;
