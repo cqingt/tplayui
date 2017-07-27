@@ -80,7 +80,6 @@ function service($appName,$name,$method,$vars=array()){
         return $class->$method($vars);
     }
 }
-
 /**
  * 读取模块配置
  * @param string $file 调用文件

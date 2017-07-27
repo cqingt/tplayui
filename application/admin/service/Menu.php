@@ -14,7 +14,7 @@ class Menu{
         if(!empty($formList)){
             foreach ($formList as $key => $value) {
                 $formMenu[] = array(
-                    'id'=>$key,
+                    'id'=>'30'.$key+1,
                     'url' => url('kbcms/AdminFormData/index',array('fieldset_id'=>$value['fieldset_id'])),
                     'name' => $value['name'],
                     'iconfont' => '&#xe62a;'
@@ -23,13 +23,13 @@ class Menu{
         }
 		return array(
             array(
-                'id'=>1,
+                'id'=>10,
                 'url'=>'',
                 'name'=>'首页',
                 'iconfont'=>'&#xe637;',
                 'sub'=>array(
                     array(
-                        'id'=>1,
+                        'id'=>11,
                         'url'=>url('admin/Index/home'),
                         'name'=>'管理首页',
                         'iconfont'=>'&#xe62a;'
@@ -37,19 +37,19 @@ class Menu{
                 )
             ),
             array(
-                'id'=>2,
+                'id'=>20,
                 'url'=>'',
                 'name'=>'内容',
                 'iconfont'=>'&#xe637;',
                 'sub'=>array(
                     array(
-                        'id'=>1,
+                        'id'=>21,
                         'url'=>url('kbcms/AdminCategory/index'),
                         'name'=>'栏目管理',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>2,
+                        'id'=>22,
                         'url'=>url('article/AdminContent/index'),
                         'name'=>'文章管理',
                         'iconfont'=>'&#xe62a;'
@@ -57,38 +57,38 @@ class Menu{
                 )
             ),
             array(
-                'id'=>3,
+                'id'=>30,
                 'url'=>'',
                 'name'=>'表单',
                 'iconfont'=>'&#xe637;',
                 'sub'=>$formMenu
             ),
             array(
-                'id'=>4,
+                'id'=>40,
                 'url'=>'',
                 'name'=>'功能',
                 'iconfont'=>'&#xe637;',
                 'sub'=>array(
                     array(
-                        'id'=>1,
+                        'id'=>31,
                         'url'=>url('kbcms/AdminFragment/index'),
                         'name'=>'碎片管理',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>2,
+                        'id'=>32,
                         'url'=>url('kbcms/AdminPosition/index'),
                         'name'=>'推荐位管理',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>3,
+                        'id'=>33,
                         'url'=>url('kbcms/AdminExpand/index'),
                         'name'=>'扩展模型管理',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>4,
+                        'id'=>34,
                         'url'=>url('kbcms/AdminForm/index'),
                         'name'=>'表单管理',
                         'iconfont'=>'&#xe62a;'
@@ -97,25 +97,25 @@ class Menu{
                 )
             ),
             array(
-                'id'=>5,
+                'id'=>50,
                 'url'=>'',
                 'name'=>'系统',
                 'iconfont'=>'&#xe637;',
                 'sub'=>array(
                     array(
-                        'id'=>1,
+                        'id'=>51,
                         'url'=>url('admin/Setting/site'),
                         'name'=>'系统设置',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>2,
+                        'id'=>52,
                         'url'=>url('admin/AdminUser/index'),
                         'name'=>'用户管理',
                         'iconfont'=>'&#xe62a;'
                     ),
                     array(
-                        'id'=>3,
+                        'id'=>53,
                         'url'=>url('admin/AdminUserGroup/index'),
                         'name'=>'用户组管理',
                         'iconfont'=>'&#xe62a;'
@@ -123,19 +123,19 @@ class Menu{
                 )
             ),
             array(
-                'id'=>6,
+                'id'=>60,
                 'url'=>'',
                 'name'=>'插件中心',
                 'iconfont'=>'&#xe637;',
                 'sub'=>array(
                     array(
-                        'id'=>11,
+                        'id'=>61,
                         'url'=>'',
                         'name'=>'插件管理',
                         'iconfont'=>'&#xe62a;',
                         'sub'=>array(
                             array(
-                                'id'=>12,
+                                'id'=>611,
                                 'url'=>url('plug/Plugin/index'),
                                 'name'=>'插件工具',
                                 'iconfont'=>'&#xe62a;',
