@@ -17,7 +17,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">上级栏目</label>
                                     <div class="layui-input-inline">
-                                        <select name="parent_id" jq-verify="" jq-error="请输入分类" lay-filter="verify">
+                                        <select name="parent_id">
                                             <option value="0">顶级栏目</option>
                                             {foreach name="categoryList" item="vo"}
                                             <option value="{$vo.class_id}" {if condition="$vo.class_id eq $info.parent_id"}selected{/if}>{$vo.cname}</option>
@@ -28,7 +28,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">栏目名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="name" value="{$info.name|default=''}" jq-verify="" jq-error="请输入栏目名称" placeholder="请输入栏目名称" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="name" value="{$info.name|default=''}" jq-verify="required" jq-error="请输入栏目名称" placeholder="请输入栏目名称" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item" pane>
@@ -41,13 +41,13 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">内容分页数</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="page"  jq-verify="number" value="{$info.page|default='10'}" jq-error="排序必须为数字" placeholder="分类排序" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="page"  jq-verify="number" value="{$info.page|default='10'}" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">排序</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="sequence"  jq-verify="number" value="{$info.sequence|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="sequence"  jq-verify="number" value="{$info.sequence|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">

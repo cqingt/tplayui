@@ -74,9 +74,9 @@ class AdminUserGroup extends Admin {
                 $this->error('参数不能为空！');
             }
             if(model('AdminGroup')->savePurviewData()){
-                $this->success('用户组修改成功！');
+                return ajaxReturn('200','权限更新成功！');
             }else{
-                $this->error('用户组修改失败');
+                return ajaxReturn('0','权限更新失败！');
             }
         }else{
             $groupId = input('group_id');
@@ -89,16 +89,14 @@ class AdminUserGroup extends Admin {
             if(!$info){
                 $this->error('该组信息不存在');
             }
-            $AdminPurvewArray = unserialize($info['base_purview'])?unserialize($info['base_purview']):array();
-            $AdminMenuArray = unserialize($info['menu_purview'])?unserialize($info['menu_purview']):array();
             $AdminPurvew = model('Menu')->getPurview()['data']['list'];//权限菜单
             $AdminMenu = model('Menu')->getPurMenu();//后台菜单
             $breadCrumb = array('用户组列表'=>url('index'),'权限设置('.$info['name'].')'=>url('',array('group_id'=>$groupId)));
             $this->assign('breadCrumb',$breadCrumb);
             $this->assign('AdminPurvew', $AdminPurvew);
             $this->assign('AdminMenu', $AdminMenu);
-            $this->assign('AdminPurvewArray',$AdminPurvewArray);
-            $this->assign('AdminMenuArray', $AdminMenuArray);
+            //$this->assign('AdminPurvewArray',$AdminPurvewArray);
+            $this->assign('menu_purview', $info['menu_purview']);
             $this->assign('info',$info);
             return $this->fetch();
         }

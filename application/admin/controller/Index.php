@@ -21,6 +21,7 @@ class Index extends Admin{
         );
     }
     public function index(){
+        $this->assign('loginUserInfo',$this->loginUserInfo);
         return $this->fetch();
     }
     public function test(){

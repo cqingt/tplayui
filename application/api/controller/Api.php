@@ -11,7 +11,7 @@ class Api extends Admin{
      */
     public function index(){
         $menuList = model('admin/menu')->getMenu($this->loginUserInfo);
-        return $menuList;
+        return json($menuList);
     }
     /**
      * 更新字段

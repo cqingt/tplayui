@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501055522;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501230001;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
@@ -45,25 +45,20 @@
         <!-- 头部右侧导航 -->
         <div class="header-right">
 
-            <a href="<?php echo url('admin/Admin/delcache'); ?>" class="layui-btn  layui-btn-small" style="position: absolute; top: 14px; right:220px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
+            <a class="layui-btn layui-btn-small ajax" data-params='{"url": "<?php echo url("admin/Admin/delcache"); ?>","confirm":"true","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
 
             <ul class="layui-nav jqadmin-header-item right-menu">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
-                        <cite> admin</cite>
+                        <cite> <?php echo $loginUserInfo['username']; ?></cite>
                         <span class="layui-nav-more"></span>
                     </a>
-
                     <dl class="layui-nav-child">
-                        <dd class="tab-menu">
-                            <a href="javascript:;" data-url="user-info.html" data-title="个人信息"> <i class="iconfont " data-icon='&#xe672;'>&#xe672; </i><span>个人信息</span></a>
-                        </dd>
                         <dd>
-                            <a href="<?php echo url('admin/Login/logout'); ?>"><i class="iconfont ">&#xe64b; </i>退出</a>
+                            <a class="ajax" style="cursor: p" data-params='{"url": "<?php echo url("admin/Login/logout"); ?>","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
                         </dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item tab-menu"><a class="msg" href="javascript:;" data-url="msg.html" data-title="站内信息"><i class="iconfont" data-icon='&#xe63c;'>&#xe63c; </i><span class="msg-num">1</span></a></li>
             </ul>
             <button title="刷新" class="layui-btn layui-btn-normal fresh-btn"><i class="iconfont">&#xe62e; </i> </button>
         </div>

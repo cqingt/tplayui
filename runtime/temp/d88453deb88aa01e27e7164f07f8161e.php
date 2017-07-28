@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_form_data\index.html";i:1500976768;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_position\index.html";i:1500966529;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,27 +54,25 @@
     <table class="layui-table lay-even">
         <thead>
         <tr>
-            <th>ID</th>
-            <?php if(is_array($tableTh) || $tableTh instanceof \think\Collection || $tableTh instanceof \think\Paginator): if( count($tableTh)==0 ) : echo "" ;else: foreach($tableTh as $key=>$vo): ?>
-            <th><?php echo $vo; ?></th>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
+            <th width="80">ID</th>
+            <th>名称</th>
+            <th>顺序</th>
             <th width="240">操作</th>
         </tr>
         </thead>
         <tbody>
         <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
         <tr>
-            <td><?php echo $vo['data_id']; ?></td>
-            <?php if(is_array($fieldList) || $fieldList instanceof \think\Collection || $fieldList instanceof \think\Paginator): if( count($fieldList)==0 ) : echo "" ;else: foreach($fieldList as $key=>$val): if($val['show'] == '1'): ?>
-            <td><?php echo model('kbcms/FieldData')->showListField($vo[$val['field']],$val['type'],$val['config']); ?></td>
-            <?php endif; endforeach; endif; else: echo "" ;endif; ?>
+            <td><?php echo $vo['position_id']; ?></td>
+            <td><?php echo $vo['name']; ?></td>
+            <td><?php echo $vo['sequence']; ?></td>
             <td>
-                <a href="<?php echo url('info',array('data_id'=>$vo['data_id'],'fieldset_id'=>$formInfo['fieldset_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                <a href="<?php echo url('info',array('position_id'=>$vo['position_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
                 </a>
                 <a class="layui-btn layui-btn-mini layui-btn-danger ajax"
-                   data-list='{"key":"id=<?php echo $vo['data_id']; ?>","msg":true,"render":"true","action":"del"}'
-                   data-params='{"url": "<?php echo url("del",array("fieldset_id"=>$formInfo["fieldset_id"])); ?>","confirm":"true","data":"id=<?php echo $vo['data_id']; ?>","complete":"del"}'>
+                   data-list='{"key":"id=<?php echo $vo['position_id']; ?>","msg":true,"render":"true","action":"del"}'
+                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['position_id']; ?>","complete":"del"}'>
                     <i class="iconfont">&#xe626;</i>删除
                 </a>
 

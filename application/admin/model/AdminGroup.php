@@ -45,16 +45,17 @@ class AdminGroup extends Model {
      * @return bool 更新状态
      */
     public function savePurviewData(){
-        $where['group_id']=$_POST['group_id'];
-        //var_dump($_POST);
+        $where['group_id']=input('group_id');
+        $menu_purview=input('post.menu_purview/a');
+
+        $base_purview=input('post.base_purview/a');
         $data=array();
-        if (!empty($_POST['menu_purview'])){
-            $data['menu_purview'] = serialize($_POST['menu_purview']);
+        if (!empty($menu_purview)){
+            $data['menu_purview'] = implode(',',$menu_purview);
         }
-        if (!empty($_POST['base_purview'])){
-            $data['base_purview'] = serialize($_POST['base_purview']);
+        if (!empty($base_purview)){
+            $data['base_purview'] = implode(',',$base_purview);
         }
-        //var_dump($data);exit;
         $status = $this->save($data,$where);
         if($status === false){
             return false;

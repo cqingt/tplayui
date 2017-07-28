@@ -9,7 +9,7 @@
  * +----------------------------------------------------------------------
  */
 
-layui.define(['jquery', 'layer', 'ajax'], function(exports) {
+layui.define(['jquery', 'layer', 'ajax','element'], function(exports) {
     var ajax = layui.ajax;
     ajax.del = function(ret, options, that) {
         if (ret.status==200){//成功

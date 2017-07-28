@@ -49,6 +49,41 @@ function get_all_service($name,$method,$vars=array()){
 }
 
 /**
+ * 获取菜单权限
+ * $menu 所有菜单
+ * $menu_purview 权限菜单
+ */
+function get_menu_purview($menu,$menu_purview){
+    //print_r($menu);
+    //print_r($menu_purview);exit;
+    $menu_purview_arr=explode(',',$menu_purview);
+    if ($menu){
+        foreach ($menu as $key=>$val){//一级分类
+            if (!in_array($val['id'],$menu_purview_arr)){
+                unset($menu[$key]);
+            }
+            if (!empty($val['sub'])){
+                foreach ($val['sub'] as $kk=>$vv){
+                    if (!in_array($vv['id'],$menu_purview_arr)){
+                        unset($menu[$key]['sub'][$kk]);
+                    }
+                    if (!empty($vv['sub'])){
+                        foreach ($vv['sub'] as $kkk=>$vvv){
+                            if (!in_array($vvv['id'],$menu_purview_arr)){
+                                unset($menu[$key]['sub'][$kk]['sub'][$kkk]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    $tmp['data']['list']=$menu;
+    $tmp['status']=200;
+    return $tmp;
+}
+
+/**
  * 获取页面类型
  */
 function get_page_type(){

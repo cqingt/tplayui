@@ -48,18 +48,16 @@ class Plugin extends Admin {
             }
             $row = model('Plugin')->edit(array('config_value'=>$config),$condition);
             if($row!==false){
-                return $this->success("操作成功");
+                return ajaxReturn(200,'操作成功');
             }else{
-                return $this->error("操作失败");
+                return ajaxReturn(0,'操作失败');
             }
         }else{
             $row = model('plugin')->getWhereInfo($condition);
             if(!$row){
                 return $this->error("不存在该插件");
             }
-
             $row['config'] = unserialize($row['config']);
-
             $this->assign('plugin',$row);
             $this->assign('config_value',unserialize($row['config_value']));
             return $this->fetch();

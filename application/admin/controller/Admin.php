@@ -23,7 +23,7 @@ class Admin extends Controller{
             //设置登录用户信息
             $this->loginUserInfo = model('admin/AdminUser')->getInfo(ADMIN_ID);
             //检测权限
-            $this->checkPurview();
+            //$this->checkPurview();
             //赋值当前菜单
             if(method_exists($this,'_infoModule')){
                 $this->assign('infoModule',$this->_infoModule());
@@ -109,6 +109,6 @@ class Admin extends Controller{
     public function delcache() {
         $path=ROOT_PATH.'/runtime';
         delDirAndFile($path);
-        $this->success('缓存清除成功');
+        return ajaxReturn(200,'缓存清除成功');
     }
 }

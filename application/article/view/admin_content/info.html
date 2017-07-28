@@ -17,7 +17,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">文章分类</label>
                                     <div class="layui-input-inline">
-                                        <select class="tpl-form-input" name="class_id">
+                                        <select jq-verify="required" jq-error="请选择文章分类" lay-filter="verify" name="class_id">
                                             <option value="">请选择</option>
                                             {foreach name="category_list" item="vo"}
                                             <option value="{$vo.class_id}" {if condition="$vo.class_id eq $info.class_id"}selected{/if} {if condition="($vo.type eq 0) or ($vo.app neq request()->module())"} disabled="disabled" {/if}>{$vo.cname}</option>
@@ -28,7 +28,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">文章标题</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" value="{$info.title|default=''}" jq-verify="" jq-error="请输入文章标题" placeholder="请输入文章标题" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="title" value="{$info.title|default=''}" jq-verify="required" jq-error="请输入文章标题" placeholder="请输入文章标题" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -69,7 +69,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">排序</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="sequence"  jq-verify="number" value="{$info.sequence|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="sequence"  jq-verify="number" value="{$info.sequence|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
                                     </div>
                                 </div>
                             </div>
@@ -98,13 +98,13 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">发布时间</label>
                                     <div class="layui-input-block">
-                                        <input name="date" value="{$Think.NOW_TIME}" id="date" lay-verify="date" placeholder="发布时间" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})" type="text">
+                                        <input name="date" value="{$Think.NOW_TIME}" id="date" lay-verify="date" placeholder="发布时间" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})" type="text">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">访问量</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="views"  jq-verify="number" value="{$info.views|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" autocomplete="off" class="layui-input ">
+                                        <input type="text" name="views"  jq-verify="number" value="{$info.views|default='0'}" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -156,7 +156,6 @@
     layui.use('myform', function(){
         var form = layui.form();
         var $= layui.jquery;
-
         //各种基于事件的操作，下面会有进一步介绍
         form.on('select(tpl)', function(data){
             document.getElementById("tpl").value=data.value;
@@ -180,9 +179,6 @@
             });
             //alert(data.value);
         });
-
-
     });
-
 </script>
 {/block}

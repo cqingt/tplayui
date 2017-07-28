@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/article\view\admin_content\info.html";i:1501232034;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"F:\wamp64\www\1kbcms2\public/../application/page\view\admin_category\info.html";i:1501231443;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1500353706;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,20 +63,20 @@
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">文章分类</label>
+                                    <label class="layui-form-label">上级栏目</label>
                                     <div class="layui-input-inline">
-                                        <select jq-verify="required" jq-error="请选择文章分类" lay-filter="verify" name="class_id">
-                                            <option value="">请选择</option>
-                                            <?php if(is_array($category_list) || $category_list instanceof \think\Collection || $category_list instanceof \think\Paginator): if( count($category_list)==0 ) : echo "" ;else: foreach($category_list as $key=>$vo): ?>
-                                            <option value="<?php echo $vo['class_id']; ?>" <?php if($vo['class_id'] == $info['class_id']): ?>selected<?php endif; if(($vo['type'] == 0) or ($vo['app'] != request()->module())): ?> disabled="disabled" <?php endif; ?>><?php echo $vo['cname']; ?></option>
+                                        <select name="parent_id" jq-verify="" jq-error="请输入分类" lay-filter="verify">
+                                            <option value="0">顶级栏目</option>
+                                            <?php if(is_array($categoryList) || $categoryList instanceof \think\Collection || $categoryList instanceof \think\Paginator): if( count($categoryList)==0 ) : echo "" ;else: foreach($categoryList as $key=>$vo): ?>
+                                            <option value="<?php echo $vo['class_id']; ?>" <?php if($vo['class_id'] == $info['parent_id']): ?>selected<?php endif; ?>><?php echo $vo['cname']; ?></option>
                                             <?php endforeach; endif; else: echo "" ;endif; ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">文章标题</label>
+                                    <label class="layui-form-label">页面名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" value="<?php echo (isset($info['title']) && ($info['title'] !== '')?$info['title']:''); ?>" jq-verify="required" jq-error="请输入文章标题" placeholder="请输入文章标题" class="layui-input ">
+                                        <input type="text" name="name" value="<?php echo (isset($info['name']) && ($info['name'] !== '')?$info['name']:''); ?>" jq-verify="required" jq-error="请输入页面名称" placeholder="请输入页面名称" class="layui-input ">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -93,25 +93,21 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">内容</label>
+                                    <label class="layui-form-label">页面内容</label>
                                     <div class="layui-input-block">
                                         <textarea name="content" class="king_content" cols="100" rows="20"><?php echo (isset($info['content']) && ($info['content'] !== '')?$info['content']:''); ?></textarea>
                                     </div>
                                 </div>
-                                <div class="layui-form-item ">
-                                    <label class="layui-form-label">文章描述</label>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">栏目关键词</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入文章描述" class="layui-textarea"><?php echo (isset($info['description']) && ($info['description'] !== '')?$info['description']:''); ?></textarea>
+                                        <input type="text" name="keywords" value="<?php echo (isset($info['keywords']) && ($info['keywords'] !== '')?$info['keywords']:''); ?>" placeholder="请输入栏目关键词" class="layui-input ">
                                     </div>
                                 </div>
-
-                                <div id="expand"></div>
-
-                                <div class="layui-form-item" pane>
-                                    <label class="layui-form-label">文章状态</label>
-                                    <div class="layui-input-inline">
-                                        <input type="radio" name="status" <?php if($info['status'] == '1'): ?>checked<?php endif; ?> title="显示" value="1" checked />
-                                        <input type="radio" name="status" <?php if($info['status'] == '2'): ?>checked<?php endif; ?> title="关闭" value="2" />
+                                <div class="layui-form-item ">
+                                    <label class="layui-form-label">栏目描述</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="description" placeholder="请输入栏目描述" class="layui-textarea"><?php echo (isset($info['description']) && ($info['description'] !== '')?$info['description']:''); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -120,60 +116,54 @@
                                         <input type="text" name="sequence"  jq-verify="number" value="<?php echo (isset($info['sequence']) && ($info['sequence'] !== '')?$info['sequence']:'0'); ?>" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="layui-tab-item">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">推荐位置</label>
-                                    <div class="layui-input-block">
-                                        <?php  $positionArray = explode(',',$info['position']); if(is_array($position_list) || $position_list instanceof \think\Collection || $position_list instanceof \think\Paginator): if( count($position_list)==0 ) : echo "" ;else: foreach($position_list as $key=>$vo): ?>
-                                        <input type="checkbox" value="<?php echo $vo['position_id']; ?>" <?php if(in_array($vo['position_id'],$positionArray)): ?>checked<?php endif; ?> name="position[<?php echo $key; ?>]" title="<?php echo $vo['name']; ?>">
-                                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">内容url</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="urltitle" value="<?php echo (isset($info['urltitle']) && ($info['urltitle'] !== '')?$info['urltitle']:''); ?>" jq-error="设置URL规则后会生效" placeholder="设置URL规则后会生效" class="layui-input ">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">跳转到</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="url" value="<?php echo (isset($info['url']) && ($info['url'] !== '')?$info['url']:''); ?>" jq-error="设置后访问内容会跳转" placeholder="设置后访问内容会跳转" class="layui-input ">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">发布时间</label>
-                                    <div class="layui-input-block">
-                                        <input name="date" value="<?php echo NOW_TIME; ?>" id="date" lay-verify="date" placeholder="发布时间" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})" type="text">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">访问量</label>
-                                    <div class="layui-input-inline">
-                                        <input type="text" name="views"  jq-verify="number" value="<?php echo (isset($info['views']) && ($info['views'] !== '')?$info['views']:'0'); ?>" jq-error="排序必须为数字" placeholder="分类排序" class="layui-input ">
-                                    </div>
-                                </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">页面模板</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="tpl" id="tpl" value="<?php echo (isset($info['tpl']) && ($info['tpl'] !== '')?$info['tpl']:''); ?>"  class="layui-input ">
+                                        <input type="text" name="class_tpl" id="class_tpl" value="<?php echo (isset($info['class_tpl']) && ($info['class_tpl'] !== '')?$info['class_tpl']:'page'); ?>"  class="layui-input ">
                                     </div>
                                     <div class="layui-input-inline">
-                                        <select jq-error="请选择" lay-filter="tpl">
+                                        <select jq-error="请选择" lay-filter="class_tpl">
                                             <option value=""></option>
                                             <?php if(is_array($tplList) || $tplList instanceof \think\Collection || $tplList instanceof \think\Paginator): if( count($tplList)==0 ) : echo "" ;else: foreach($tplList as $key=>$vo): ?>
-                                            <option value="<?php echo $vo['name']; ?>" <?php if($vo['name'] == $info['tpl']): ?>selected<?php endif; ?>><?php echo $vo['file']; ?></option>
+                                            <option value="<?php echo $vo['name']; ?>" <?php if($vo['name'] == $info['class_tpl']): ?>selected<?php endif; ?>><?php echo $vo['file']; ?></option>
                                             <?php endforeach; endif; else: echo "" ;endif; ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item" pane>
+                                    <label class="layui-form-label">页面状态</label>
+                                    <div class="layui-input-inline">
+                                        <input type="radio" name="show" <?php if($info['show'] == '1'): ?>checked<?php endif; ?> title="显示" value="1" checked />
+                                        <input type="radio" name="show" <?php if($info['show'] == '2'): ?>checked<?php endif; ?> title="关闭" value="2" />
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-form-text">
+
+                                    <div class="layui-input-block">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">子标题</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="subname" value="<?php echo (isset($info['subname']) && ($info['subname'] !== '')?$info['subname']:''); ?>" jq-error="请输入子标题" placeholder="请输入子标题" class="layui-input ">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">栏目url</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="urlname" value="<?php echo (isset($info['urlname']) && ($info['urlname'] !== '')?$info['urlname']:''); ?>" jq-error="请输入栏目url" placeholder="请输入栏目url" class="layui-input ">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <input type="hidden" name="content_id" value="<?php echo (isset($info['content_id']) && ($info['content_id'] !== '')?$info['content_id']:''); ?>">
+                            <input type="hidden" name="class_id" value="<?php echo (isset($info['class_id']) && ($info['class_id'] !== '')?$info['class_id']:''); ?>">
                             <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
@@ -222,32 +212,10 @@
 <script>
     layui.use('myform', function(){
         var form = layui.form();
-        var $= layui.jquery;
-
         //各种基于事件的操作，下面会有进一步介绍
-        form.on('select(tpl)', function(data){
-            document.getElementById("tpl").value=data.value;
+        form.on('select(class_tpl)', function(data){
+            document.getElementById("class_tpl").value=data.value;
         });
-        window.onload=function(){
-            url="<?php echo url('/kbcms/admin_expand/getField'); ?>";
-            $.post(url,{
-                class_id:'<?php echo $info['class_id']; ?>',
-                content_id:'<?php echo $info['content_id']; ?>'
-            },function(data){
-                $('#expand').html(data);
-            });
-        }
-        form.on('select(class_id)', function(data){
-            url="<?php echo url('/kbcms/admin_expand/getField'); ?>";
-            $.post(url,{
-                class_id:data.value,
-                content_id:'<?php echo $info['content_id']; ?>'
-            },function(data){
-                $('#expand').html(data);
-            });
-            //alert(data.value);
-        });
-
 
     });
 

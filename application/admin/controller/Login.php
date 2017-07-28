@@ -37,6 +37,6 @@ class Login extends Controller{
      */
     public function logout(){
         model('AdminUser')->logout();
-        $this->success('退出系统成功！', url('index'));
+        return ajaxReturn(200,'退出系统成功！',url('index'));
     }
 }

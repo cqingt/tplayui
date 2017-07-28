@@ -10,13 +10,46 @@
  * +----------------------------------------------------------------------
  */
 
-layui.define(['jquery', 'elem', 'jqmenu', 'layer'], function(exports) {
+layui.define(['jquery', 'elem', 'jqmenu', 'layer', 'ajax'], function(exports) {
     var $ = layui.jquery,
         element = layui.elem(),
         menu = layui.jqmenu,
         layer = layui.layer,
         oneMenu = new menu();
+        var ajax = layui.ajax;
     jqIndex = function() {};
+
+    /**
+     * 清除缓存
+     */
+    ajax.delcache = function(ret, options, that) {
+        if (ret.status==200){//成功
+            layer.msg(ret.msg, {
+                icon: 1
+            });
+        }else{//失败
+            layer.msg(ret.msg, {
+                icon: 5
+            });
+        }
+    }
+    /**
+     * 退出登录
+     */
+    ajax.logout = function(ret, options, that) {
+        if (ret.status==200){//成功
+            layer.msg(ret.msg, {
+                icon: 1,
+                time: 500
+            }, function(){
+                window.location.href=ret.url;
+            });
+        }else{//失败
+            layer.msg(ret.msg, {
+                icon: 5
+            });
+        }
+    }
     /**
      *@todo 初始化方法
      */
