@@ -22,10 +22,10 @@ layui.define(['jquery', 'tags', 'layedit', 'jqform', 'upload'], function(exports
         "complete":"test"
     }).init();
 
-    var ajax = layui.ajax;
+    /*var ajax = layui.ajax;
     ajax.test = function(ret, options, that) {
         alert("这是ajax回调方法");
-    }
+    }*/
 
     var form = layui.jqform;
     form.test = function(ret, options, that) {
@@ -35,7 +35,8 @@ layui.define(['jquery', 'tags', 'layedit', 'jqform', 'upload'], function(exports
 
     //自定义
     form.verify({
-        username: function(value) {
+        title: function(value) {
+            return '文章标题不能有特殊字符';
             if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
                 return '文章标题不能有特殊字符';
             }

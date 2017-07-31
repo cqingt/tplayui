@@ -10,7 +10,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户组</label>
                         <div class="layui-input-inline">
-                            <select class="tpl-form-input" name="group_id">
+                            <select class="tpl-form-input" jq-verify="required" jq-error="请选择用户组" lay-filter="verify" name="group_id">
                                 <option value="">请选择用户组</option>
                                 {foreach name="groupList" item="vo"}
                                 <option value="{$vo.group_id}" {if condition="$vo.group_id eq $info.group_id"}selected{/if}>{$vo.name}</option>
@@ -21,7 +21,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名/登录名</label>
                         <div class="layui-input-block">
-                            <input type="text" name="username" value="{$info.username|default=''}" jq-verify="" jq-error=" 请输入用户名/登录名" placeholder="请输入用户名/登录名" class="layui-input ">
+                            <input type="text" name="username" value="{$info.username|default=''}" jq-verify="required" jq-error=" 请输入用户名/登录名" placeholder="请输入用户名/登录名" class="layui-input ">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -33,7 +33,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">邮箱</label>
                         <div class="layui-input-block">
-                            <input type="text" name="email" value="{$info.email|default=''}" jq-verify="" jq-error="请输入邮箱" placeholder="请输入邮箱" class="layui-input ">
+                            <input type="text" name="email" value="{$info.email|default=''}" required jq-verify="email" jq-error="邮箱格式不正确" placeholder="请输入邮箱" class="layui-input ">
                         </div>
                     </div>
                     <div class="layui-form-item">

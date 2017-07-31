@@ -41,7 +41,7 @@ return [
     ],
     //分页配置
     'paginate'               => [
-        'type' => '\app\common\paginator\Homepage',
+        'type' => '\app\common\paginator\HomePage',
         'var_page'  => 'page',
         'list_rows' => 15,
     ],

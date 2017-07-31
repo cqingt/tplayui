@@ -70,9 +70,20 @@ class AdminUser extends Admin {
             if($userId == 1){
                 return ajaxReturn(0,'保留用户无法编辑');
             }
+            if (input('post.password')){
+                if (empty(input('post.password2'))){
+                    return ajaxReturn(0,'确认密码不能为空');
+                }
+                if (input('post.password2')!=input('post.password')){
+                    return ajaxReturn(0,'两次密码不一致');
+                }
+            }
             if ($userId){
                 $status=$model->edit();
             }else{
+                if (empty(input('post.password'))){
+                    return ajaxReturn(0,'请填写密码');
+                }
                 $status=$model->add();
             }
             if($status!==false){

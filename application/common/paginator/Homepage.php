@@ -1,7 +1,7 @@
 <?php
 namespace app\common\paginator;
 use think\paginator\driver\Bootstrap;
-class Homepage extends Bootstrap{
+class HomePage extends Bootstrap{
     /**
      * 渲染分页html
      * @return mixed
@@ -10,19 +10,72 @@ class Homepage extends Bootstrap{
         if ($this->hasPages()) {
             if ($this->simple) {
                 return sprintf(
-                    '<ul class="pagination pagination-group">%s %s</ul>',
+                    '<ul class="pager">%s %s</ul>',
                     $this->getPreviousButton(),
                     $this->getNextButton()
                 );
             } else {
                 return sprintf(
-                    '<ul class="pagination pagination-group">%s %s %s</ul>',
+                    '%s %s %s %s %s',
+                    $this->getFirstButton(),
                     $this->getPreviousButton(),
                     $this->getLinks(),
-                    $this->getNextButton()
+                    $this->getNextButton(),
+                    $this->getLastButton()
                 );
             }
         }
+    }
+    /**
+     * 首页按钮
+     * @param string $text
+     * @return string
+     */
+    protected function getFirstButton($text = "首页")
+    {
+        $url = $this->url(1);
+        return $this->getPageLinkWrapper($url, $text);
+    }
+    /**
+     * 末页按钮
+     * @param string $text
+     * @return string
+     */
+    protected function getLastButton($text = "末页")
+    {
+        $url = $this->url($this->lastPage);
+        return $this->getPageLinkWrapper($url, $text);
+    }
+
+    /**
+     * 上一页按钮
+     * @param string $text
+     * @return string
+     */
+    protected function getPreviousButton($text = "上一页")
+    {
+        if ($this->currentPage() <= 1) {
+            return $this->getDisabledTextWrapper($text);
+        }
+        $url = $this->url(
+            $this->currentPage() - 1
+        );
+        return $this->getPageLinkWrapper($url, $text);
+    }
+    /**
+     * 下一页按钮
+     * @param string $text
+     * @return string
+     */
+    protected function getNextButton($text = '下一页')
+    {
+        if (!$this->hasMore) {
+            return $this->getDisabledTextWrapper($text);
+        }
+
+        $url = $this->url($this->currentPage() + 1);
+
+        return $this->getPageLinkWrapper($url, $text);
     }
     /**
      * 生成一个可点击的按钮
@@ -33,7 +86,7 @@ class Homepage extends Bootstrap{
      */
     protected function getAvailablePageWrapper($url, $page)
     {
-        return '<li><a href="' . htmlentities($url) . '">' . $page . '</a></li>';
+        return '<a href="' . htmlentities($url) . '">' . $page . '</a>';
     }
     /**
      * 生成一个禁用的按钮
@@ -43,7 +96,7 @@ class Homepage extends Bootstrap{
      */
     protected function getDisabledTextWrapper($text)
     {
-        return '<li><a href="javascript:void(0);">' . $text . '</a></li>';
+        return '<a href="#">' . $text . '</a>';
     }
     /**
      * 生成一个激活的按钮
@@ -53,6 +106,7 @@ class Homepage extends Bootstrap{
      */
     protected function getActivePageWrapper($text)
     {
-        return '<li class="active"><a href="#">' . $text . '</a></li>';
+        return '<span class="laypage-curr">' . $text . '</span>';
+
     }
 }

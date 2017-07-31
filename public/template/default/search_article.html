@@ -1,72 +1,53 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
+<html>
 <head>
     {include file="default/resource" /}
 </head>
-
 <body>
 {include file="default/header" /}
-<div class="container" style="margin-top: 125px;">
-    {include file='default/crumb'}
-</div>
-<div class="container">
-    <div class="line">
-        <div class="xm9">
-            <div class="bg-white">
-                <strong class="padding bg-blue text-white">搜索结果</strong>
-                <div class="padding">
-                    {foreach name='list' item='vo'}
-                    <div class="line margin-top">
-                        <a href="{$vo.aurl}">
-                            <div class="alert alert-yellow">
-                                <strong>{$vo.title}</strong>
-                                <p>
-                                    {$vo.description}
-                                </p>
-                                <div class="text-right">
-                                    <b class="button button-small bg-green">阅读</b>
-                                </div>
-                            </div>
-                        </a>
+<div class="main layui-clear">
+    <div class="wrap">
+        <div class="content" style="margin-right:0">
+            <div class="fly-tab">
+                <form action="{:url('home/Search/index')}" method="post">
+                    <div class="layui-input-inline" style="width: 200px;">
+                        <input value="{$keyword|default=''}" class="layui-input" placeholder="关键词" type="text" name="keyword">
                     </div>
-                    <div class="hr">
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input class="layui-btn" type="submit" value="搜索">
                     </div>
-                    {/foreach}
-
-                    <div class="text-right padding">
-                        {$_page|default=''}
-                        <!--<ul class="pagination pagination-group">
-                            <li>
-                                <a href="#">上一页</a>
-                            </li>
-                            <li>
-                                <a href="#">下一页</a>
-                            </li>
-                        </ul>-->
+                    <div class="layui-input-inline" style="width: 100px;">
+                        搜索结果
                     </div>
+                </form>
+            </div>
+            <ul class="fly-list">
+                {foreach name='list' item='vo'}
+                <li class="fly-list-li">
+                    <a href="{$vo.aurl}" class="fly-list-avatar">
+                        <img src="{$vo.image|default='__HOME__/images/avatar/default.png'}" alt="">
+                    </a>
+                    <h2 class="fly-tip">
+                        <a href="{$vo.aurl}">{$vo.title}</a>
+                    </h2>
+                    <p>
+                        <span>{$vo.time|date='Y-m-d H:i',###}</span>
+                    <span class="fly-list-hint">
+                      <i class="iconfont" title="人气">&#xe60b;</i> {$vo.views}
+                    </span>
+                    </p>
+                </li>
+                {/foreach}
+            </ul>
+            <div style="text-align: center">
+                <div class="laypage-main">
+                    {$_page|default=''}
                 </div>
+
             </div>
         </div>
-        {include file='default/left'}
     </div>
 </div>
-<br>
-{include file='default/footer'}
+{include file="default/footer" /}
 </body>
-<script src="__PUBLIC__/home/js/pintuer.js"></script>
-<script>
-    $(function() {
-        $(window).scroll(function() {
-            if($(window).scrollTop() > 60) {
-                $(".logo").addClass("hideout").hide();
-                $(".text3D").hide();
-            } else {
-                $(".logo").removeClass("hideout").show();
-                $(".text3D").show();
-            }
-        });
-    });
-</script>
-
 </html>

@@ -7,17 +7,16 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <section class="panel panel-padding">
                 <form id="form1" class="layui-form layui-form-pane" action="{:url('')}">
-
                     <div class="layui-form-item">
                         <label class="layui-form-label">碎片名称</label>
                         <div class="layui-input-block">
-                            <input type="text" name="name" value="{$info.name|default=''}" jq-verify="" jq-error="请输入碎片名称" placeholder="请输入碎片名称" class="layui-input ">
+                            <input type="text" name="name" value="{$info.name|default=''}" required jq-verify="required" jq-error="请输入碎片名称" placeholder="请输入碎片名称" class="layui-input ">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">碎片标识</label>
                         <div class="layui-input-block">
-                            <input type="text" name="label" value="{$info.label|default=''}" jq-verify="" jq-error="请输入碎片标识" placeholder="请输入碎片标识" class="layui-input ">
+                            <input type="text" name="label" value="{$info.label|default=''}" jq-verify="required|label" jq-error="请输入碎片标识|不能含有汉字" placeholder="请输入碎片标识" class="layui-input ">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -53,6 +52,21 @@
 </script>
 <!--kingeditor编辑器结束-->
 <script>
-    layui.use('myform');
+    layui.use('myform', function(){
+        var $ = layui.jquery,
+                form = layui.jqform;
+        //各种基于事件的操作，下面会有进一步介绍
+        //自定义
+        form.verify({
+            label:function (value) {
+                if (value==''){
+                    return '碎片标识不能为空';
+                }
+                if(/.*[\u4e00-\u9fa5]+.*$/.test(value)){
+                    return '碎片标识不能含有汉字！';
+                }
+            }
+        });
+    });
 </script>
 {/block}

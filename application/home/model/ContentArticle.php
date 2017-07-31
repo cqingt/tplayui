@@ -6,12 +6,6 @@ use think\Model;
  * hongkai.wang 20161203  QQ：529988248
  */
 class ContentArticle extends Model {
-
-    // time 发布时间 读取器
-    protected function getTimeAttr($time)
-    {
-        return date('Y-m-d H:i', $time);
-    }
     /**
      * 获取列表
      * @return array 列表

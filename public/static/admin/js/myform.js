@@ -61,8 +61,8 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], func
 
     }
     //自定义
-    form.verify({
-        username: function(value) {
+    /*form.verify({
+        name: function(value) {
             if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
                 return '文章标题不能有特殊字符';
             }
@@ -80,7 +80,7 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], func
             layedit.sync(editIndex);
             return;
         }
-    });
+    });*/
     tags.init();
 
     //上传文件设置

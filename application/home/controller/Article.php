@@ -59,6 +59,11 @@ class Article extends Site{
 
     public function detail(){
         $content_id=input('content_id');
+        //更新访问计数
+        $where = array();
+        $where['content_id'] = $content_id;
+        Db::name('content')->where($where)->setInc('views');
+        //获取信息
         if (!empty($content_id)){
             $content_info=model('ContentArticle')->getInfo($content_id);
         }else{
@@ -78,10 +83,7 @@ class Article extends Site{
         $parent_category_info = model('Category')->getInfo($category_info['parent_id']);
         //获取顶级栏目信息
         $top_category_info = model('Category')->getInfo($crumb[0]['class_id']);
-        //更新访问计数
-        $where = array();
-        $where['content_id'] = $content_id;
-        Db::name('content')->where($where)->setInc('views');
+
         //内容处理
         $content_info['content'] = html_out($content_info['content']);
         //扩展模型
