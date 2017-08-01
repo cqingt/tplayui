@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501481692;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
@@ -44,17 +45,17 @@
         <!-- 头部右侧导航 -->
         <div class="header-right">
 
-            <a class="layui-btn layui-btn-small ajax" data-params='{"url": "{:url("admin/Admin/delcache")}","confirm":"true","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
+            <a class="layui-btn layui-btn-small ajax" data-params='{"url": "<?php echo url("admin/Admin/delcache"); ?>","confirm":"true","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
 
             <ul class="layui-nav jqadmin-header-item right-menu">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
-                        <cite> {$loginUserInfo.username}</cite>
+                        <cite> <?php echo $loginUserInfo['username']; ?></cite>
                         <span class="layui-nav-more"></span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a class="ajax" style="cursor: pointer" data-params='{"url": "{:url("admin/Login/logout")}","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
+                            <a class="ajax" style="cursor: p" data-params='{"url": "<?php echo url("admin/Login/logout"); ?>","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
                         </dd>
                     </dl>
                 </li>
@@ -97,7 +98,7 @@
             </div>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <iframe class="jqadmin-iframe" name="yk_iframe" id="yk_iframe" data-id='0' src="{:url('home')}"></iframe>
+                    <iframe class="jqadmin-iframe" name="yk_iframe" id="yk_iframe" data-id='0' src="<?php echo url('home'); ?>"></iframe>
                 </div>
             </div>
         </div>
@@ -116,7 +117,7 @@
 </div>
 <ul class="menu-list" id="menu-list"></ul>
 </body>
-<script id="menu-tpl" type="text/html" data-params='{"url":"{:url("api/api/index")}","listid":"menu","icon":"true"}'>
+<script id="menu-tpl" type="text/html" data-params='{"url":"<?php echo url("api/api/index"); ?>","listid":"menu","icon":"true"}'>
     {{# layui.each(d.list, function(index, item){ }}
     <li class="layui-nav-item {{# if(index==0){ }}layui-this{{# } }}">
         <a href="javascript:;" data-title="{{item.name}}"><i class="iconfont">{{item.iconfont}}</i><span>{{item.name}}</span></a>

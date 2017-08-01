@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:25:"template/default\reg.html";i:1501571523;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501571151;s:28:"template/default\footer.html";i:1501552232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:27:"template/default\login.html";i:1501571593;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501581278;s:28:"template/default\footer.html";i:1501552232;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +35,12 @@
             </p>
             <?php else: ?>
             <!-- 登入后的状态 -->
-            <a class="avatar" href="user/index.html">
-              <img src="<?php echo (isset($user_info['head_url']) && ($user_info['head_url'] !== '')?$user_info['head_url']:'__HOME__/default_img/default2.jpg'); ?>">
-              <cite><?php echo $user_info['email']; ?></cite>
+            <a class="avatar" href="<?php echo url('user/userhome'); ?>">
+              <img src="<?php echo (\think\Session::get('home_user.head_url') ?: '__HOME__/default_img/default2.jpg'); ?>">
+              <cite><?php echo (\think\Session::get('home_user.nickname') ?: '未设置昵称'); ?></cite>
             </a>
             <div class="nav">
-              <a href="<?php echo url('user/set'); ?>"><i class="iconfont icon-shezhi"></i>设置</a>
+              <a href="<?php echo url('user/userSet'); ?>"><i class="iconfont icon-shezhi"></i>设置</a>
               <a href="<?php echo url('index/loginOut'); ?>"><i class="iconfont icon-tuichu" style="top: 0; font-size: 22px;"></i>退了</a>
             </div>
             <?php endif; ?>
@@ -52,8 +52,8 @@
   <div class="fly-panel fly-panel-user" pad20>
     <div class="layui-tab layui-tab-brief">
       <ul class="layui-tab-title">
-        <li><a href="login.html">登入</a></li>
-        <li class="layui-this">注册</li>
+        <li class="layui-this">登入</li>
+        <li><a href="reg.html">注册</a></li>
       </ul>
       <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
         <div class="layui-tab-item layui-show">
@@ -61,35 +61,24 @@
               <form id="form1" action="<?php echo url(''); ?>">
               <div class="layui-form-item">
                 <label for="L_email" class="layui-form-label">邮箱</label>
-                <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"  autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名</div>
-              </div>
-              <div class="layui-form-item">
-                <label for="L_nickname" class="layui-form-label">昵称</label>
-                <div class="layui-input-inline">
-                  <input type="text" id="L_nickname" name="nickname" required jq-verify="required" autocomplete="off" class="layui-input">
-                </div>
+                  <div class="layui-input-inline">
+                      <input type="text" id="L_email" placeholder="请输入邮箱" name="email" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"  autocomplete="off" class="layui-input">
+                  </div>
               </div>
               <div class="layui-form-item">
                 <label for="L_password" class="layui-form-label">密码</label>
-                <div class="layui-input-inline">
-                  <input type="password" id="L_password" name="password" required jq-verify="required" autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                  <div class="layui-input-inline">
+                      <input type="password" id="L_password" placeholder="请输入密码" name="password" required jq-verify="required" autocomplete="off" class="layui-input">
+                  </div>
               </div>
               <div class="layui-form-item">
-                <label for="L_password2" class="layui-form-label">确认密码</label>
-                <div class="layui-input-inline">
-                  <input type="password" id="L_password2" name="password2" required jq-verify="required|password2" autocomplete="off" class="layui-input">
-                </div>
-              </div>
-              <div class="layui-form-item">
-                <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即注册</button>
+                <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即登录</button>
+                <span style="padding-left:20px;">
+                  <!--<a href="forget.html">忘记密码？</a>-->
+                </span>
               </div>
               <div class="layui-form-item fly-form-app">
-                <span>或者直接使用社交账号快捷注册</span>
+                <span>或者使用社交账号登入</span>
                 <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
                 <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
               </div>
@@ -130,20 +119,7 @@
 </script>
 
 <script>
-    layui.use('pageform',function () {
-        var $       = layui.jquery,
-            form    = layui.jqform;
-        //自定义
-        form.verify({
-            password2: function(value) {
-                if (value === "")
-                    return "请输入二次密码！";
-                var pwd = $('input[name=password]').val();
-                if (pwd !== value)
-                    return "二次输入的密码不一致！";
-            }
-        });
-    });
+    layui.use('pageform');
 </script>
 </body>
 </html>
