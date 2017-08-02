@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:27:"template/default\index.html";i:1501552033;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501581278;s:28:"template/default\footer.html";i:1501552232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:27:"template/default\index.html";i:1501552033;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501658140;s:28:"template/default\footer.html";i:1501659061;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +14,15 @@
 <div class="header">
     <div class="main">
         <!--<a class="logo" href="__ROOT__/" title="Fly">Fly社区</a>-->
-        <div class="logo">
-            <img src="__HOME__/images/logo.png" />
+        <div class="logo" onclick="window.location.href='__ROOT__/'" style="cursor: pointer">
+            <?php echo get_flag("logo"); ?>
         </div>
         <div class="nav">
             <a <?php if(empty($top_category_info['class_id']) || (($top_category_info['class_id'] instanceof \think\Collection || $top_category_info['class_id'] instanceof \think\Paginator ) && $top_category_info['class_id']->isEmpty())): ?>class="nav-this"<?php endif; ?> href="__ROOT__/"><i class="iconfont icon-wenda"></i>首页</a>
             <?php $__LIST__=get_cat("");if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <a href="<?php echo $vo['curl']; ?>" <?php if($top_category_info['class_id'] == $vo['class_id']): ?>class="nav-this"<?php endif; ?>><i class="iconfont icon-ui"></i><?php echo $vo['name']; ?></a>
             <?php endforeach; endif; else: echo "" ;endif; ?>
+            <a <?php if(input('name') == 'guestbook'): ?>class="nav-this"<?php endif; ?> href="<?php echo url('form/index',array('name'=>'guestbook')); ?>"><i class="iconfont icon-wenda"></i>留言板</a>
         </div>
 
         <div class="nav-user">
@@ -102,7 +103,7 @@
   </div>
 </div>
 <div class="footer">
-    底部信息
+    <?php echo get_flag("bottom"); ?>
 </div>
 <script src="__HOME__/layui/layui.js"></script>
 <script>

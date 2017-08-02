@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_form_data\info.html";i:1500977767;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:71:"F:\wamp64\www\1kbcms2\public/../application/plug\view\plugin\index.html";i:1501229246;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,23 +50,45 @@
         </div>
     </div>
 </div>
-<div class="container-fluid larry-wrapper">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <section class="panel panel-padding">
-                <form id="form1" class="layui-form layui-form-pane" action="<?php echo url(''); ?>">
-                    <?php echo $html; ?>
-                    <div class="layui-input-block">
-                        <input type="hidden" name="fieldset_id" type="hidden" value="<?php echo $formInfo['fieldset_id']; ?>">
-                        <input type="hidden" name="data_id" type="hidden" value="<?php echo $info['data_id']; ?>">
-                        <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </form>
-            </section>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">支付插件</li>
+        <li>登录插件</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form">
+                <table class="layui-table lay-even">
+                    <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>品牌名称</th>
+                        <th>Logo</th>
+                        <th width="240">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if(is_array($payment) || $payment instanceof \think\Collection || $payment instanceof \think\Paginator): if( count($payment)==0 ) : echo "" ;else: foreach($payment as $key=>$vo): ?>
+                    <tr>
+                        <td><img  style="width:150px; height:60px;" src="/static/plug/payment/<?php echo $vo['code']; ?>/<?php echo $vo['icon']; ?>" alt="..."></td>
+                        <td><?php echo $vo['name']; ?></td>
+                        <td><?php echo $vo['desc']; ?></td>
+                        <td>
+                            <a href="<?php echo url('setting',array('type'=>$vo['type'],'code'=>$vo['code'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                                <i class="iconfont">&#xe653;</i>配置
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <div class="layui-tab-item">开发中</div>
     </div>
 </div>
+
+
 </body>
 
 <script src="__ADMIN__/js/layui/layui.js"></script>
@@ -90,21 +112,8 @@
 </script>
 <!--脚本文件开始-->
 
-<!--kingeditor编辑器开始-->
 <script>
-    //document.domain = 'domain.com';
-    KindEditor.ready(function(K) {
-        window.editor = K.create('.king_content', {
-            allowFileManager : true,
-            langType : 'zh-CN',
-            autoHeightMode : true,
-            afterBlur: function () { this.sync(); },
-        });
-    });
-</script>
-<!--kingeditor编辑器结束-->
-<script>
-    layui.use('myform');
+    layui.use('default');
 </script>
 
 <!--脚本文件结束-->

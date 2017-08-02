@@ -1,5 +1,3 @@
- 
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,38 +28,12 @@
   <div class="edge">
     <dl class="fly-panel fly-list-one"> 
       <dt class="fly-panel-title">点击排行</dt>
+        {contentlist name="vo" limit='10' order='views desc'}
       <dd>
-        <a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-        <span><i class="iconfont">&#xe60b;</i> 6087</span>
+        <a href="{$vo.aurl}">{$vo.title}</a>
+        <span><i class="iconfont">&#xe60b;</i> {$vo.views}</span>
       </dd>
-      <dd>
-        <a href="">Java实现LayIM后端的核心代码</a>
-        <span><i class="iconfont">&#xe60b;</i> 767</span>
-      </dd>
-      <dd>
-        <a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-        <span><i class="iconfont">&#xe60b;</i> 6087</span>
-      </dd>
-      <dd>
-        <a href="">Java实现LayIM后端的核心代码</a>
-        <span><i class="iconfont">&#xe60b;</i> 767</span>
-      </dd>
-      <dd>
-        <a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-        <span><i class="iconfont">&#xe60b;</i> 6087</span>
-      </dd>
-      <dd>
-        <a href="">Java实现LayIM后端的核心代码</a>
-        <span><i class="iconfont">&#xe60b;</i> 767</span>
-      </dd>
-      <dd>
-        <a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-        <span><i class="iconfont">&#xe60b;</i> 6087</span>
-      </dd>
-      <dd>
-        <a href="">Java实现LayIM后端的核心代码</a>
-        <span><i class="iconfont">&#xe60b;</i> 767</span>
-      </dd>
+        {/contentlist}
     </dl>
   </div>
 </div>

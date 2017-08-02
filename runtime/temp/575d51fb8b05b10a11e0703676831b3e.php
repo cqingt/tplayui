@@ -1,4 +1,5 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:27:"template/default\login.html";i:1501571593;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501658140;s:28:"template/default\footer.html";i:1501659061;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:31:"template/default\guestbook.html";i:1501658878;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501658140;s:28:"template/default\footer.html";i:1501659061;}*/ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,47 +50,39 @@
     </div>
 </div>
 <div class="main layui-clear">
+  <div class="fly-panel" pad20>
+    <h2 class="page-title">发表问题</h2>
+    
+    <!-- <div class="fly-none">并无权限</div> -->
 
-  <div class="fly-panel fly-panel-user" pad20>
-    <div class="layui-tab layui-tab-brief">
-      <ul class="layui-tab-title">
-        <li class="layui-this">登入</li>
-        <li><a href="reg.html">注册</a></li>
-      </ul>
-      <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
-        <div class="layui-tab-item layui-show">
-          <div class="layui-form layui-form-pane">
-              <form id="form1" action="<?php echo url(''); ?>">
-              <div class="layui-form-item">
-                <label for="L_email" class="layui-form-label">邮箱</label>
-                  <div class="layui-input-inline">
-                      <input type="text" id="L_email" placeholder="请输入邮箱" name="email" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"  autocomplete="off" class="layui-input">
-                  </div>
-              </div>
-              <div class="layui-form-item">
-                <label for="L_password" class="layui-form-label">密码</label>
-                  <div class="layui-input-inline">
-                      <input type="password" id="L_password" placeholder="请输入密码" name="password" required jq-verify="required" autocomplete="off" class="layui-input">
-                  </div>
-              </div>
-              <div class="layui-form-item">
-                <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即登录</button>
-                <span style="padding-left:20px;">
-                  <!--<a href="forget.html">忘记密码？</a>-->
-                </span>
-              </div>
-              <div class="layui-form-item fly-form-app">
-                <span>或者使用社交账号登入</span>
-                <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
-                <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
-              </div>
-            </form>
+    <div class="layui-form layui-form-pane">
+        <form id="form1" action="<?php echo url('Form/push'); ?>">
+        <div class="layui-form-item">
+          <label for="L_name" class="layui-form-label">昵称</label>
+          <div class="layui-input-block">
+            <input type="text" id="L_name" name="name" placeholder="请输入您的昵称" required jq-verify="required" jq-error="请输入昵称" autocomplete="off" class="layui-input">
           </div>
         </div>
-      </div>
+        <div class="layui-form-item">
+            <label for="L_email" class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" id="L_email" name="email" placeholder="请输入您的邮箱" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+          <div class="layui-input-block">
+            <textarea id="L_content" name="content" required jq-verify="required" placeholder="请输入内容" jq-error="内容不能为空" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
+          </div>
+          <label for="L_content" class="layui-form-label" style="top: -2px;">内容</label>
+        </div>
+
+        <div class="layui-form-item">
+            <input name="table" type="hidden" value="guestbook">
+          <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即留言</button>
+        </div>
+      </form>
     </div>
   </div>
-
 </div>
 <div class="footer">
     <?php echo get_flag("bottom"); ?>
@@ -120,7 +113,17 @@
 </script>
 
 <script>
-    layui.use('pageform');
+    layui.use('pageform',function () {
+        var $       = layui.jquery,
+            form    = layui.jqform;
+        //自定义
+        form.verify({
+            password2: function(value) {
+                if (value === "")
+                    return "请输入二次密码！";
+            }
+        });
+    });
 </script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501481692;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501665209;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>后台模板</title>
+    <title>壹凯巴后台管理系统</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="renderer" content="webkit">
@@ -46,6 +46,8 @@
         <div class="header-right">
 
             <a class="layui-btn layui-btn-small ajax" data-params='{"url": "<?php echo url("admin/Admin/delcache"); ?>","confirm":"true","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
+            <a class="layui-btn layui-btn-small" href="<?php echo url('home/index/index'); ?>" target="_blank" style="position: absolute; top: 14px; right:280px;"> 前台</a>
+
 
             <ul class="layui-nav jqadmin-header-item right-menu">
                 <li class="layui-nav-item first">
@@ -55,7 +57,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a class="ajax" style="cursor: p" data-params='{"url": "<?php echo url("admin/Login/logout"); ?>","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
+                            <a class="ajax" style="cursor: pointer" data-params='{"url": "<?php echo url("admin/Login/logout"); ?>","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
                         </dd>
                     </dl>
                 </li>
@@ -69,9 +71,9 @@
         <div class="layui-side-scroll">
             <!--子菜单项-->
             <p class="jqadmin-home tab-menu">
-                <a href="javascript:;" data-url="welcome.html" data-title="后台首页">
+                <a href="javascript:;" data-url="welcome.html" data-title="控制台">
                     <i class="iconfont" data-icon='&#xe600;'>&#xe600;</i>
-                    <span>后台首页</span>
+                    <span>控制台</span>
                 </a>
             </p>
             <div id="submenu"></div>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_fragment\info.html";i:1501472826;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:75:"F:\wamp64\www\1kbcms2\public/../application/admin\view\user_type\index.html";i:1501661048;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,38 +50,37 @@
         </div>
     </div>
 </div>
-<div class="container-fluid larry-wrapper">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <section class="panel panel-padding">
-                <form id="form1" class="layui-form layui-form-pane" action="<?php echo url(''); ?>">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">碎片名称</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="name" value="<?php echo (isset($info['name']) && ($info['name'] !== '')?$info['name']:''); ?>" required jq-verify="required" jq-error="请输入碎片名称" placeholder="请输入碎片名称" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">碎片标识</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="label" value="<?php echo (isset($info['label']) && ($info['label'] !== '')?$info['label']:''); ?>" jq-verify="required|label" jq-error="请输入碎片标识|不能含有汉字" placeholder="请输入碎片标识" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">碎片内容</label>
-                        <div class="layui-input-block">
-                            <textarea name="content" class="king_content" cols="100" rows="20"><?php echo (isset($info['content']) && ($info['content'] !== '')?$info['content']:''); ?></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-input-block">
-                        <input type="hidden" name="fragment_id" value="<?php echo (isset($info['fragment_id']) && ($info['fragment_id'] !== '')?$info['fragment_id']:''); ?>">
-                        <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </form>
-            </section>
-        </div>
-    </div>
+<div class="layui-form">
+    <table class="layui-table lay-even">
+        <thead>
+        <tr>
+            <th width="80px">ID</th>
+            <th>名称</th>
+            <th>状态</th>
+            <th width="240">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
+        <tr>
+            <td><?php echo $vo['type_id']; ?></td>
+            <td><?php echo $vo['type_name']; ?></td>
+            <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="开启|关闭" <?php if($vo['type_status'] == '1'): ?>checked<?php endif; ?>  lay-filter="ajax" data-params='{"url":"<?php echo url("api/api/upField"); ?>","confirm":"true","data":"table=user_type&id_name=type_id&id_value=<?php echo $vo['type_id']; ?>&field=type_status","complete":"up"}'></td>
+            <td>
+                <a href="<?php echo url('info',array('type_id'=>$vo['type_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                    <i class="iconfont">&#xe653;</i>编辑
+                </a>
+                <a class="layui-btn layui-btn-mini layui-btn-danger ajax"
+                   data-list='{"key":"id=<?php echo $vo['type_id']; ?>","msg":true,"render":"true","action":"del"}'
+                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['type_id']; ?>","complete":"del"}'>
+                    <i class="iconfont">&#xe626;</i>删除
+                </a>
+
+            </td>
+        </tr>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+        </tbody>
+    </table>
 </div>
 </body>
 
@@ -106,36 +105,8 @@
 </script>
 <!--脚本文件开始-->
 
-<!--kingeditor编辑器开始-->
 <script>
-    //document.domain = 'domain.com';
-    KindEditor.ready(function(K) {
-        window.editor = K.create('.king_content', {
-            allowFileManager : true,
-            langType : 'zh-CN',
-            autoHeightMode : true,
-            afterBlur: function () { this.sync(); },
-        });
-    });
-</script>
-<!--kingeditor编辑器结束-->
-<script>
-    layui.use('myform', function(){
-        var $ = layui.jquery,
-                form = layui.jqform;
-        //各种基于事件的操作，下面会有进一步介绍
-        //自定义
-        form.verify({
-            label:function (value) {
-                if (value==''){
-                    return '碎片标识不能为空';
-                }
-                if(/.*[\u4e00-\u9fa5]+.*$/.test(value)){
-                    return '碎片标识不能含有汉字！';
-                }
-            }
-        });
-    });
+    layui.use('default');
 </script>
 
 <!--脚本文件结束-->

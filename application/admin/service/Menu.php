@@ -32,7 +32,7 @@ class Menu{
                         'id'=>11,
                         'url'=>url('admin/Index/home'),
                         'name'=>'管理首页',
-                        'iconfont'=>'&#xe62a;'
+                        'iconfont'=>'&#xe635;'
                     )
                 )
             ),
@@ -46,7 +46,7 @@ class Menu{
                         'id'=>21,
                         'url'=>url('kbcms/AdminCategory/index'),
                         'name'=>'栏目管理',
-                        'iconfont'=>'&#xe62a;'
+                        'iconfont'=>'&#xe635;'
                     ),
                     array(
                         'id'=>22,
@@ -60,7 +60,7 @@ class Menu{
                 'id'=>30,
                 'url'=>'',
                 'name'=>'表单',
-                'iconfont'=>'&#xe637;',
+                'iconfont'=>'&#xe64a;',
                 'sub'=>$formMenu
             ),
             array(
@@ -100,25 +100,37 @@ class Menu{
                 'id'=>50,
                 'url'=>'',
                 'name'=>'系统',
-                'iconfont'=>'&#xe637;',
+                'iconfont'=>'&#xe646;',
                 'sub'=>array(
                     array(
                         'id'=>51,
                         'url'=>url('admin/Setting/site'),
                         'name'=>'系统设置',
-                        'iconfont'=>'&#xe62a;'
+                        'iconfont'=>'&#xe689;'
                     ),
                     array(
                         'id'=>52,
                         'url'=>url('admin/AdminUser/index'),
-                        'name'=>'用户管理',
-                        'iconfont'=>'&#xe62a;'
+                        'name'=>'后台用户',
+                        'iconfont'=>'&#xe672;'
                     ),
                     array(
                         'id'=>53,
                         'url'=>url('admin/AdminUserGroup/index'),
-                        'name'=>'用户组管理',
-                        'iconfont'=>'&#xe62a;'
+                        'name'=>'后台用户组',
+                        'iconfont'=>'&#xe668;'
+                    ),
+                    array(
+                        'id'=>54,
+                        'url'=>url('admin/User/index'),
+                        'name'=>'会员管理',
+                        'iconfont'=>'&#xe608;'
+                    ),
+                    array(
+                        'id'=>55,
+                        'url'=>url('admin/UserType/index'),
+                        'name'=>'会员类型',
+                        'iconfont'=>'&#xe630;'
                     )
                 )
             ),

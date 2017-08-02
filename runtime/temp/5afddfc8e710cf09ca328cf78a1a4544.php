@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:25:"template/default\reg.html";i:1501571523;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501571151;s:28:"template/default\footer.html";i:1501552232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:25:"template/default\reg.html";i:1501571578;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501658140;s:28:"template/default\footer.html";i:1501659061;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +14,15 @@
 <div class="header">
     <div class="main">
         <!--<a class="logo" href="__ROOT__/" title="Fly">Fly社区</a>-->
-        <div class="logo">
-            <img src="__HOME__/images/logo.png" />
+        <div class="logo" onclick="window.location.href='__ROOT__/'" style="cursor: pointer">
+            <?php echo get_flag("logo"); ?>
         </div>
         <div class="nav">
             <a <?php if(empty($top_category_info['class_id']) || (($top_category_info['class_id'] instanceof \think\Collection || $top_category_info['class_id'] instanceof \think\Paginator ) && $top_category_info['class_id']->isEmpty())): ?>class="nav-this"<?php endif; ?> href="__ROOT__/"><i class="iconfont icon-wenda"></i>首页</a>
             <?php $__LIST__=get_cat("");if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <a href="<?php echo $vo['curl']; ?>" <?php if($top_category_info['class_id'] == $vo['class_id']): ?>class="nav-this"<?php endif; ?>><i class="iconfont icon-ui"></i><?php echo $vo['name']; ?></a>
             <?php endforeach; endif; else: echo "" ;endif; ?>
+            <a <?php if(input('name') == 'guestbook'): ?>class="nav-this"<?php endif; ?> href="<?php echo url('form/index',array('name'=>'guestbook')); ?>"><i class="iconfont icon-wenda"></i>留言板</a>
         </div>
 
         <div class="nav-user">
@@ -35,12 +36,12 @@
             </p>
             <?php else: ?>
             <!-- 登入后的状态 -->
-            <a class="avatar" href="user/index.html">
-              <img src="<?php echo (isset($user_info['head_url']) && ($user_info['head_url'] !== '')?$user_info['head_url']:'__HOME__/default_img/default2.jpg'); ?>">
-              <cite><?php echo $user_info['email']; ?></cite>
+            <a class="avatar" href="<?php echo url('user/userhome'); ?>">
+              <img src="<?php echo (\think\Session::get('home_user.head_url') ?: '__HOME__/default_img/default2.jpg'); ?>">
+              <cite><?php echo (\think\Session::get('home_user.nickname') ?: '未设置昵称'); ?></cite>
             </a>
             <div class="nav">
-              <a href="<?php echo url('user/set'); ?>"><i class="iconfont icon-shezhi"></i>设置</a>
+              <a href="<?php echo url('user/userSet'); ?>"><i class="iconfont icon-shezhi"></i>设置</a>
               <a href="<?php echo url('index/loginOut'); ?>"><i class="iconfont icon-tuichu" style="top: 0; font-size: 22px;"></i>退了</a>
             </div>
             <?php endif; ?>
@@ -62,27 +63,27 @@
               <div class="layui-form-item">
                 <label for="L_email" class="layui-form-label">邮箱</label>
                 <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"  autocomplete="off" class="layui-input">
+                  <input type="text" id="L_email" placeholder="请输入邮箱" name="email" required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"  autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名</div>
               </div>
               <div class="layui-form-item">
                 <label for="L_nickname" class="layui-form-label">昵称</label>
                 <div class="layui-input-inline">
-                  <input type="text" id="L_nickname" name="nickname" required jq-verify="required" autocomplete="off" class="layui-input">
+                  <input type="text" id="L_nickname" placeholder="请输入昵称" name="nickname" required jq-verify="required" autocomplete="off" class="layui-input">
                 </div>
               </div>
               <div class="layui-form-item">
                 <label for="L_password" class="layui-form-label">密码</label>
                 <div class="layui-input-inline">
-                  <input type="password" id="L_password" name="password" required jq-verify="required" autocomplete="off" class="layui-input">
+                  <input type="password" id="L_password" placeholder="请输入密码" name="password" required jq-verify="required" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">6到16个字符</div>
               </div>
               <div class="layui-form-item">
                 <label for="L_password2" class="layui-form-label">确认密码</label>
                 <div class="layui-input-inline">
-                  <input type="password" id="L_password2" name="password2" required jq-verify="required|password2" autocomplete="off" class="layui-input">
+                  <input type="password" id="L_password2" placeholder="请输入确认密码" name="password2" required jq-verify="required|password2" autocomplete="off" class="layui-input">
                 </div>
               </div>
               <div class="layui-form-item">
@@ -102,7 +103,7 @@
 
 </div>
 <div class="footer">
-    底部信息
+    <?php echo get_flag("bottom"); ?>
 </div>
 <script src="__HOME__/layui/layui.js"></script>
 <script>

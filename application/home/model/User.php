@@ -22,6 +22,7 @@ class User extends Model
      */
     public function add(){
         $_POST['password']=md5($_POST['password']);
+        $_POST['add_time']=time();
         return $this->allowField(true)->save($_POST);
     }
     /**

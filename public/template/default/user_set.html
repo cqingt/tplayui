@@ -6,33 +6,7 @@
 <body>
 {include file="default/header" /}
 <div class="main fly-user-main layui-clear">
-  <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
-    <li class="layui-nav-item">
-      <a href="home.html">
-        <i class="layui-icon">&#xe609;</i>
-        我的主页
-      </a>
-    </li>
-    <li class="layui-nav-item">
-      <a href="index.html">
-        <i class="layui-icon">&#xe612;</i>
-        用户中心
-      </a>
-    </li>
-    <li class="layui-nav-item layui-this">
-      <a href="set.html">
-        <i class="layui-icon">&#xe620;</i>
-        基本设置
-      </a>
-    </li>
-    <li class="layui-nav-item">
-      <a href="message.html">
-        <i class="layui-icon">&#xe611;</i>
-        我的消息
-      </a>
-    </li>
-  </ul>
-  
+    {include file="default/user_left" /}
   <div class="site-tree-mobile layui-hide">
     <i class="layui-icon">&#xe602;</i>
   </div>
@@ -143,7 +117,7 @@
                 <!-- <span>已成功绑定，您可以使用微博直接登录Fly社区，当然，您也可以</span>
                 <a href="javascript:;" class="acc-unbind" type="weibo_id">解除绑定</a> -->
 
-                <a href="" class="acc-weibo" type="weibo_id"  onclick="layer.msg('正在绑定微博', {icon:16, shade: 0.1, time:0})" >立即绑定</a>
+                <a href="" class="acc-weibo" type="weibo_id"  onclick="layer.msg('开发中', {icon:16, shade: 0.1, time:0})" >立即绑定</a>
                 <span>，即可使用微博帐号登录Fly社区</span>
               </li>
             </ul>

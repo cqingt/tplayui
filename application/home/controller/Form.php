@@ -57,11 +57,15 @@ class Form extends Site
         $page = $list->render();
         //位置导航
         $crumb = array(array('name'=>$form_info['name'],'url'=>url('home/Form/index',$pageMaps)));
+        //获取顶级栏目信息
+        $top_category_info = model('Category')->getInfo($crumb[0]['class_id']);
         //MEDIA信息
         $media = $this->getMedia($form_info['name']);
         $this->assign('crumb',$crumb);
         $this->assign('media', $media);
         $this->assign('pageMaps', $pageMaps);
+        $top_category_info['class_id']='form';
+        $this->assign('top_category_info', $top_category_info);
         $this->assign('list',$data);
         $this->assign('_page', $page);
         $this->assign('form_info', $form_info);
@@ -104,14 +108,13 @@ class Form extends Site
             }else{
                 $url = $form_info['post_return_url'];
             }
-            return $this->success($form_info['post_msg'], $url);
+            return ajaxReturn(200,$form_info['post_msg'],$url);
         }else{
             $msg = $model->getError();
-            if (empty($msg))
-            {
-                return $this->error($form_info['name'].'发布失败，请刷新后重新尝试！');
+            if (empty($msg)){
+                return ajaxReturn(0,$form_info['name'].'发布失败，请刷新后重新尝试！');
             }else{
-                return $this->error($msg);
+                return ajaxReturn(0,$msg);
             }
         }
     }

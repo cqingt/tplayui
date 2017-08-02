@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:31:"template/default\user_home.html";i:1501570062;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501581278;s:28:"template/default\footer.html";i:1501552232;}*/ ?>
-
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:29:"template/default\content.html";i:1501659000;s:30:"template/default\resource.html";i:1501496785;s:28:"template/default\header.html";i:1501658140;s:28:"template/default\footer.html";i:1501659061;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +10,19 @@
 <link rel="stylesheet" href="__HOME__/layui/css/layui.css">
 <link rel="stylesheet" href="__HOME__/css/global.css">
 </head>
-<body style="margin-top: 65px;">
+<body>
 <div class="header">
     <div class="main">
         <!--<a class="logo" href="__ROOT__/" title="Fly">Fly社区</a>-->
-        <div class="logo">
-            <img src="__HOME__/images/logo.png" />
+        <div class="logo" onclick="window.location.href='__ROOT__/'" style="cursor: pointer">
+            <?php echo get_flag("logo"); ?>
         </div>
         <div class="nav">
             <a <?php if(empty($top_category_info['class_id']) || (($top_category_info['class_id'] instanceof \think\Collection || $top_category_info['class_id'] instanceof \think\Paginator ) && $top_category_info['class_id']->isEmpty())): ?>class="nav-this"<?php endif; ?> href="__ROOT__/"><i class="iconfont icon-wenda"></i>首页</a>
             <?php $__LIST__=get_cat("");if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <a href="<?php echo $vo['curl']; ?>" <?php if($top_category_info['class_id'] == $vo['class_id']): ?>class="nav-this"<?php endif; ?>><i class="iconfont icon-ui"></i><?php echo $vo['name']; ?></a>
             <?php endforeach; endif; else: echo "" ;endif; ?>
+            <a <?php if(input('name') == 'guestbook'): ?>class="nav-this"<?php endif; ?> href="<?php echo url('form/index',array('name'=>'guestbook')); ?>"><i class="iconfont icon-wenda"></i>留言板</a>
         </div>
 
         <div class="nav-user">
@@ -48,12 +48,40 @@
         </div>
     </div>
 </div>
-<div class="fly-home" style="background-image: url();">
-  <img src="<?php echo (isset($user_info['head_url']) && ($user_info['head_url'] !== '')?$user_info['head_url']:'__HOME__/default_img/default2.jpg'); ?>" alt="">
-  <h1><?php echo $user_info['email']; ?></h1>
+<div class="main layui-clear">
+  <div class="wrap">
+    <div class="content detail">
+      <div class="fly-panel detail-box">
+        <h1><?php echo $content_info['title']; ?></h1>
+        <div class="fly-tip fly-detail-hint">
+          <div class="fly-list-hint">
+            <i class="iconfont" title="人气">&#xe60b;</i> <?php echo $content_info['views']; ?>
+          </div>
+        </div>
+        
+        <div class="detail-body photos" style="margin-bottom: 20px;">
+            <?php echo $content_info['content']; ?>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  
+  <div class="edge">
+    <dl class="fly-panel fly-list-one"> 
+      <dt class="fly-panel-title">点击排行</dt>
+        <?php $__LIST__=get_content("limit:10;order:views desc");if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+      <dd>
+        <a href="<?php echo $vo['aurl']; ?>"><?php echo $vo['title']; ?></a>
+        <span><i class="iconfont">&#xe60b;</i> <?php echo $vo['views']; ?></span>
+      </dd>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+    </dl>
+  </div>
 </div>
 <div class="footer">
-    底部信息
+    <?php echo get_flag("bottom"); ?>
 </div>
 <script src="__HOME__/layui/layui.js"></script>
 <script>

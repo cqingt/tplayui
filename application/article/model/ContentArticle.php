@@ -47,10 +47,13 @@ class ContentArticle extends Model {
         $where['C.app'] = 'article';
         return $this->name("content")
                 ->alias('A')
-                ->join('content_article B',' A.content_id = B.content_id')
-                ->join('category C','A.class_id = C.class_id')
+                ->join('content_article B',' A.content_id = B.content_id','left')
+                ->join('category C','A.class_id = C.class_id','left')
                 ->where($where)
                 ->count();
+    }
+    public function countll($where = array()){
+        return $this->where($where)->count();
     }
     /**
      * 获取信息

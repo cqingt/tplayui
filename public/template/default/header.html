@@ -1,14 +1,15 @@
 <div class="header">
     <div class="main">
         <!--<a class="logo" href="__ROOT__/" title="Fly">Fly社区</a>-->
-        <div class="logo">
-            <img src="__HOME__/images/logo.png" />
+        <div class="logo" onclick="window.location.href='__ROOT__/'" style="cursor: pointer">
+            {frag mark='logo'}
         </div>
         <div class="nav">
             <a {empty name="top_category_info.class_id"}class="nav-this"{/empty} href="__ROOT__/"><i class="iconfont icon-wenda"></i>首页</a>
             {catlist name="vo"}
             <a href="{$vo.curl}" {eq name="top_category_info.class_id" value="$vo.class_id"}class="nav-this"{/eq}><i class="iconfont icon-ui"></i>{$vo.name}</a>
             {/catlist}
+            <a {eq name=":input('name')" value="guestbook"}class="nav-this"{/eq} href="{:url('form/index',array('name'=>'guestbook'))}"><i class="iconfont icon-wenda"></i>留言板</a>
         </div>
 
         <div class="nav-user">

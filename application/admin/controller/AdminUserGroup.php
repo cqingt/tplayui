@@ -116,7 +116,7 @@ class AdminUserGroup extends Admin {
         $map['A.group_id'] = $groupId;
         $countUser = model('AdminUser')->countList($map);
         if($countUser>0){
-            return ajaxReturn(0,'请先删除改组下的用户！');
+            return ajaxReturn(0,'请先删除该组下的用户！谢谢');
         }
         if(model('AdminGroup')->del($groupId)){
             return ajaxReturn(200,'用户组删除成功！');

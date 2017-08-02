@@ -9,7 +9,7 @@ class Search extends Site
         $keywords = preg_replace ('/\s+/',' ',$keyword);
         $keywords=explode(" ",$keywords);
         if(empty($keywords[0])){
-            return $this->error('没有输入关键词！');
+            return $this->error('没有输入关键词！',url('index/index'));
         }
         $where = array();
         $where['A.status'] = 1;
