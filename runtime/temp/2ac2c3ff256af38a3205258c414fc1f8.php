@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"F:\wamp64\www\1kbcms2\public/../application/kbcms\view\admin_fragment\index.html";i:1500625901;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:82:"F:\wamp64\www\1kbcms2\public/../application/admin\view\admin_user_group\index.html";i:1501135540;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,25 +54,28 @@
     <table class="layui-table lay-even">
         <thead>
         <tr>
-            <th width="80">ID</th>
+            <th width="80px">ID</th>
             <th>名称</th>
-            <th>标识</th>
+            <th>状态</th>
             <th width="240">操作</th>
         </tr>
         </thead>
         <tbody>
         <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
         <tr>
-            <td><?php echo $vo['fragment_id']; ?></td>
+            <td><?php echo $vo['group_id']; ?></td>
             <td><?php echo $vo['name']; ?></td>
-            <td><?php echo $vo['label']; ?></td>
+            <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="开启|关闭" <?php if($vo['status'] == '1'): ?>checked<?php endif; ?>  lay-filter="ajax" data-params='{"url":"<?php echo url("api/api/upField"); ?>","confirm":"true","data":"table=admin_group&id_name=group_id&id_value=<?php echo $vo['group_id']; ?>&field=status","complete":"up"}'></td>
             <td>
-                <a href="<?php echo url('info',array('fragment_id'=>$vo['fragment_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                <a href="<?php echo url('purview',array('group_id'=>$vo['group_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
+                    <i class="iconfont">&#xe653;</i>权限
+                </a>
+                <a href="<?php echo url('info',array('group_id'=>$vo['group_id'])); ?>" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
                 </a>
                 <a class="layui-btn layui-btn-mini layui-btn-danger ajax"
-                   data-list='{"key":"id=<?php echo $vo['fragment_id']; ?>","msg":true,"render":"true","action":"del"}'
-                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['fragment_id']; ?>","complete":"del"}'>
+                   data-list='{"key":"id=<?php echo $vo['group_id']; ?>","msg":true,"render":"true","action":"del"}'
+                   data-params='{"url": "<?php echo url("del"); ?>","confirm":"true","data":"id=<?php echo $vo['group_id']; ?>","complete":"del"}'>
                     <i class="iconfont">&#xe626;</i>删除
                 </a>
 

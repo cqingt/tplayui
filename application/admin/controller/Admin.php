@@ -111,4 +111,31 @@ class Admin extends Controller{
         delDirAndFile($path);
         return ajaxReturn(200,'缓存清除成功');
     }
+
+    /**
+     * 检查分类修改信息
+     */
+    public function parentCheck(){
+        //获取变量
+        $classId = input('post.class_id');
+        $parentId = input('post.parent_id');
+        //判断空上级
+        if(!$parentId){
+            return true;
+        }
+        // 分类检测
+        if ($classId == $parentId){
+            return '不可以将当前栏目设置为上一级栏目';
+        }
+        $cat = model('kbcms/Category')->loadList(array(),$classId);
+        if(empty($cat)){
+            return true;
+        }
+        foreach ($cat as $vo) {
+            if ($parentId == $vo['class_id']) {
+                return '不可以将上一级栏目移动到子栏目';
+            }
+        }
+        return true;
+    }
 }

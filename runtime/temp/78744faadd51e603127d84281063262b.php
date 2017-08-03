@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:72:"F:\wamp64\www\1kbcms2\public/../application/admin\view\setting\site.html";i:1501231335;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:75:"F:\wamp64\www\1kbcms2\public/../application/admin\view\admin_menu\info.html";i:1501752795;s:79:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\base_content.html";i:1501480671;s:73:"F:\wamp64\www\1kbcms2\public/../application/admin\view\public\common.html";i:1501032406;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +20,8 @@
     <script src="__PLUG__/kingeditor/kindeditor-all.js"></script>
     <!--加载king编辑器结束-->
     
+<link rel="stylesheet" type="text/css" href="__ADMIN__/css/font/demo.css">
+
     <!--头部描述信息开始<div class="container-fluid am-cf">-->
     
     <!--头部描述信息结束-->
@@ -55,59 +57,61 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <section class="panel panel-padding">
                 <form id="form1" class="layui-form layui-form-pane" action="<?php echo url(''); ?>">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单组</label>
+                        <div class="layui-input-inline">
+                            <select class="tpl-form-input" jq-verify="required" jq-error="请选择用户组" lay-filter="pid" name="pid">
+                                <option value="0">顶级菜单</option>
+                                <?php if(is_array($menuList) || $menuList instanceof \think\Collection || $menuList instanceof \think\Paginator): if( count($menuList)==0 ) : echo "" ;else: foreach($menuList as $key=>$vo): ?>
+                                <option value="<?php echo $vo['id']; ?>" <?php if($vo['id'] == $info['pid']): ?>selected<?php endif; ?>><?php echo $vo['cname']; ?></option>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="<?php echo (isset($info['name']) && ($info['name'] !== '')?$info['name']:''); ?>" jq-verify="required" jq-error=" 请输入菜单名" placeholder="请输入菜单名" class="layui-input ">
+                        </div>
+                    </div>
+                    <?php if($info['rs'] != '2'): ?>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">地址url</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="url" value="<?php echo (isset($info['url']) && ($info['url'] !== '')?$info['url']:''); ?>" jq-verify="required" jq-error="请输入地址url" placeholder="请输入地址url" class="layui-input ">
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <!--<div class="layui-form-item icon_lists clear">
+                        <label class="layui-form-label">图标</label>
+                        <div class="layui-input-inline" style="text-align:center;">
+                            <i class="icon iconfont"><?php echo $info['iconfont']; ?></i>
+                        </div>
 
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点标题</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_title" value="<?php echo (isset($info['site_title']) && ($info['site_title'] !== '')?$info['site_title']:''); ?>" jq-verify="" jq-error=" 请输入站点标题" placeholder="请输入站点标题" class="layui-input ">
+                        <div class="layui-input-inline">
+                            <button type="button" class="layui-btn layui-btn-small modal" data-params='{";content";:";.add-subcat";,";area";:";600px,430px";,";title";:";添加分类";,";action";:";add";}' bind="1">
+                                <i class="iconfont"></i> 选择图标
+                            </button>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点副标题</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_subtitle" value="<?php echo (isset($info['site_subtitle']) && ($info['site_subtitle'] !== '')?$info['site_subtitle']:''); ?>" jq-verify="" jq-error=" 请输入站点副标题" placeholder="请输入站点标题" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点关键词</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_keywords" value="<?php echo (isset($info['site_keywords']) && ($info['site_keywords'] !== '')?$info['site_keywords']:''); ?>" jq-verify="" jq-error=" 请输入站点关键词" placeholder="请输入站点标题" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item ">
-                        <label class="layui-form-label">站点描述</label>
-                        <div class="layui-input-block">
-                            <textarea name="site_description" placeholder="请输入站点描述" class="layui-textarea"><?php echo (isset($info['site_description']) && ($info['site_description'] !== '')?$info['site_description']:''); ?></textarea>
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点网址</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_url" value="<?php echo (isset($info['site_url']) && ($info['site_url'] !== '')?$info['site_url']:''); ?>" jq-verify="" jq-error=" 请输入站点网址" placeholder="请输入站点标题" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站长邮箱</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_email" value="<?php echo (isset($info['site_email']) && ($info['site_email'] !== '')?$info['site_email']:''); ?>" jq-verify="" jq-error=" 请输入站长邮箱" placeholder="请输入站点标题" class="layui-input ">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点版权</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="site_copyright" value="<?php echo (isset($info['site_copyright']) && ($info['site_copyright'] !== '')?$info['site_copyright']:''); ?>" jq-verify="" jq-error=" 请输入站点版权" placeholder="请输入站点标题" class="layui-input ">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item ">
-                        <label class="layui-form-label">站点统计</label>
-                        <div class="layui-input-block">
-                            <textarea name="site_statistics" placeholder="请输入站点统计" class="layui-textarea"><?php echo (isset($info['site_statistics']) && ($info['site_statistics'] !== '')?$info['site_statistics']:''); ?></textarea>
+                    </div>-->
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label">选择图标</label>
+                        <div class="layui-input-block" >
+                            <?php if(is_array($iconFont) || $iconFont instanceof \think\Collection || $iconFont instanceof \think\Paginator): if( count($iconFont)==0 ) : echo "" ;else: foreach($iconFont as $key=>$vo): ?>
+                            <input type="radio" name="iconfont" <?php if($info['iconfont'] == $vo['code']): ?>checked<?php endif; ?> title='<i class="iconfont">&<?php echo $vo['code']; ?></i>' value="<?php echo $vo['code']; ?>"/>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
                         </div>
                     </div>
 
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="status" <?php if($info['status'] == '1'): ?>checked<?php endif; ?> title="正常" value="1" checked />
+                            <input type="radio" name="status" <?php if($info['status'] == '2'): ?>checked<?php endif; ?> title="禁用" value="2" />
+                        </div>
+                    </div>
                     <div class="layui-input-block">
+                        <input type="hidden" name="id" type="hidden" value="<?php echo (isset($info['id']) && ($info['id'] !== '')?$info['id']:''); ?>">
                         <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
@@ -140,7 +144,37 @@
 <!--脚本文件开始-->
 
 <script>
-    layui.use('pageform');
+    layui.use('myform', function(){
+        var form = layui.form();
+        var $= layui.jquery;
+        /*window.onload=function(){
+            url="<?php echo url('checkUrl'); ?>";
+            $.post(url,{
+                id:'<?php echo $info['id']; ?>',
+            },function(data){
+                if (data==1){
+                    $('#menu_url').show();
+                }else{
+                    $('#menu_url').hide();
+                }
+            });
+        }*/
+        form.on('select(pid)', function(data){
+            url="<?php echo url('checkUrl'); ?>";
+            $.post(url,{
+                id:data.value
+            },function(data){
+                if (data==1){
+                    $('#menu_url').show();
+                }else{
+                    $('#menu_url').hide();
+                }
+
+                /*if (data==1)else*/
+            });
+            //alert(data.value);
+        });
+    });
 </script>
 
 <!--脚本文件结束-->

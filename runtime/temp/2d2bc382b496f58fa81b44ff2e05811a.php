@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501665209;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\wamp64\www\1kbcms2\public/../application/admin\view\index\index.html";i:1501753871;}*/ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +71,7 @@
         <div class="layui-side-scroll">
             <!--子菜单项-->
             <p class="jqadmin-home tab-menu">
-                <a href="javascript:;" data-url="welcome.html" data-title="控制台">
+                <a href="javascript:;" data-url="<?php echo url('index/home'); ?>" data-title="控制台">
                     <i class="iconfont" data-icon='&#xe600;'>&#xe600;</i>
                     <span>控制台</span>
                 </a>

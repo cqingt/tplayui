@@ -17,7 +17,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">文章分类</label>
                                     <div class="layui-input-inline">
-                                        <select jq-verify="required" jq-error="请选择文章分类" lay-filter="verify" name="class_id">
+                                        <select jq-verify="required" jq-error="请选择文章分类" lay-filter="class_id" name="class_id">
                                             <option value="">请选择</option>
                                             {foreach name="category_list" item="vo"}
                                             <option value="{$vo.class_id}" {if condition="$vo.class_id eq $info.class_id"}selected{/if} {if condition="($vo.type eq 0) or ($vo.app neq request()->module())"} disabled="disabled" {/if}>{$vo.cname}</option>

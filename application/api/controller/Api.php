@@ -10,7 +10,7 @@ class Api extends Admin{
      * @return mixed
      */
     public function index(){
-        $menuList = model('admin/menu')->getMenu($this->loginUserInfo);
+        $menuList = model('admin/AdminMenu')->getMenu($this->loginUserInfo);
         return json($menuList);
     }
     /**

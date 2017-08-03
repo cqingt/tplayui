@@ -59,6 +59,7 @@ class CategoryArticle extends Model
      * @return true|false
      */
     public function edit(){
+        $this->parentCheck();
         $_POST['app']=request()->module();
         Model::startTrans();
         $status_cat=model('kbcms/Category')->edit();

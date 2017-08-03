@@ -12,18 +12,19 @@ class Index extends Admin{
                 'description' => '站点运行信息',
             ),
             'menu' => array(
-            array(
-                'name' => '首页',
-                'url' => url('index'),
-                'icon' => 'list',
+                array(
+                    'name' => '首页',
+                    'url' => url('index'),
+                    'icon' => 'list',
+                ),
             ),
-        ),
         );
     }
     public function index(){
         $this->assign('loginUserInfo',$this->loginUserInfo);
         return $this->fetch();
     }
+    //控制台
     public function home(){
         //获取当天的年份
         $y = date("Y");
@@ -38,10 +39,16 @@ class Index extends Admin{
         $info['user_count']=model('User')->countList();//会员总量
         $where_user['add_time']=['gt',$todayTime];
         $info['user_count_today']=model('User')->countList($where_user);//今日注册
-        $info['content_count']=model('Article/ContentArticle')->countList();//文章总量
+        $info['content_count']=model('article/ContentArticle')->countList();//文章总量
         $where_content['time']=['gt',$todayTime];
-        $info['content_count_today']=model('Article/ContentArticle')->countll($where_content);//今日新增
+        $info['content_count_today']=model('article/ContentArticle')->countll($where_content);//今日新增
         $this->assign('info',$info);
+        return $this->fetch();
+    }
+    //后台菜单
+    public function menu(){
+        $list = model('admin/menu')->menuLoadlist();
+        $this->assign('list',$list);
         return $this->fetch();
     }
 }

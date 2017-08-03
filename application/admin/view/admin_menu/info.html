@@ -1,0 +1,116 @@
+{extend name="admin@public/base_content" /}
+{block name="style"}
+<link rel="stylesheet" type="text/css" href="__ADMIN__/css/font/demo.css">
+{/block}
+{block name="body">}
+<body>
+{include file="admin@public/common" /}
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <section class="panel panel-padding">
+                <form id="form1" class="layui-form layui-form-pane" action="{:url('')}">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单组</label>
+                        <div class="layui-input-inline">
+                            <select class="tpl-form-input" jq-verify="required" jq-error="请选择用户组" lay-filter="pid" name="pid">
+                                <option value="0">顶级菜单</option>
+                                {foreach name="menuList" item="vo"}
+                                <option value="{$vo.id}" {if condition="$vo.id eq $info.pid"}selected{/if}>{$vo.cname}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="{$info.name|default=''}" jq-verify="required" jq-error=" 请输入菜单名" placeholder="请输入菜单名" class="layui-input ">
+                        </div>
+                    </div>
+                    {neq name='info.rs' value='2'}
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">地址url</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="url" value="{$info.url|default=''}" jq-verify="required" jq-error="请输入地址url" placeholder="请输入地址url" class="layui-input ">
+                        </div>
+                    </div>
+                    {/neq}
+                    <!--<div class="layui-form-item icon_lists clear">
+                        <label class="layui-form-label">图标</label>
+                        <div class="layui-input-inline" style="text-align:center;">
+                            <i class="icon iconfont">{$info.iconfont}</i>
+                        </div>
+
+                        <div class="layui-input-inline">
+                            <button type="button" class="layui-btn layui-btn-small modal" data-params='{";content";:";.add-subcat";,";area";:";600px,430px";,";title";:";添加分类";,";action";:";add";}' bind="1">
+                                <i class="iconfont"></i> 选择图标
+                            </button>
+                        </div>
+                    </div>-->
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label">选择图标</label>
+                        <div class="layui-input-block" >
+                            {foreach name='iconFont' item='vo'}
+                            <input type="radio" name="iconfont" {eq name="info.iconfont" value="$vo.code"}checked{/eq} title='<i class="iconfont">&{$vo.code}</i>' value="{$vo.code}"/>
+                            {/foreach}
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="status" {eq name="info.status" value="1"}checked{/eq} title="正常" value="1" checked />
+                            <input type="radio" name="status" {eq name="info.status" value="2"}checked{/eq} title="禁用" value="2" />
+                        </div>
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id" type="hidden" value="{$info.id|default=''}">
+                        <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+{/block}
+{block name="script"}
+<script>
+    layui.use('myform', function(){
+        var form = layui.form();
+        var $= layui.jquery;
+        /*window.onload=function(){
+            url="{:url('checkUrl')}";
+            $.post(url,{
+                id:'{$info.id}',
+            },function(data){
+                if (data==1){
+                    $('#menu_url').show();
+                }else{
+                    $('#menu_url').hide();
+                }
+            });
+        }*/
+        form.on('select(pid)', function(data){
+            url="{:url('checkUrl')}";
+            $.post(url,{
+                id:data.value
+            },function(data){
+                if (data==1){
+                    $('#menu_url').show();
+                }else{
+                    $('#menu_url').hide();
+                }
+
+                /*if (data==1){//显示url
+                    $('#menu_url').show();
+                }else{//不显示url
+                    $('#menu_url').hide();
+                }*/
+            });
+            //alert(data.value);
+        });
+    });
+</script>
+{/block}

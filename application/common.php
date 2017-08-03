@@ -10,7 +10,35 @@
 // +----------------------------------------------------------------------
 use \think\Db;
 // 应用公共文件
+/**
+ * 获取后台菜单多维数组
+ * @param array $where
+ * @return false|PDOStatement|string|\think\Collection
+ */
+function getMenuList($where=array('pid'=>0)){
+    $list_one=Db::name('admin_menu')->where($where)->select();
+    if ($list_one){
+        foreach ($list_one as $key=>$val){
+            $list_one[$key]['iconfont']='&'.$val['iconfont'];
+            $list_two=Db::name('admin_menu')->where(array('pid'=>$val['id']))->select();
+            if ($list_two){
+                $list_one[$key]['sub']=$list_two;
+                foreach ($list_two as $k=>$v){
+                    $list_one[$key]['sub'][$k]['iconfont']='&'.$v['iconfont'];
+                    $list_three=Db::name('admin_menu')->where(array('pid'=>$v['id']))->select();
+                    if ($list_three){
+                        $list_one[$key]['sub'][$k]['sub']=$list_three;
+                        foreach ($list_three as $kk=>$vv){
+                            $list_one[$key]['sub'][$k]['sub'][$kk]['iconfont']='&'.$vv['iconfont'];
+                        }
+                    }
+                }
+            }
 
+        }
+    }
+    return $list_one;
+}
 /**
  * 获取所有模块Service
  * @param string $name 指定service名
@@ -18,7 +46,7 @@ use \think\Db;
  */
 function get_all_service($name,$method,$vars=array()){
     if(empty($name))return null;
-    $apiPath = APP_PATH.'*/service/'.$name.'.php';
+    $apiPath = APP_PATH.'admin/service/'.$name.'.php';
     $apiList = glob($apiPath);
     if(empty($apiList)){
         return;

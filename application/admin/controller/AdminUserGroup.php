@@ -89,8 +89,8 @@ class AdminUserGroup extends Admin {
             if(!$info){
                 $this->error('该组信息不存在');
             }
-            $AdminPurvew = model('Menu')->getPurview()['data']['list'];//权限菜单
-            $AdminMenu = model('Menu')->getPurMenu();//后台菜单
+            $AdminPurvew = model('AdminMenu')->getPurview()['data']['list'];//权限菜单
+            $AdminMenu = model('AdminMenu')->getPurMenu();//后台菜单
             $breadCrumb = array('用户组列表'=>url('index'),'权限设置('.$info['name'].')'=>url('',array('group_id'=>$groupId)));
             $this->assign('breadCrumb',$breadCrumb);
             $this->assign('AdminPurvew', $AdminPurvew);

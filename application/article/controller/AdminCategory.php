@@ -43,6 +43,10 @@ class AdminCategory extends Admin
         if (input('post.')){
             $_POST['app'] = request()->module();
             if ($class_id){
+                $check_status=$this->parentCheck();
+                if ($check_status!==true){
+                    return ajaxReturn(0,$check_status);
+                }
                 $status=$model->edit();
             }else{
                 $status=$model->add();
