@@ -1,7 +1,6 @@
 <?php
 namespace app\home\controller;
 use think\Controller;
-use think\View;
 
 /**
  * Created by PhpStorm.
@@ -20,12 +19,21 @@ class Site extends Controller{
         session_start();
         $this->session_id = session_id(); // 当前的 session_id
         define('SESSION_ID',$this->session_id); //将当前的session_id保存为常量，供其它方法调用
+        $this->setCont();//设置站点基本信息
+        //设置手机版参数
+        if(isset($_GET['mobile']) || MOBILE){
+            $tpl_name=get_site('mobile_tpl');
+        }else{
+            $tpl_name=get_site('tpl_name');
+        }
+        //设置常量
+        define('TPL_NAME', $tpl_name);
         //MEDIA信息
         $media=$this->getMedia();
         $this->assign('media', $media);
     }
     protected function siteFetch($template = '', $vars = [], $replace = [], $get_site = []){
-        $tpl_name=get_site('tpl_name').DS.$template;
+        $tpl_name=TPL_NAME.DS.$template;
         return $this->fetch($tpl_name, $vars, $replace, $get_site);
     }
     /**
@@ -63,5 +71,31 @@ class Site extends Controller{
      */
     protected function errorBlock(){
         return "<script>alert('通讯错误!请检查表单名称!')</script>";
+    }
+    /**
+     * 设置站点基本信息
+     */
+    protected function setCont(){
+
+        //设置站点
+        $url = $_SERVER['HTTP_HOST'];
+        $detect = new \org\Mobile_Detect();
+        if (get_site('mobile_status')==1) {
+            //网站跳转
+            if (!$detect->isMobile() && !$detect->isTablet()) {
+                if (get_site('site_url') && $url <> get_site('site_url')) {
+                    $this->redirect('http://' . get_site('site_url') . $_SERVER["REQUEST_URI"]);
+                }
+                define('MOBILE', false);
+            } else {
+                if (get_site('mobile_domain') && $url <> get_site('mobile_domain')) {
+                    $this->redirect('http://' . get_site('mobile_domain') . $_SERVER["REQUEST_URI"]);
+                }
+                define('MOBILE', true);
+            }
+        } else {
+            //禁用手机版本
+            define('MOBILE', false);
+        }
     }
 }
