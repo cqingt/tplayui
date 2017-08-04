@@ -12,6 +12,12 @@ if (!defined('__ROOT__')) {
     $_root = rtrim(dirname(rtrim($_SERVER['SCRIPT_NAME'], '/')), '/');
     define('__ROOT__', (('/' == $_root || '\\' == $_root) ? '' : $_root));
 }
+if(file_exists("install") && !file_exists("install.lock")){
+    // 组装安装url
+    $url = $_SERVER['HTTP_HOST'].trim($_SERVER['SCRIPT_NAME'],'index.php').'install/index.php';
+    // 使用http://域名方式访问；避免./public/install 路径方式的兼容性和其他出错问题
+    header("Location:http://$url");die;
+}
 //模板路径
 define('THEME_NAME', 'template');
 // [ 应用入口文件 ]
@@ -19,5 +25,6 @@ define('THEME_NAME', 'template');
 define('NOW_TIME',date('Y-m-d H:i'));
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+define('ROOT_PATH', __DIR__ . '/../');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
