@@ -1,5 +1,6 @@
 <?php
 namespace app\admin\controller;
+use think\Lang;
 /**
  * 网站设置
  */
@@ -32,15 +33,15 @@ class Setting extends Admin {
                         'icon' => 'mobile',
                     ),
                 /*array(
-                    'name' => '性能设置',
-                    'url' => url('Setting/performance'),
-                    'icon' => 'dashboard',
-                ),
-                array(
-                    'name' => '上传设置',
-                    'url' => url('Setting/upload'),
-                    'icon' => 'upload',
-                )*/
+                   'name' => '性能设置',
+                   'url' => url('Setting/performance'),
+                   'icon' => 'dashboard',
+               ),
+              array(
+                   'name' => '上传设置',
+                   'url' => url('Setting/upload'),
+                   'icon' => 'upload',
+               )*/
                 )
         );
     }
@@ -96,18 +97,23 @@ class Setting extends Admin {
      * 性能设置
      */
     public function performance(){
-        $file = CONFIG_PATH . 'performance.php';
-        if(!IS_POST){
-            $breadCrumb = array('性能设置'=>url());
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('info',load_config($file));
-            $this->adminDisplay();
-        }else{
-            if(save_config($file, $_POST)){
-                $this->success('性能配置成功！');
+        if (input('post.')){
+            if(model('Config')->edit()){
+                if (input('post.lang_open')==1){//如果开启多语言
+
+                }else{
+
+                }
+                return ajaxReturn(200,'站点配置成功！');
             }else{
-                $this->error('性能配置失败');
+                return ajaxReturn(0,'站点配置失败！');
             }
+        }else{
+            $value = Lang::get('hello thinkphp');
+            var_dump($value);
+            $this->assign('langList',model('Lang')->allList());
+            $this->assign('info',model('Config')->getInfo());
+            return $this->fetch();
         }
     }
     /**

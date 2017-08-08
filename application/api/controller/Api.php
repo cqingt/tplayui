@@ -36,4 +36,19 @@ class Api extends Admin{
             return ajaxReturn(0,'操作失败');
         }
     }
+    /**
+     * 切换语言
+     */
+    public function change(){
+        switch (input('lang')) {
+            case 'zh-cn':
+                cookie('think_var', 'zh-cn');
+                break;
+            case 'en-us':
+                cookie('think_var', 'en-us');
+                break;
+            //其它语言
+        }
+        return ajaxReturn(200,'语言切换成功！您现在操作的是'.input('lang'));
+    }
 }

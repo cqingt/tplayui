@@ -22,48 +22,11 @@ class Admin extends Controller{
         if(!(request()->module() == 'admin' && request()->controller() == 'Login')){
             //设置登录用户信息
             $this->loginUserInfo = model('admin/AdminUser')->getInfo(ADMIN_ID);
-            //检测权限
-            //$this->checkPurview();
             //赋值当前菜单
             if(method_exists($this,'_infoModule')){
                 $this->assign('infoModule',$this->_infoModule());
             }
         }
-    }
-    /**
-     * 用户权限检测
-     */
-    protected function checkPurview(){
-        header("Content-type:text/html;charset=utf-8");
-        if ($this->loginUserInfo['user_id'] == 1 || $this->loginUserInfo['group_id'] == 1) {
-            return true;
-        }
-        $basePurview = unserialize($this->loginUserInfo['base_purview'])?unserialize($this->loginUserInfo['base_purview']):array();
-        $purviewInfo = service(request()->module(),'Purview','getAdminPurview');
-
-        if (empty($purviewInfo)) {
-            return true;
-        }
-        //var_dump($purviewInfo);
-        $controller = @$purviewInfo[request()->controller()];
-        if (empty($controller['auth'])) {
-            return true;
-        }
-        $action = @$controller['auth'][request()->action()];
-        if (empty($action)) {
-            return true;
-        }
-        $current = request()->module() . '_' . request()->controller();
-        //var_dump($basePurview);
-        //var_dump($current);exit;
-        if (!in_array($current, (array) $basePurview)) {
-            $this->error('您没有权限访问此功能！');
-        }
-        $current = request()->module() . '_' . request()->controller() . '_' . request()->action();
-        if (!in_array($current, (array) $basePurview)) {
-            $this->error('您没有权限访问此功能！');
-        }
-        return true;
     }
     /**
      * 检测用户是否登录
@@ -76,32 +39,6 @@ class Admin extends Controller{
         } else {
             return session('admin_user_sign') == data_auth_sign($user) ? $user['user_id'] : 0;
         }
-    }
-
-    //分页结果显示
-    protected function getPageShow($map = array(), $mustParams = array())
-    {
-        $pageArray = $this->pager;
-        $html = '
-        <ul class="pagination pagination-small">
-          <li><a href="'.$this->createPageUrl($map,$mustParams,$pageArray['firstPage']).'">首页</a></li>
-          <li><a href="'.$this->createPageUrl($map,$mustParams,$pageArray['prevPage']).'">上一页</a></li> ';
-        foreach ($pageArray['allPages'] as $value) {
-            if($value == 0){
-                continue;
-            }
-            if($value == $pageArray['page']){
-                $html .= '<li class="active">';
-            }else{
-                $html .= '<li>';
-            }
-            $html .= '<a href="'.$this->createPageUrl($map,$mustParams,$value).'">'.$value.'</a></li> ';
-        }
-        $html .= '<li><a href="'.$this->createPageUrl($map,$mustParams,$pageArray['nextPage']).'">下一页</a></li>
-                  <li><a href="'.$this->createPageUrl($map,$mustParams,$pageArray['lastPage']).'">末页</a></li>
-                </ul>';
-        return $html;
-
     }
     /*
      * 一键清空缓存

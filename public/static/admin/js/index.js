@@ -51,6 +51,23 @@ layui.define(['jquery', 'elem', 'jqmenu', 'layer', 'ajax'], function(exports) {
         }
     }
     /**
+     * 更换语言
+     */
+    ajax.chang= function(ret, options, that) {
+        if (ret.status==200){//成功
+            layer.msg(ret.msg, {
+                icon: 1,
+                time: 2000
+            },function () {
+                window.location.href=window.location;
+            });
+        }else{//失败
+            layer.msg(ret.msg, {
+                icon: 5
+            });
+        }
+    }
+    /**
      *@todo 初始化方法
      */
     jqIndex.prototype.init = function(options) {

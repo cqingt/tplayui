@@ -24,6 +24,7 @@ function get_cat($tag){
     $order = !empty($tag['order']) ? $tag['order'] : 'sequence ASC';
     //根据参数生成查询条件
     $where['show'] = array('eq',1);
+    $where['lang_id'] = array('eq',get_lang_id());
     if (!empty($tag['class_id'])) {
         $where['class_id'] = array('eq',$tag['class_id']);
     }
@@ -183,7 +184,11 @@ function match_url($str,$params = array(), $mustParams = array()){
             $newParams[$keyArray[0]] = current($params);
         }
     }
-    $newParams = array_merge((array)$newParams,(array)$mustParams);
+    //语言
+    if (session('admin_lang_id')){
+        $lang_arr=array('lang'=>session('admin_lang_id'));
+    }
+    $newParams = array_merge((array)$newParams,(array)$mustParams,(array)$lang_arr);
     $newParams = array_filter($newParams);
     return url($str, $newParams);
 }

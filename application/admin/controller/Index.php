@@ -21,6 +21,7 @@ class Index extends Admin{
         );
     }
     public function index(){
+        $this->assign('langList',model('Lang')->loadList());
         $this->assign('loginUserInfo',$this->loginUserInfo);
         return $this->fetch();
     }

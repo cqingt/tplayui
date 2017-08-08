@@ -530,4 +530,46 @@ function write_text($content,$payType='weixin'){
 //fwrite($fp, var_export($postObj->out_trade_no, true));
 
 }
-
+/**
+ * 写文件
+ */
+function write_lang_file($file){
+    $content=<<<EOF
+<?php
+/**
+ * 语言
+ */
+return [
+    "test" => "测试语言",
+];
+EOF;
+    
+    file_put_contents($file,$content);
+}
+/**
+ * 获取语言信息
+ */
+function get_lang_info($lang_id,$field='*'){
+    if (empty($lang_id)){
+        return ;
+    }
+    $info = Db::name('lang')->field($field)->where('lang_id',$lang_id)->find();
+    if ($field!='*'){
+        return $info[$field];
+    }else{
+        return $info;
+    }
+}
+/**
+ * 获取当前语言id
+ */
+function get_lang_id(){
+    if (cookie('think_var')){
+        $where['lang']=cookie('think_var');
+        $info=model('admin/lang')->getWhereInfo($where);
+        if ($info){
+            return $info['lang_id'];
+        }
+    }
+    return false;
+}

@@ -279,6 +279,7 @@ if (!function_exists('url')) {
      */
     function url($url = '', $vars = '', $suffix = true, $domain = false)
     {
+        //语言判断
         return Url::build($url, $vars, $suffix, $domain);
     }
 }

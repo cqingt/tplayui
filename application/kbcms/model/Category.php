@@ -34,6 +34,9 @@ class Category extends Model
      * @return 数组
      */
     public function loadData($where = array(), $limit = 0){
+        if (get_lang_id()){
+            $where['lang_id']=get_lang_id();
+        }
         $pageList=$this->name('category')->where($where)->order('sequence ASC , class_id ASC')->limit($limit)->select();
         $list = array();
         if(!empty($pageList)){
@@ -76,6 +79,7 @@ class Category extends Model
     public function add(){
         $model=new Category($_POST);
         $model->app=request()->module();
+        $model->lang_id=get_lang_id();
         if ($model->allowField(true)->save()>0){
             return $model->class_id;
         }else{

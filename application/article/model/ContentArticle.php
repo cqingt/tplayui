@@ -19,7 +19,10 @@ class ContentArticle extends Model {
     public function loadList($where = array(), $limit = 10, $order = 'A.time desc,A.content_id desc', $fieldsetId = 0){
         //基础条件
         $where['C.app'] = 'article';
-
+        //语言判断
+        if (get_lang_id()){
+            $where['C.lang_id']=get_lang_id();
+        }
         $model =  $this->name('content')
                         ->alias('A')
                         ->join('content_article B',' A.content_id = B.content_id')

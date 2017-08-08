@@ -35,7 +35,6 @@ class AdminCategory extends Admin{
     }
 	//文章栏目列表
 	public function index(){
-        header("Content-type: text/html; charset=utf-8");
 		$where=array();
 		$list=model('Category')->loadList($where);
 		$this->assign('list',$list);

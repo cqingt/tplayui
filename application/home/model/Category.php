@@ -34,6 +34,9 @@ class Category extends Model
      * @return 数组
      */
     public function loadData($where = array(), $limit = 0){
+        if (get_lang_id()){
+            $where['lang_id']=get_lang_id();
+        }
         $pageList=$this->name('category')->where($where)->order('sequence ASC , class_id ASC')->limit($limit)->select();
         $list = array();
         if(!empty($pageList)){

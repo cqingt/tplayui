@@ -9,7 +9,7 @@
  * +----------------------------------------------------------------------
  */
 
-layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], function(exports) {
+layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload','ajax'], function(exports) {
     var $ = layui.jquery,
         layedit = layui.layedit,
         box = "",

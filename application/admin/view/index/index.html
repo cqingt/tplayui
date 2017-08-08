@@ -43,7 +43,23 @@
         </div>
         <!-- 头部右侧导航 -->
         <div class="header-right">
-
+            <ul class="layui-nav jqadmin-header-item right-menu" style="position: absolute; right:330px;">
+                <li class="layui-nav-item first">
+                    <a href="javascript:;">
+                        <cite id="cite_admin_lang_name"> {$Think.lang.lang_name}</cite>
+                        <span class="layui-nav-more"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        {foreach name='langList' item='vo'}
+                        <dd>
+                            <a class="ajax" style="cursor: pointer" data-params='{"url": "{:url("api/api/change")}","confirm":"false","data":"lang={$vo.lang}","complete":"chang"}'>
+                               {$vo.name}
+                            </a>
+                        </dd>
+                        {/foreach}
+                    </dl>
+                </li>
+            </ul>
             <a class="layui-btn layui-btn-small ajax" data-params='{"url": "{:url("admin/Admin/delcache")}","confirm":"true","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
             <a class="layui-btn layui-btn-small" href="{:url('home/index/index')}" target="_blank" style="position: absolute; top: 14px; right:280px;"> 前台</a>
 
@@ -56,7 +72,9 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a class="ajax" style="cursor: pointer" data-params='{"url": "{:url("admin/Login/logout")}","confirm":"false","data":"","complete":"logout"}'><i class="iconfont ">&#xe64b; </i>退出</a>
+                            <a class="ajax" style="cursor: pointer" data-params='{"url": "{:url("admin/Login/logout")}","confirm":"false","data":"","complete":"logout"}'>
+                                <i class="iconfont ">&#xe64b; </i>退出
+                            </a>
                         </dd>
                     </dl>
                 </li>
