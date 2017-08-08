@@ -14,6 +14,9 @@ class Admin extends Controller{
     }
     //当任何函数加载时候  会调用此函数
     public function _initialize(){//默认的方法  会自动执行 特征有点像构造方法
+        if (empty(get_lang_id())){
+            cookie('think_var', 'zh-cn');
+        }
         // 检测用户登录
         define('ADMIN_ID',$this->isLogin());
         if( !ADMIN_ID && ( request()->module() <> 'admin' || request()->controller() <> 'Login' )){

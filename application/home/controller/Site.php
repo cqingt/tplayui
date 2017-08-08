@@ -16,6 +16,9 @@ class Site extends Controller{
     }
     //当任何函数加载时候  会调用此函数
     public function _initialize(){//默认的方法  会自动执行 特征有点像构造方法
+        if (empty(get_lang_id())){
+            cookie('think_var', 'zh-cn');
+        }
         session_start();
         $this->session_id = session_id(); // 当前的 session_id
         define('SESSION_ID',$this->session_id); //将当前的session_id保存为常量，供其它方法调用
