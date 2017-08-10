@@ -28,5 +28,6 @@ QQ群：488649173
 * * * * *
 # 系统组件
 * thinkphp5.0 中文最佳实践PHP开源框架 http://www.thinkphp.cn/
-* Amaze ui 中国首个开源 HTML5 跨屏前端框架 http://amazeui.org/
+* layui 由职业前端倾情打造，面向所有层次的前后端程序猿，零门槛开箱即用的前端UI解决方案 http://www.layui.com/
+* 后台使用  jqadmin  https://jqadmin.jqcool.net/
 * 在此感谢被1kbcms所使用的各种组件
