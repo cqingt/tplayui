@@ -3,6 +3,7 @@ namespace app\home\controller;
 class Index extends Site{
     //首页
     public function index(){
+        var_dump(get_content('limit:10'));exit;
         //MEDIA信息
         $media=$this->getMedia();
         $this->assign('media', $media);
