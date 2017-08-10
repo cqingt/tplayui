@@ -1,18 +1,10 @@
 <?php
 namespace app\Api\controller;
-
-use app\admin\controller\Admin;
+use think\Controller;
 use think\Db;
 
-class Api extends Admin{
-    /**
-     * 获取菜单
-     * @return mixed
-     */
-    public function index(){
-        $menuList = model('admin/AdminMenu')->getMenu($this->loginUserInfo);
-        return json($menuList);
-    }
+class Api extends Controller{
+    
     /**
      * 更新字段
      */
