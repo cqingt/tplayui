@@ -1,6 +1,6 @@
 ---------------------------------------------------------------
-[ 2017-08-10T11:06:02+08:00 ] ::1 ::1 GET /
-[ info ] www.1kbcms.c/ [运行时间：0.265016s][吞吐率：3.77req/s] [内存消耗：6,286.59kb] [文件加载：67]
+[ 2017-08-10T11:09:16+08:00 ] ::1 ::1 GET /
+[ info ] www.1kbcms.c/ [运行时间：0.242013s][吞吐率：4.13req/s] [内存消耗：6,286.20kb] [文件加载：67]
 [ info ] [ LANG ] F:\wamp64\www\1kbcms2\thinkphp\lang\zh-cn.php
 [ info ] [ LANG ] F:\wamp64\www\1kbcms2\public/../application/lang\zh-cn.php
 [ info ] [ ROUTE ] array (
@@ -18,8 +18,10 @@
   'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
   'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=s54bloge13jv8ju3icgl0bglf7',
   'connection' => 'keep-alive',
   'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
 )
 [ info ] [ PARAM ] array (
 )
@@ -39,44 +41,44 @@
   'auto_start' => true,
 )
 [ info ] [ LOG ] INIT File
-[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=kbcms;host=127.0.0.1;port=3306;charset=utf8
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_lang` [ RunTime:0.005000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_config` [ RunTime:0.003000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=kbcms;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_lang` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_config` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001001s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_fieldset` [ RunTime:0.003000s ]
-[ sql ] [ SQL ] SELECT `B`.*,`A`.* FROM `ykb_fieldset` `A` INNER JOIN `ykb_fieldset_form` `B` ON `A`.`fieldset_id`=`B`.`fieldset_id` WHERE  `table` = 'link' LIMIT 1 [ RunTime:0.002001s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_fragment` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_config` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_fieldset` [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT `B`.*,`A`.* FROM `ykb_fieldset` `A` INNER JOIN `ykb_fieldset_form` `B` ON `A`.`fieldset_id`=`B`.`fieldset_id` WHERE  `table` = 'link' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_fragment` [ RunTime:0.002000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_fragment` WHERE  `label` = 'logo' LIMIT 1 [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_category` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_category` [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_category` WHERE  `show` = 1  AND `lang_id` = 1  AND `parent_id` = 0 ORDER BY sequence ASC [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_category` WHERE  `parent_id` = 59 LIMIT 1 [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_category` WHERE  `parent_id` = 20 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_category` WHERE  `parent_id` = 59 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_category` WHERE  `parent_id` = 20 LIMIT 1 [ RunTime:0.000000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.000000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.001000s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_content` [ RunTime:0.002000s ]
-[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_content` `A` INNER JOIN `ykb_content_article` `B` ON `A`.`content_id`=`B`.`content_id` INNER JOIN `ykb_category` `C` ON `A`.`class_id`=`C`.`class_id` WHERE  `status` = 1  AND `C`.`app` = 'article'  AND `C`.`lang_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_content` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_content` `A` INNER JOIN `ykb_content_article` `B` ON `A`.`content_id`=`B`.`content_id` INNER JOIN `ykb_category` `C` ON `A`.`class_id`=`C`.`class_id` WHERE  `status` = 1  AND `C`.`app` = 'article'  AND `C`.`lang_id` = 1 LIMIT 1 [ RunTime:0.002001s ]
 [ sql ] [ SQL ] SELECT `A`.*,`B`.*,C.name as class_name,`C`.`app`,C.urlname as class_urlname,C.image as class_image,`C`.`parent_id` FROM `ykb_content` `A` INNER JOIN `ykb_content_article` `B` ON `A`.`content_id`=`B`.`content_id` INNER JOIN `ykb_category` `C` ON `A`.`class_id`=`C`.`class_id` WHERE  `status` = 1  AND `C`.`app` = 'article'  AND `C`.`lang_id` = 1 ORDER BY sequence ASC LIMIT 0,10 [ RunTime:0.002000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_lang` WHERE  `lang` = 'zh-cn' LIMIT 1 [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ykb_content` `A` INNER JOIN `ykb_content_article` `B` ON `A`.`content_id`=`B`.`content_id` INNER JOIN `ykb_category` `C` ON `A`.`class_id`=`C`.`class_id` WHERE  `status` = 1  AND (  find_in_set(1,A.position)  )  AND `C`.`app` = 'article'  AND `C`.`lang_id` = 1 LIMIT 1 [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SELECT `A`.*,`B`.*,C.name as class_name,`C`.`app`,C.urlname as class_urlname,C.image as class_image,`C`.`parent_id` FROM `ykb_content` `A` INNER JOIN `ykb_content_article` `B` ON `A`.`content_id`=`B`.`content_id` INNER JOIN `ykb_category` `C` ON `A`.`class_id`=`C`.`class_id` WHERE  `status` = 1  AND (  find_in_set(1,A.position)  )  AND `C`.`app` = 'article'  AND `C`.`lang_id` = 1 ORDER BY sequence ASC LIMIT 0,2 [ RunTime:0.001000s ]
 [ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_ext_link` [ RunTime:0.002001s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_ext_link` ORDER BY data_id DESC [ RunTime:0.000000s ]
-[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_field` [ RunTime:0.002000s ]
-[ sql ] [ SQL ] SELECT `B`.*,`A`.* FROM `ykb_field` `A` INNER JOIN `ykb_field_form` `B` ON `A`.`field_id`=`B`.`field_id` WHERE  `A`.`fieldset_id` = '2' ORDER BY A.sequence asc , A.field_id desc [ RunTime:0.003000s ]
-[ sql ] [ SQL ] SELECT * FROM `ykb_fragment` WHERE  `label` = 'bottom' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_ext_link` ORDER BY data_id DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ykb_field` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `B`.*,`A`.* FROM `ykb_field` `A` INNER JOIN `ykb_field_form` `B` ON `A`.`field_id`=`B`.`field_id` WHERE  `A`.`fieldset_id` = '2' ORDER BY A.sequence asc , A.field_id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `ykb_fragment` WHERE  `label` = 'bottom' LIMIT 1 [ RunTime:0.001000s ]
 [ error ] [8]未定义变量: lang_arr[F:\wamp64\www\1kbcms2\application\home\common.php:191]
 [ error ] [8]未定义变量: lang_arr[F:\wamp64\www\1kbcms2\application\home\common.php:191]
 [ error ] [8]未定义变量: top_category_info[F:\wamp64\www\1kbcms2\runtime\temp\55db31c3d644fc2de6c7ded3aad5667e.php:25]
