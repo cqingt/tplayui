@@ -43,7 +43,7 @@
         </div>
         <!-- 头部右侧导航 -->
         <div class="header-right">
-            <ul class="layui-nav jqadmin-header-item right-menu" style="position: absolute; right:330px;">
+            <ul class="layui-nav right-menu" style="position: absolute; right:260px;">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
                         <cite id="cite_admin_lang_name"> {$Think.lang.lang_name}</cite>
@@ -60,11 +60,11 @@
                     </dl>
                 </li>
             </ul>
-            <a class="layui-btn layui-btn-small ajax" data-params='{"url": "{:url("admin/Admin/delcache")}","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:180px;"> <i class="iconfont">&#xe60c;</i> 清理缓存</a>
-            <a class="layui-btn layui-btn-small" href="{:url('home/index/index')}" target="_blank" style="position: absolute; top: 14px; right:280px;"> 前台</a>
+            <a class="layui-btn layui-btn-small ajax" data-params='{"url": "{:url("admin/Admin/delcache")}","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:135px;">清理缓存</a>
+            <a class="layui-btn layui-btn-small" href="{:url('home/index/index')}" target="_blank" style="position: absolute; top: 14px; right:210px;">前台</a>
 
 
-            <ul class="layui-nav jqadmin-header-item right-menu">
+            <ul class="layui-nav right-menu">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
                         <cite> {$loginUserInfo.username}</cite>
