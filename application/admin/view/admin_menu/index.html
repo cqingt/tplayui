@@ -10,6 +10,7 @@
             <th>名称</th>
             <th width="180">图标</th>
             <th>状态</th>
+            <th>排序</th>
             <th width="240">操作</th>
         </tr>
         </thead>
@@ -19,7 +20,8 @@
             <td>{$vo.id}</td>
             <td>{$vo.cname}</td>
             <td><i class="iconfont">&{$vo.iconfont}</i></td>
-            <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="正常|禁用" {eq name="vo.status" value="1"}checked{/eq}  lay-filter="ajax" data-params='{"url":"{:url("api/api/upField")}","confirm":"true","data":"table=admin_user&id_name=id&id_value={$vo.id}&field=status","complete":"up"}'></td>
+            <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="正常|禁用" {eq name="vo.status" value="1"}checked{/eq}  lay-filter="ajax" data-params='{"url":"{:url("api/api/upField")}","confirm":"true","data":"table=admin_menu&id_name=id&id_value={$vo.id}&field=status","complete":"up"}'></td>
+            <td><input type="text" class="layui-input ajax-blur" name="field_value" value="{$vo.sort}" data-params='{"url":"{:url("api/api/upField")}","data":"table=admin_menu&id_name=id&id_value={$vo.id}&field=sort","loading":"false","complete":"up"}'> </td>
             <td>
                 {notin name="vo.id" value='30,10'}
                 <a href="{:url('info',array('id'=>$vo['id']))}" class="layui-btn layui-btn-mini modal-catch">

@@ -21,8 +21,8 @@
             <td>{$vo.table}</td>
             <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="正常|禁用" {eq name="vo.status" value="1"}checked{/eq}  lay-filter="ajax" data-params='{"url":"{:url("api/api/upField")}","confirm":"true","data":"table=fieldset_expand&id_name=fieldset_id&id_value={$vo.fieldset_id}&field=status","complete":"up"}'></td>
             <td>
-                <a href="{:url('AdminExpandField/index',array('fieldset_id'=>$vo['fieldset_id']))}" class="layui-btn layui-btn-mini modal-catch">
-                    <i class="iconfont">&#xe653;</i>管理
+                <a href="{:url('AdminExpandField/index',array('fieldset_id'=>$vo['fieldset_id']))}" class="layui-btn layui-btn-mini layui-btn-normal">
+                    <i class="iconfont">&#xe649;</i>管理
                 </a>
                 <a href="{:url('info',array('fieldset_id'=>$vo['fieldset_id']))}" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑

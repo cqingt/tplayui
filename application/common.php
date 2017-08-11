@@ -16,16 +16,17 @@ use \think\Db;
  * @return false|PDOStatement|string|\think\Collection
  */
 function getMenuList($where=array('pid'=>0)){
-    $list_one=Db::name('admin_menu')->where($where)->select();
+    $where['status']=1;
+    $list_one=Db::name('admin_menu')->where($where)->order('sort ASC,id DESC')->select();
     if ($list_one){
         foreach ($list_one as $key=>$val){
             $list_one[$key]['iconfont']='&'.$val['iconfont'];
-            $list_two=Db::name('admin_menu')->where(array('pid'=>$val['id']))->select();
+            $list_two=Db::name('admin_menu')->where(array('pid'=>$val['id'],'status'=>1))->order('sort ASC,id DESC')->select();
             if ($list_two){
                 $list_one[$key]['sub']=$list_two;
                 foreach ($list_two as $k=>$v){
                     $list_one[$key]['sub'][$k]['iconfont']='&'.$v['iconfont'];
-                    $list_three=Db::name('admin_menu')->where(array('pid'=>$v['id']))->select();
+                    $list_three=Db::name('admin_menu')->where(array('pid'=>$v['id'],'status'=>1))->order('sort ASC,id DESC')->select();
                     if ($list_three){
                         $list_one[$key]['sub'][$k]['sub']=$list_three;
                         foreach ($list_three as $kk=>$vv){
@@ -572,4 +573,45 @@ function get_lang_id(){
         }
     }
     return false;
+}
+/**
+ * 自适应URL规则
+ * @param string $str URL路径
+ * @param string $params 自动解析参数
+ * @param string $mustParams 必要参数
+ * @return url
+ */
+function match_url($str,$params = array(), $mustParams = array()){
+    $newParams = array();
+    $keyArray = array_keys($params);
+    if(config('REWRITE_ON')){
+        //获取规则文件
+        $config = config('REWRITE_RULE');
+        $configArray = array_flip($config);
+        $route = $configArray[$str];
+        if($route){
+            preg_match_all('/<(\w+)>/', $route, $matches);
+            foreach ($matches[1] as $value) {
+                if($params[$value]){
+                    $newParams[$value] = $params[$value];
+                }
+            }
+        }else{
+            if(!empty($keyArray)){
+                $newParams[$keyArray[0]] = current($params);
+            }
+        }
+    }else{
+        if(!empty($keyArray)){
+            $newParams[$keyArray[0]] = current($params);
+        }
+    }
+    //语言
+    $lang_arr=array();
+    /*if (get_lang_id()){
+        $lang_arr=array('lang_id'=>get_lang_id());
+    }*/
+    $newParams = array_merge((array)$newParams,(array)$mustParams,(array)$lang_arr);
+    $newParams = array_filter($newParams);
+    return url($str, $newParams);
 }

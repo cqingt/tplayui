@@ -15,8 +15,8 @@ class AdminMenu extends Model{
     /**
      * 菜单数据
      */
-    public function loadData($where = array(), $limit = 0){
-        $list=$this->where($where)->limit($limit)->select();
+    public function loadData($where = array(), $limit = 0,$order='sort ASC,id DESC'){
+        $list=$this->where($where)->order($order)->limit($limit)->select();
         return $list;
     }
 
