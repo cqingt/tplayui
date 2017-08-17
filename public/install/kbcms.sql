@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-08-08 18:24:25
+Date: 2017-08-14 14:06:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,7 @@ CREATE TABLE `ykb_admin_log` (
   `content` text,
   PRIMARY KEY (`log_id`),
   KEY `user_id` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
 
 -- ----------------------------
 -- Records of ykb_admin_log
@@ -173,6 +173,10 @@ INSERT INTO `ykb_admin_log` VALUES ('116', '0', '1502084131', '::1', 'admin', '�
 INSERT INTO `ykb_admin_log` VALUES ('117', '0', '1502087094', '::1', 'admin', '登录系统');
 INSERT INTO `ykb_admin_log` VALUES ('118', '0', '1502163766', '::1', 'admin', '登录系统');
 INSERT INTO `ykb_admin_log` VALUES ('119', '0', '1502171037', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('120', '0', '1502265446', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('121', '0', '1502334675', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('122', '0', '1502417336', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('123', '0', '1502420854', '::1', 'admin', '登录系统');
 
 -- ----------------------------
 -- Table structure for ykb_admin_menu
@@ -184,36 +188,38 @@ CREATE TABLE `ykb_admin_menu` (
   `name` varchar(255) DEFAULT NULL COMMENT '菜单名称',
   `url` varchar(255) DEFAULT NULL COMMENT '菜单链接地址',
   `iconfont` varchar(255) DEFAULT NULL COMMENT '图标',
+  `sort` int(11) DEFAULT '50' COMMENT '排序',
   `lang_id` int(11) DEFAULT '1' COMMENT '语言id',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态1开启2关闭',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=165 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ykb_admin_menu
 -- ----------------------------
-INSERT INTO `ykb_admin_menu` VALUES ('10', '0', '首页', '', '#xe610;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('11', '10', '管理首页', '/admin/index/home.html', '#xe64c;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('12', '10', '后台菜单', '/admin/admin_menu/index.html', '#xe635;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('20', '0', '内容', '', '#xe637;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('21', '20', '栏目管理', '/kbcms/admin_category/index.html', '#xe635;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('22', '20', '文章管理', '/article/admin_content/index.html', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('30', '0', '表单', '', '#xe64a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('40', '0', '功能', '', '#xe637;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('31', '40', '碎片管理', '/kbcms/admin_fragment/index.html', '#xe611;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('32', '40', '推荐位管理', '/kbcms/admin_position/index.html', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('33', '40', '扩展模型管理', '/kbcms/admin_expand/index.html', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('34', '40', '表单管理', '/kbcms/admin_form/index.html', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('50', '0', '系统', '', '#xe646;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('51', '50', '系统设置', '/admin/setting/site.html', '#xe689;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('52', '50', '后台用户', '/admin/admin_user/index.html', '#xe672;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('53', '50', '后台用户组', '/admin/admin_user_group/index.html', '#xe668;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('54', '50', '会员管理', '/admin/user/index.html', '#xe608;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('55', '50', '会员类型', '/admin/user_type/index.html', '#xe630;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('60', '0', '插件中心', '', '#xe637;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('61', '60', '插件管理', '', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('62', '61', '插件工具', '/plug/plugin/index.html', '#xe62a;', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('63', '50', '语言管理', '/admin/lang/index.html', '#xe60e;', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('10', '0', '首页', '', '#xe610;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('11', '10', '管理首页', '/admin/index/home.html', '#xe64c;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('12', '10', '后台菜单', '/admin/admin_menu/index.html', '#xe635;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('20', '0', '内容', '', '#xe637;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('21', '20', '栏目管理', '/kbcms/admin_category/index.html', '#xe635;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('22', '20', '文章管理', '/article/admin_content/index.html', '#xe62a;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('30', '0', '表单', '', '#xe64a;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('40', '0', '功能', '', '#xe637;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('31', '40', '碎片管理', '/kbcms/admin_fragment/index.html', '#xe611;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('32', '40', '推荐位管理', '/kbcms/admin_position/index.html', '#xe62a;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('33', '40', '扩展模型管理', '/kbcms/admin_expand/index.html', '#xe62a;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('34', '40', '表单管理', '/kbcms/admin_form/index.html', '#xe62a;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('50', '0', '系统', '', '#xe646;', '5', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('51', '50', '系统设置', '/admin/setting/site.html', '#xe689;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('52', '50', '后台用户', '/admin/admin_user/index.html', '#xe672;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('53', '50', '后台用户组', '/admin/admin_user_group/index.html', '#xe668;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('54', '50', '会员管理', '/admin/user/index.html', '#xe608;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('55', '50', '会员类型', '/admin/user_type/index.html', '#xe630;', '5', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('60', '0', '插件中心', '', '#xe637;', '6', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('61', '60', '插件管理', '', '#xe62a;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('62', '61', '插件工具', '/plug/plugin/index.html', '#xe62a;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('63', '50', '语言管理', '/admin/lang/index.html', '#xe60e;', '6', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('164', '10', '导航管理', '/admin/nav/index', '#xe634;', '3', '1', '1');
 
 -- ----------------------------
 -- Table structure for ykb_admin_user
@@ -240,7 +246,7 @@ CREATE TABLE `ykb_admin_user` (
 -- ----------------------------
 -- Records of ykb_admin_user
 -- ----------------------------
-INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', 'eff938d0cb3a9e7c2a3ed097acb0d64e', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1502171037', '::1');
+INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', 'eff938d0cb3a9e7c2a3ed097acb0d64e', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1502420853', '::1');
 INSERT INTO `ykb_admin_user` VALUES ('2', '3', 'zz52998', 'e10adc3949ba59abbe56e057f20f883e', '测试管理', '529988248@qq.com', '1', '1', null, '1501222383', '::1');
 
 -- ----------------------------
@@ -409,7 +415,7 @@ CREATE TABLE `ykb_content` (
 -- ----------------------------
 -- Records of ykb_content
 -- ----------------------------
-INSERT INTO `ykb_content` VALUES ('133', '59', '守得初心自清宁，扪心无愧如坦途', '', null, null, null, '1', null, '阿萨达', '1497231583', '', '', null, '0', '1', null, '25', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('133', '59', '守得初心自清宁，扪心无愧如坦途', '', null, null, null, '1', null, '阿萨达', '1497231583', '', '', null, '0', '1', null, '26', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('134', '59', '任岁月变迁，我心不惊', '', null, null, null, null, null, '', '1497259707', '', '', null, '0', '1', null, '2', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('137', '59', '时光且长，一切都来得及', '', null, null, null, '2', null, '', '1497259621', '', '', null, '0', '1', null, '5', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('138', '59', '不殆时间，不负自己', '', null, null, null, null, null, '', '1497259940', '', '', null, '0', '1', null, '10', '0', '', '1', '0');
@@ -1031,6 +1037,47 @@ CREATE TABLE `ykb_lang` (
 -- ----------------------------
 INSERT INTO `ykb_lang` VALUES ('1', '中文', 'zh-cn');
 INSERT INTO `ykb_lang` VALUES ('2', 'english', 'en-us');
+
+-- ----------------------------
+-- Table structure for ykb_nav
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_nav`;
+CREATE TABLE `ykb_nav` (
+  `nav_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `is_main` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '是否为主导航;1:是;0:不是',
+  `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '导航位置名称',
+  `remark` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '备注',
+  `lang_id` int(11) DEFAULT '1' COMMENT '语言id',
+  PRIMARY KEY (`nav_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='前台导航位置表';
+
+-- ----------------------------
+-- Records of ykb_nav
+-- ----------------------------
+INSERT INTO `ykb_nav` VALUES ('1', '1', '主导航', '主导航3', '1');
+
+-- ----------------------------
+-- Table structure for ykb_nav_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_nav_menu`;
+CREATE TABLE `ykb_nav_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nav_id` int(11) NOT NULL COMMENT '导航 id',
+  `parent_id` int(11) NOT NULL COMMENT '父 id',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '状态;1:显示;0:隐藏',
+  `type` tinyint(4) DEFAULT '1' COMMENT '地址类型1自定义url2栏目地址',
+  `sort` int(11) NOT NULL DEFAULT '50' COMMENT '排序',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '菜单名称',
+  `target` varchar(10) NOT NULL DEFAULT '' COMMENT '打开方式',
+  `href` varchar(100) NOT NULL DEFAULT '' COMMENT '链接',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COMMENT='前台导航菜单表';
+
+-- ----------------------------
+-- Records of ykb_nav_menu
+-- ----------------------------
+INSERT INTO `ykb_nav_menu` VALUES ('1', '1', '0', '1', '1', '0', '首页', '', 'home');
+INSERT INTO `ykb_nav_menu` VALUES ('17', '1', '0', '1', '1', '50', '产品1', '_blank', '/');
 
 -- ----------------------------
 -- Table structure for ykb_plugin

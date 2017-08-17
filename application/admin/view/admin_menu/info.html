@@ -27,11 +27,12 @@
                             <input type="text" name="name" value="{$info.name|default=''}" jq-verify="required" jq-error=" 请输入菜单名" placeholder="请输入菜单名" class="layui-input ">
                         </div>
                     </div>
+
                     {neq name='info.rs' value='2'}
                     <div class="layui-form-item">
                         <label class="layui-form-label">地址url</label>
                         <div class="layui-input-block">
-                            <input type="text" name="url" value="{$info.url|default=''}" jq-verify="required" jq-error="请输入地址url" placeholder="请输入地址url" class="layui-input ">
+                            <input type="text" name="url" value="{$info.url|default=''}" jq-verify="" jq-error="请输入地址url" placeholder="请输入地址url" class="layui-input ">
                         </div>
                     </div>
                     {/neq}
@@ -80,37 +81,6 @@
     layui.use('myform', function(){
         var form = layui.form();
         var $= layui.jquery;
-        /*window.onload=function(){
-            url="{:url('checkUrl')}";
-            $.post(url,{
-                id:'{$info.id}',
-            },function(data){
-                if (data==1){
-                    $('#menu_url').show();
-                }else{
-                    $('#menu_url').hide();
-                }
-            });
-        }*/
-        form.on('select(pid)', function(data){
-            url="{:url('checkUrl')}";
-            $.post(url,{
-                id:data.value
-            },function(data){
-                if (data==1){
-                    $('#menu_url').show();
-                }else{
-                    $('#menu_url').hide();
-                }
-
-                /*if (data==1){//显示url
-                    $('#menu_url').show();
-                }else{//不显示url
-                    $('#menu_url').hide();
-                }*/
-            });
-            //alert(data.value);
-        });
     });
 </script>
 {/block}

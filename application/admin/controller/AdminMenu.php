@@ -117,11 +117,11 @@ class AdminMenu extends Admin{
         if ($id==0){
             return 2;
         }
-        $where['pid']=$id;
-        $info=model('admin/AdminMenu')->getWhereInfo($where);
-        if ($info){
+        /*$where['pid']=$id;
+        $info=model('admin/AdminMenu')->loadData($where);
+        if (empty($info)){
             return 2;
-        }
+        }*/
         return 1;
 
     }

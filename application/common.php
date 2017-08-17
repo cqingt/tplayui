@@ -615,3 +615,17 @@ function match_url($str,$params = array(), $mustParams = array()){
     $newParams = array_filter($newParams);
     return url($str, $newParams);
 }
+/*******************************微信相关开始**********************************/
+/**
+ * 获取微信配置信息
+ * $weichat_id  微信配置id
+ */
+function weichat_info($weichat_id){
+    if (empty($weichat_id)){
+        return ;
+    }
+    return Db::name('wechat')->where('weichat_id',$weichat_id)->find();
+}
+
+
+/*******************************微信相关结束**********************************/
