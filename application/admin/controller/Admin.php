@@ -167,7 +167,15 @@ class Admin extends Controller{
      */
     public function wxMenuCheck(){
         //获取变量
+        $id = input('post.menu_id');
         $parentId = input('post.parent_id');
+        if ($id){
+            $where['menu_id']=$id;
+            $info=model('weichat/WeichatMenu')->getWhereInfo($where);
+            if ($info['parent_id']==$parentId){
+                return true;
+            }
+        }
         if ($parentId==0){//如果是一级分类
             $count=model('weichat/WeichatMenu')->getCount(array('weichat_id'=>get_weichat_id(),'parent_id'=>0));
             if ($count>=3){
@@ -178,6 +186,11 @@ class Admin extends Controller{
             if ($count>=5){
                 return '二级级菜单最多5个';
             }
+        }
+        $where['menu_id']=$parentId;
+        $info=model('weichat/WeichatMenu')->getWhereInfo($where);
+        if ($info && ($info['parent_id']!=0)){
+            return '微信公众平台不可添加三级菜单';
         }
         return true;
     }
