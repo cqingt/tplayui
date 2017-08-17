@@ -30,6 +30,10 @@ class Admin extends Controller{
                 $this->assign('infoModule',$this->_infoModule());
             }
         }
+        //检查微信weichat_id
+        if (empty(session('admin.weichat_id'))){
+            session('admin.weichat_id',$this->weichatId());
+        }
     }
     /**
      * 检测用户是否登录
@@ -100,6 +104,79 @@ class Admin extends Controller{
         foreach ($cat as $vo) {
             if ($parentId == $vo['nav_id']) {
                 return '不可以将上一级栏目移动到子栏目';
+            }
+        }
+        return true;
+    }
+    /**
+     * 检测微信weichat_id
+     * @return int 用户IP
+     */
+    protected function weichatId(){
+        $weichat_id = session('admin.weichat_id');
+        if (empty($weichat_id)) {
+            $info=\think\Db::name('weichat')->where('is_bind','1')->order('weichat_id ASC')->find();
+            if (empty($info)){
+                $info=\think\Db::name('weichat')->order('weichat_id ASC')->find();
+            }
+            return $info['weichat_id'];
+        }
+    }
+    /**
+     * 检查微信菜单修改信息
+     */
+    public function parentWxMenuCheck(){
+        //获取变量
+        $id = input('post.menu_id');
+        $parentId = input('post.parent_id');
+        //判断空上级
+        if(!$parentId){
+            return true;
+        }
+        // 分类检测
+        if ($id == $parentId){
+            return '不可以将当前栏目设置为上一级栏目';
+        }
+        $cat = model('weichat/WeichatMenu')->loadList(array('weichat_id'=>get_weichat_id()),$id);
+        if(empty($cat)){
+            return true;
+        }
+        foreach ($cat as $vo) {
+            if ($parentId == $vo['menu_id']) {
+                return '不可以将上一级栏目移动到子栏目';
+            }
+        }
+        return true;
+    }
+    /**
+     * 检查微信三级菜单修改信息
+     */
+    public function parentWxMenuThreeCheck(){
+        //获取变量
+        $parentId = input('post.parent_id');
+        //判断空上级
+        $where['menu_id']=$parentId;
+        $info=model('weichat/WeichatMenu')->getWhereInfo($where);
+        if ($info && ($info['parent_id']!=0)){
+            return '微信公众平台不可添加三级菜单';
+        }
+        return true;
+    }
+    /**
+     * 微信菜单检查
+     */
+    public function wxMenuCheck(){
+        //获取变量
+        $parentId = input('post.parent_id');
+        if ($parentId==0){//如果是一级分类
+            $count=model('weichat/WeichatMenu')->getCount(array('weichat_id'=>get_weichat_id(),'parent_id'=>0));
+            if ($count>=3){
+                return '一级菜单最多3个';
+            }
+        }else{//如果是二级分类
+            $count=model('weichat/WeichatMenu')->getCount(array('weichat_id'=>get_weichat_id(),'parent_id'=>$parentId));
+            if ($count>=5){
+                return '二级级菜单最多5个';
             }
         }
         return true;

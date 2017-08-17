@@ -52,9 +52,21 @@ class WeichatMenu extends Admin {
         $weichatId = input('menu_id');
         $model = model('WeichatMenu');
         if (input('post.')){
+            $check=$this->wxMenuCheck();
+            if ($check!==true){
+                return ajaxReturn(0,$check);
+            }
             if ($weichatId){
+                $check_status=$this->parentWxMenuCheck();
+                if ($check_status!==true){
+                    return ajaxReturn(0,$check_status);
+                }
                 $status=$model->edit();
             }else{
+                $check_status=$this->parentWxMenuThreeCheck();
+                if ($check_status!==true){
+                    return ajaxReturn(0,$check_status);
+                }
                 $status=$model->add();
             }
             if($status!==false){

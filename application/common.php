@@ -574,6 +574,13 @@ function get_lang_id(){
     }
     return false;
 }
+
+/**
+ * 获取当前微信id
+ */
+function get_weichat_id(){
+    return session('admin.weichat_id');
+}
 /**
  * 自适应URL规则
  * @param string $str URL路径

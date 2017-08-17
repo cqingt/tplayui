@@ -43,4 +43,18 @@ class Api extends Controller{
         }
         return ajaxReturn(200,'语言切换成功！您现在操作的是'.input('lang'));
     }
+    /**
+     * 更换微信公众号
+     */
+    public function changeWx(){
+        $weichat_id=input('post.weichat_id');
+        if (empty($weichat_id)){
+            return ;
+        }
+        $where['weichat_id']=['gt',0];
+        Db::name('weichat')->where($where)->setField('is_bind','2');
+        Db::name('weichat')->where('weichat_id',$weichat_id)->setField('is_bind','1');
+        session('admin.weichat_id',$weichat_id);
+        return ajaxReturn(200,'公众平台切换成功!');
+    }
 }

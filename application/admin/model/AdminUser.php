@@ -139,6 +139,7 @@ class AdminUser extends Model {
     public function logout(){
         session('admin_user', null);
         session('admin_user_sign', null);
+        session('admin', null);
     }
 
 }

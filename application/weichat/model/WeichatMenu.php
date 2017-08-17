@@ -27,6 +27,9 @@ class WeichatMenu extends Model
      * @return 数组
      */
     public function loadData($where = array(), $limit = 0){
+        if (get_weichat_id()){
+            $where['weichat_id']=get_weichat_id();
+        }
         $pageList=$this->where($where)->order('sort ASC , menu_id ASC')->limit($limit)->select();
         return $pageList;
     }
@@ -49,11 +52,16 @@ class WeichatMenu extends Model
         $info = $this->where($where)->find();
         return $info;
     }
+
+    public function getCount($where=array()){
+        return $this->where($where)->count();
+    }
     /**
      * 新增
      * @return  栏目id menu_id |false
      */
     public function add(){
+        $_POST['weichat_id']=get_weichat_id();
         if ($this->allowField(true)->save($_POST)>0){
             return true;
         }else{

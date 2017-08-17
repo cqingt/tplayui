@@ -19,7 +19,8 @@
             <td>{$vo.weichat_id}</td>
             <td>{$vo.weichat_name}</td>
             <td>{$vo.token}</td>
-            <td><input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="绑定|未绑" {eq name="vo.is_bind" value="1"}checked{/eq}  lay-filter="ajax" data-params='{"url":"{:url("api/api/upField")}","confirm":"true","data":"table=weichat&id_name=weichat_id&id_value={$vo.weichat_id}&field=is_bind","complete":"up"}'></td>
+            <td>
+                <input type="radio" lay-filter="is_bind" name="is_bind" {eq name="vo.is_bind" value="1"}checked{/eq} title="使用" value="{$vo.weichat_id}"/>
             <td>
                 <a href="{:url('info',array('weichat_id'=>$vo['weichat_id']))}" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
@@ -40,6 +41,27 @@
 {/block}
 {block name="script"}
 <script>
-    layui.use('default');
+    layui.use('default', function(){
+        var $ = layui.jquery,
+                form = layui.form();
+        //各种基于事件的操作，下面会有进一步介绍
+        //自定义
+        form.on('radio(is_bind)', function(data){
+            url="{:url('/api/Api/changeWx')}";
+            $.post(url,{
+                weichat_id:data.value,
+            },function(data){
+                if (data.status==200){
+                    layer.msg(data.msg, {
+                        icon: 1
+                    });
+                }else{
+                    layer.msg(data.msg, {
+                        icon: 5
+                    });
+                }
+            });
+        });
+    });
 </script>
 {/block}
