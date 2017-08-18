@@ -9,6 +9,7 @@
             <th>菜单名称</th>
             <th>菜单类型</th>
             <th width="180">触发内容</th>
+            <th width="80">顺序</th>
             <th width="240">操作</th>
         </tr>
         </thead>
@@ -18,6 +19,7 @@
             <td>{$vo.cname}</td>
             <td>{$type_arr[$vo.type]}</td>
             <td>{$vo.key}</td>
+            <td><input type="text" class="layui-input ajax-blur" name="field_value" value="{$vo.sort}" data-params='{"url":"{:url("api/api/upField")}","data":"table=weichat_menu&id_name=menu_id&id_value={$vo.menu_id}&field=sort","loading":"false","complete":"up"}'> </td>
             <td>
                 <a href="{:url('info',array('menu_id'=>$vo.menu_id))}" class="layui-btn layui-btn-mini modal-catch">
                     <i class="iconfont">&#xe653;</i>编辑
