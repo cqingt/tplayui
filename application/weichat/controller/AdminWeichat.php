@@ -12,21 +12,23 @@ use \org\weixin\Wechat;
 class AdminWeichat extends Admin{
     public $weObj='';
     public $wehchatId=1;
+    public $options=array();
+
     public function __construct(\think\Request $request){
         parent::__construct($request);
         /* 设置路由参数 */
     }
     //当任何函数加载时候  会调用此函数
     public function _initialize(){//默认的方法  会自动执行 特征有点像构造方法
-        $where['is_bind']=1;
-        $weichat_info=model('Weichat')->getWhereInfo($where);
-        $options = array(
-            'token' => $weichat_info['token'], //填写你设定的key
-            'encodingaeskey' => $weichat_info['encodingaeskey'], //填写加密用的EncodingAESKey
-            'appid' => $weichat_info['appid'], //填写高级调用功能的app id, 请在微信开发模式后台查询
-            'appsecret' => $weichat_info['secret'] //填写高级调用功能的密钥
-        );
-        $this->weObj = new Wechat($options); //创建实例对象
+//        $where['is_bind']=1;
+//        $weichat_info=model('Weichat')->getWhereInfo($where);
+//        $this->options = array(
+//            'token' => $weichat_info['token'], //填写你设定的key
+//            'encodingaeskey' => $weichat_info['encodingaeskey'], //填写加密用的EncodingAESKey
+//            'appid' => $weichat_info['appid'], //填写高级调用功能的app id, 请在微信开发模式后台查询
+//            'appsecret' => $weichat_info['secret'] //填写高级调用功能的密钥
+//        );
+        //$this->weObj = new Wechat($options); //创建实例对象
 
         /*$weObj = new Wechat($options); //创建实例对象
         $type = $weObj->getRev()->getRevType();
