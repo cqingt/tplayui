@@ -202,6 +202,7 @@ class WeichatMaterialNews extends Admin {
 
                 }
                 $data[$key]['data']=json_encode($val['content']['news_item']);
+                $data[$key]['weichat_id']=get_weichat_id();
                 $data[$key]['add_time']=$val['update_time'];
             }
         }
