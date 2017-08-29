@@ -13,7 +13,7 @@ class WeichatMaterialNews extends Model {
             $where['weichat_id']=get_weichat_id();
         }
         $data = $this->all(function ($query) use ($field,$where,$limit){
-            $query->field($field)->where($where)->order('add_time ASC')->group('group_id')->limit($limit);
+            $query->field($field)->where($where)->order('add_time ASC')->limit($limit);
         });
         if ($data){
             foreach ($data as $key=>$val){
@@ -39,26 +39,6 @@ class WeichatMaterialNews extends Model {
             }
         }
         return $data;
-    }
-    /**
-     * 获取上传素材数据
-     */
-    public function upAllList($where=array(),$limit=0,$field='*'){
-        if (get_weichat_id()){
-            $where['weichat_id']=get_weichat_id();
-        }
-        $data = $this->all(function ($query) use ($field,$where,$limit){
-            $query->field($field)->where($where)->order('sort ASC')->group('group_id')->limit($limit);
-        });
-        if ($data){
-            $arr=array();
-            foreach ($data as $key=>$val){
-                $where_child=array();
-                $where_child['group_id']=['eq',$val['group_id']];
-                $arr[]=$this->field('title,thumb_media_id,author,digest,show_cover_pic,content,content_source_url')->where($where_child)->order('sort ASC')->select();
-            }
-        }
-        return $arr;
     }
 
     /**
@@ -86,7 +66,7 @@ class WeichatMaterialNews extends Model {
     }
     /**
      * 获取信息
-     * @param int $groupId ID
+     * @param int $materialId ID
      * @return array 信息
      */
     public function getInfo($materialId = 1){

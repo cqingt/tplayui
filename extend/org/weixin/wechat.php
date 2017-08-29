@@ -1761,7 +1761,8 @@ class Wechat
 		if (!$this->access_token && !$this->checkAuth()) return false;
 		//原先的上传多媒体文件接口使用 self::UPLOAD_MEDIA_URL 前缀
 		$result = $this->http_post(self::API_URL_PREFIX.self::MEDIA_UPLOADIMG_URL.'access_token='.$this->access_token,$data,true);
-		if ($result)
+		var_dump($result);exit;
+        if ($result)
 		{
 			$json = json_decode($result,true);
 			if (!$json || !empty($json['errcode'])) {

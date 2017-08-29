@@ -579,7 +579,13 @@ function get_lang_id(){
  * 获取当前微信id
  */
 function get_weichat_id(){
-    return session('admin.weichat_id');
+    if (session('admin.weichat_id')){
+        $rs=session('admin.weichat_id');
+    }else{
+        $info=Db::name('weichat')->where('is_bind',1)->find();
+        $rs=$info['weichat_id'];
+    }
+    return $rs;
 }
 /**
  * 自适应URL规则
@@ -622,7 +628,25 @@ function match_url($str,$params = array(), $mustParams = array()){
     $newParams = array_filter($newParams);
     return url($str, $newParams);
 }
+function get_table_last_id($table='weichat_material_news'){
+    //查询最后一条数据主键设置为分组
+    $last_info=Db::query("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name='".config('database.prefix')."$table'");
+    return $last_info[0]['AUTO_INCREMENT'];
+}
 /*******************************微信相关开始**********************************/
+/**
+ * 获取当前微信配置信息
+ */
+function get_weichat_options(){
+    $where['is_bind']=1;
+    $weichat_info=Db::name('weichat')->where($where)->find();
+    return array(
+        'token' => $weichat_info['token'], //填写你设定的key
+        'encodingaeskey' => $weichat_info['encodingaeskey'], //填写加密用的EncodingAESKey
+        'appid' => $weichat_info['appid'], //填写高级调用功能的app id, 请在微信开发模式后台查询
+        'appsecret' => $weichat_info['secret'] //填写高级调用功能的密钥
+    );
+}
 /**
  * 获取微信配置信息
  * $weichat_id  微信配置id
@@ -633,6 +657,66 @@ function weichat_info($weichat_id){
     }
     return Db::name('wechat')->where('weichat_id',$weichat_id)->find();
 }
+// 防超时的file_get_contents改造函数
+function wp_file_get_contents($url) {
+    $context = stream_context_create ( array (
+        'https' => array (
+            'timeout' => 30
+        )
+    ) ); // 超时时间，单位为秒
 
+    return file_get_contents ( $url, 0, $context );
+}
+// 创建多级目录
+function mkdirs($dir) {
+    if (! is_dir ( $dir )) {
+        if (! mkdirs ( dirname ( $dir ) )) {
+            return false;
+        }
+        if (! mkdir ( $dir, 0777 )) {
+            return false;
+        }
+    }
+    return true;
+}
+// 全局的安全过滤函数
+function safe($text, $type = 'html') {
+    // 无标签格式
+    $text_tags = '';
+    // 只保留链接
+    $link_tags = '<a>';
+    // 只保留图片
+    $image_tags = '<img>';
+    // 只存在字体样式
+    $font_tags = '<i><b><u><s><em><strong><font><big><small><sup><sub><bdo><h1><h2><h3><h4><h5><h6>';
+    // 标题摘要基本格式
+    $base_tags = $font_tags . '<p><br><hr><a><img><map><area><pre><code><q><blockquote><acronym><cite><ins><del><center><strike><section><header><footer><article><nav><audio><video>';
+    // 兼容Form格式
+    $form_tags = $base_tags . '<form><input><textarea><button><select><optgroup><option><label><fieldset><legend>';
+    // 内容等允许HTML的格式
+    $html_tags = $base_tags . '<meta><ul><ol><li><dl><dd><dt><table><caption><td><th><tr><thead><tbody><tfoot><col><colgroup><div><span><object><embed><param>';
+    // 全HTML格式
+    $all_tags = $form_tags . $html_tags . '<!DOCTYPE><html><head><title><body><base><basefont><script><noscript><applet><object><param><style><frame><frameset><noframes><iframe>';
+    // 过滤标签
+    $text = html_entity_decode ( $text, ENT_QUOTES, 'UTF-8' );
+    $text = strip_tags ( $text, ${$type . '_tags'} );
+
+    // 过滤攻击代码
+    if ($type != 'all') {
+        // 过滤危险的属性，如：过滤on事件lang js
+        while ( preg_match ( '/(<[^><]+)(ondblclick|onclick|onload|onerror|unload|onmouseover|onmouseup|onmouseout|onmousedown|onkeydown|onkeypress|onkeyup|onblur|onchange|onfocus|codebase|dynsrc|lowsrc)([^><]*)/i', $text, $mat ) ) {
+            $text = str_ireplace ( $mat [0], $mat [1] . $mat [3], $text );
+        }
+        while ( preg_match ( '/(<[^><]+)(window\.|javascript:|js:|about:|file:|document\.|vbs:|cookie)([^><]*)/i', $text, $mat ) ) {
+            $text = str_ireplace ( $mat [0], $mat [1] . $mat [3], $text );
+        }
+    }
+    return $text;
+}
 
 /*******************************微信相关结束**********************************/
+/*******************************验证规则开始**********************************/
+function is_url($str){
+    return preg_match("/^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\’:+!]*([^<>\"])*$/", $str);
+}
+/*******************************验证规则结束**********************************/
