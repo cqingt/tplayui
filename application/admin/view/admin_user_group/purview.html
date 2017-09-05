@@ -5,27 +5,52 @@
 <div class="container-fluid larry-wrapper">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <section class="panel panel-padding">
-                <form id="form1" class="layui-form layui-form-pane" action="{:url('')}">
+            <form id="form1" class="layui-form layui-form-pane" action="{:url('')}">
+            <section class="panel">
+                <div class="panel-heading" style="padding:0.8em;">
+                    <b>权限列表</b>
+                </div>
+                <section class="panel panel-padding">
 
-                    {foreach name="AdminMenu" item="vo"}
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">{$vo.name}</label>
-                        <div class="layui-input-block">
-                            <input type="checkbox" lay-filter="checkbox" {in name="vo.id" value="$menu_purview"}checked{/in} value="{$vo.id}" class="checkAll" name="menu_purview[{$vo.id}]" title="全部">
+                        {foreach name="AdminMenu" item="vo"}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">{$vo.name}</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" lay-filter="checkbox" {in name="vo.id" value="$menu_purview"}checked{/in} value="{$vo.id}" class="checkAll" name="menu_purview[{$vo.id}]" title="{$vo.name}">
+                                {foreach name="vo.sub" item="v" key='k'}
+                                <input type="checkbox" value="{$v.id}" {in name="v.id" value="$menu_purview"}checked{/in} name="menu_purview[{$v.id}]" title="{$v.name}">
+                                {/foreach}
+                            </div>
+                        </div>
+                        {/foreach}
+                </section>
+            </section>
+                <section class="panel">
+                    <div class="panel-heading" style="padding:0.8em;">
+                        <b>菜单列表</b>
+                    </div>
+                    <section class="panel panel-padding">
+                        {foreach name="AdminPurvew" item="vo"}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">{$vo.name}</label>
                             {foreach name="vo.sub" item="v" key='k'}
-                            <input type="checkbox" value="{$v.id}" {in name="v.id" value="$menu_purview"}checked{/in} name="menu_purview[{$v.id}]" title="{$v.name}">
+                            <div class="layui-input-block">
+                                <input type="checkbox" lay-filter="checkbox" title="{$v.name}">
+
+                                <input type="checkbox" lay-filter="checkbox" title="新增">
+                            </div>
                             {/foreach}
                         </div>
-                    </div>
-                    {/foreach}
-                    <div class="layui-input-block">
-                        <input type="hidden" name="group_id" type="hidden" value="{$info.group_id}">
-                        <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </form>
-            </section>
+                        {/foreach}
+                    </section>
+                </section>
+
+                <div class="layui-input-block">
+                    <input type="hidden" name="group_id" type="hidden" value="{$info.group_id}">
+                    <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -33,14 +58,9 @@
 {/block}
 {block name="script"}
 <script>
-    /*$("#sel-all-info").click(function () {
-        var _checked = $(this).prop('checked');
-        $('.info-item').prop('checked', _checked);
-    });*/
     layui.use('pageform', function(){
         var form = layui.form();
         var $= layui.jquery;
-
         //各种基于事件的操作，下面会有进一步介绍
         form.on('checkbox(checkbox)', function(data){
             var child = $(data.elem).parents('.layui-input-block').find('input[type="checkbox"]');
@@ -48,18 +68,9 @@
                 item.checked = data.elem.checked;
             });
             form.render('checkbox');
-            /*if (data.elem.checked) {
-                $(data.elem).parent().children('input').attr('checked',true)
-                $(data.elem).parent().children('.layui-form-checkbox').addClass('layui-form-checked');
-            } else {
-                $(data.elem).parent().children('input').attr('checked',false)
-                $(data.elem).parent().children('.layui-form-checkbox').removeClass('layui-form-checked');
-            }*/
-//            console.log(data.elem); //得到checkbox原始DOM对象
-//            console.log(data.elem.checked); //是否被选中，true或者false
-//            console.log(data.value); //复选框value值，也可以通过data.elem.value得到
-//            console.log(data.othis); //得到美化后的DOM对象
         });
+
+
     });
 </script>
 {/block}

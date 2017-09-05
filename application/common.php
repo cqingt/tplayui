@@ -186,6 +186,48 @@ function get_config_file($file){
     return $file;
 }
 /**
+ * 读取模块配置
+ * @param string $file 调用文件
+ * @return array
+ */
+function load_controller($file){
+    $file = get_controller_file($file);
+    return require $file;
+}
+/**
+ * 解析配置文件路径
+ * @param string $file 文件路径或简写路径
+ * @return dir
+ */
+function get_controller_file($file){
+    $name = $file;
+    if(!is_file($file)){
+        $str = explode('/', $file);
+        $strCount = count($str);
+        switch ($strCount) {
+            case 1:
+                //$app = APP_NAME;
+                $app = 'admin';
+                $name = $str[0];
+                break;
+            case 2:
+                $app = $str[0];
+                $name = $str[1];
+                break;
+        }
+        $app = strtolower($app);
+        if(empty($app)&&empty($file)){
+            throw new \Exception("Controller '{$file}' not found'", 500);
+        }
+        $file = APP_PATH . "{$app}/controller/{$name}.php";
+        if(!file_exists($file)){
+            throw new \Exception("Controller '{$file}' not found", 500);
+        }
+    }
+    return $file;
+}
+
+/**
  * 二维数组排序
  * @param array $array 排序的数组
  * @param string $key 排序主键

@@ -80,7 +80,6 @@ class AdminUserGroup extends Admin {
             }
         }else{
             $groupId = input('group_id');
-            //var_dump($groupId);
             if(empty($groupId)){
                 $this->error('参数不能为空！');
             }
@@ -89,13 +88,25 @@ class AdminUserGroup extends Admin {
             if(!$info){
                 $this->error('该组信息不存在');
             }
-            $AdminPurvew = model('AdminMenu')->getPurview()['data']['list'];//权限菜单
             $AdminMenu = model('AdminMenu')->getPurMenu();//后台菜单
-            $breadCrumb = array('用户组列表'=>url('index'),'权限设置('.$info['name'].')'=>url('',array('group_id'=>$groupId)));
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('AdminPurvew', $AdminPurvew);
+            /*$AdminPurvew = $AdminMenu;//权限菜单
+            if ($AdminPurvew){
+                foreach ($AdminPurvew as $key => $val) {
+                    if (!empty($val['sub'])){
+                        foreach ($val['sub'] as $k=>$v){
+                            if ($v['url']){
+                                //print_r();break;
+                                $url_string=explode('/',explode('.',$v['url'])[0]);
+                                //$AdminPurvew[$key]['sub'][$k]['url_string']=$url_string[1].'_'.$url_string[2].'_'.$url_string[3];
+
+                            }
+                        }
+                    }
+                }
+            }
+            print_r($AdminPurvew);*/
+            $this->assign('AdminPurvew', array());
             $this->assign('AdminMenu', $AdminMenu);
-            //$this->assign('AdminPurvewArray',$AdminPurvewArray);
             $this->assign('menu_purview', $info['menu_purview']);
             $this->assign('info',$info);
             return $this->fetch();

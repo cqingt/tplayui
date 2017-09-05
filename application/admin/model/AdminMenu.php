@@ -56,7 +56,6 @@ class AdminMenu extends Model{
      */
 	public function getMenu($loginUserInfo = array(),$cutUrl = '',$urlComplete = true){
 		$list = (array)get_all_service('Menu','Admin');
-
         if (!empty($loginUserInfo)&&(ADMIN_ID!=1)){
             $list=get_menu_purview($list['data']['list'],$loginUserInfo['menu_purview']);
         }
