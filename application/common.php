@@ -185,80 +185,7 @@ function get_config_file($file){
     }
     return $file;
 }
-/**
- * 读取模块配置
- * @param string $file 调用文件
- * @return array
- */
-function load_controller($file){
-    $file = get_controller_file($file);
-    return require $file;
-}
-/**
- * 解析配置文件路径
- * @param string $file 文件路径或简写路径
- * @return dir
- */
-function get_controller_file($file){
-    $name = $file;
-    if(!is_file($file)){
-        $str = explode('/', $file);
-        $strCount = count($str);
-        switch ($strCount) {
-            case 1:
-                //$app = APP_NAME;
-                $app = 'admin';
-                $name = $str[0];
-                break;
-            case 2:
-                $app = $str[0];
-                $name = $str[1];
-                break;
-        }
-        $app = strtolower($app);
-        if(empty($app)&&empty($file)){
-            throw new \Exception("Controller '{$file}' not found'", 500);
-        }
-        $file = APP_PATH . "{$app}/controller/{$name}.php";
-        if(!file_exists($file)){
-            throw new \Exception("Controller '{$file}' not found", 500);
-        }
-    }
-    return $file;
-}
 
-/**
- * 二维数组排序
- * @param array $array 排序的数组
- * @param string $key 排序主键
- * @param string $type 排序类型 asc|desc
- * @param bool $reset 是否返回原始主键
- * @return array
- */
-function array_order($array, $key, $type = 'asc', $reset = false)
-{
-    if (empty($array) || !is_array($array)) {
-        return $array;
-    }
-    foreach ($array as $k => $v) {
-        $keysvalue[$k] = $v[$key];
-    }
-    if ($type == 'asc') {
-        asort($keysvalue);
-    } else {
-        arsort($keysvalue);
-    }
-    $i = 0;
-    foreach ($keysvalue as $k => $v) {
-        $i++;
-        if ($reset) {
-            $new_array[$k] = $array[$k];
-        } else {
-            $new_array[$i] = $array[$k];
-        }
-    }
-    return $new_array;
-}
 //ajaxReturn返回json数据
 function ajaxReturn($code,$msg='操作成功',$url='',$data=array(array('name'=>'paco','url'=>'yikaiba.com')),$render=true){
     $tmp['status']=$code;
@@ -369,143 +296,8 @@ function delDirAndFile($path, $delDir = FALSE) {
     }
 }
 
-/**
- * @param $arr
- * @param $key_name
- * @return array
- * 将数据库中查出的列表以指定的 id 作为数组的键名
- */
-function convert_arr_key($arr, $key_name){
-    $arr2 = array();
-    foreach($arr as $key => $val){
-        $arr2[$val[$key_name]] = $val;
-    }
-    return $arr2;
-}
-/**
- * @param $arr
- * @param $key_name
- * @param $key_name2
- * @return array
- * 将数据库中查出的列表以指定的 id 作为数组的键名 数组指定列为元素 的一个数组
- */
-function get_id_val($arr, $key_name,$key_name2)
-{
-    $arr2 = array();
-    foreach($arr as $key => $val){
-        $arr2[$val[$key_name]] = $val[$key_name2];
-    }
-    return $arr2;
-}
-//php获取中文字符拼音首字母
-function getFirstCharter($str){
-    if(empty($str))
-    {
-        return '';
-    }
-    $fchar=ord($str{0});
-    if($fchar>=ord('A')&&$fchar<=ord('z')) return strtoupper($str{0});
-    $s1=iconv('UTF-8','gbk',$str);
-    $s2=iconv('gbk','UTF-8',$s1);
-    $s=$s2==$str?$s1:$str;
-    $asc=ord($s{0})*256+ord($s{1})-65536;
-    if($asc>=-20319&&$asc<=-20284) return 'A';
-    if($asc>=-20283&&$asc<=-19776) return 'B';
-    if($asc>=-19775&&$asc<=-19219) return 'C';
-    if($asc>=-19218&&$asc<=-18711) return 'D';
-    if($asc>=-18710&&$asc<=-18527) return 'E';
-    if($asc>=-18526&&$asc<=-18240) return 'F';
-    if($asc>=-18239&&$asc<=-17923) return 'G';
-    if($asc>=-17922&&$asc<=-17418) return 'H';
-    if($asc>=-17417&&$asc<=-16475) return 'J';
-    if($asc>=-16474&&$asc<=-16213) return 'K';
-    if($asc>=-16212&&$asc<=-15641) return 'L';
-    if($asc>=-15640&&$asc<=-15166) return 'M';
-    if($asc>=-15165&&$asc<=-14923) return 'N';
-    if($asc>=-14922&&$asc<=-14915) return 'O';
-    if($asc>=-14914&&$asc<=-14631) return 'P';
-    if($asc>=-14630&&$asc<=-14150) return 'Q';
-    if($asc>=-14149&&$asc<=-14091) return 'R';
-    if($asc>=-14090&&$asc<=-13319) return 'S';
-    if($asc>=-13318&&$asc<=-12839) return 'T';
-    if($asc>=-12838&&$asc<=-12557) return 'W';
-    if($asc>=-12556&&$asc<=-11848) return 'X';
-    if($asc>=-11847&&$asc<=-11056) return 'Y';
-    if($asc>=-11055&&$asc<=-10247) return 'Z';
-    return null;
-}
 
 
-/**
- * 递归调用找到 重子重孙
- * @param type $cat_id
- */
-function getCatGrandson2($cat_id){
-    $GLOBALS['catGrandson'][] = $cat_id;
-    foreach($GLOBALS['category_id_arr'] as $k => $v){
-        // 找到孙子
-        if($v == $cat_id){
-            getCatGrandson2($k); // 继续找孙子
-        }
-    }
-}
-
-/**
- * 多个数组的笛卡尔积
- *
- * @param unknown_type $data
- */
-function combineDika() {
-    $data = func_get_args();
-    $data = current($data);
-    $cnt = count($data);
-    $result = array();
-    $arr1 = array_shift($data);
-    foreach($arr1 as $key=>$item)
-    {
-        $result[] = array($item);
-    }
-
-    foreach($data as $key=>$item)
-    {
-        $result = combineArray($result,$item);
-    }
-    return $result;
-}
-/**
- * 两个数组的笛卡尔积
- * @param unknown_type $arr1
- * @param unknown_type $arr2
- */
-function combineArray($arr1,$arr2) {
-    $result = array();
-    foreach ($arr1 as $item1)
-    {
-        foreach ($arr2 as $item2)
-        {
-            $temp = $item1;
-            $temp[] = $item2;
-            $result[] = $temp;
-        }
-    }
-    return $result;
-}
-
-/**
- * 将二维数组以元素的某个值作为键 并归类数组
- * array( array('name'=>'aa','type'=>'pay'), array('name'=>'cc','type'=>'pay') )
- * array('pay'=>array( array('name'=>'aa','type'=>'pay') , array('name'=>'cc','type'=>'pay') ))
- * @param $arr 数组
- * @param $key 分组值的key
- * @return array
- */
-function group_same_key($arr,$key){
-    $new_arr = array();
-    foreach($arr as $k=>$v ){
-        $new_arr[$v[$key]][] = $v;
-    }
-    return $new_arr;
-}
 /**
  * 过滤数组元素前后空格 (支持多维数组)
  * @param $array 要过滤的数组
@@ -542,17 +334,6 @@ function len($str, $len=0)
         return $str;
     }
 }
-
-/**
- * 获取插件配置
- */
-function get_plug_info($name='weixin',$type='payment'){
-    $where['code']=['eq',$name];
-    $where['type']=['eq',$type];
-    $paymentPlugin = \think\Db::name('plugin')->where($where)->find(); // 找到微信支付插件的配置
-    $config_value = unserialize($paymentPlugin['config_value']); // 配置反序列化
-    return $config_value;
-}
 /**
  * 写文件
  */
@@ -564,14 +345,6 @@ function write_text($content,$payType='weixin'){
     $file = $path."weixin_log.txt";    // 写入的文件
     $fp = fopen($file, 'a+b');
     fwrite($fp, var_export($content, true));
-    //$b = file_get_contents('php://input');
-
-    //$postObj = simplexml_load_string($b, 'SimpleXMLElement', LIBXML_NOCDATA); //解析返回的xml
-//$content = $_REQUEST;  // 写入的内容
-//var_dump($content);
-//fwrite($fp, var_export($postObj->out_trade_no, true));
-//fwrite($fp, var_export($postObj->out_trade_no, true));
-
 }
 /**
  * 写文件
@@ -616,19 +389,6 @@ function get_lang_id(){
     }
     return false;
 }
-
-/**
- * 获取当前微信id
- */
-function get_weichat_id(){
-    if (session('admin.weichat_id')){
-        $rs=session('admin.weichat_id');
-    }else{
-        $info=Db::name('weichat')->where('is_bind',1)->find();
-        $rs=$info['weichat_id'];
-    }
-    return $rs;
-}
 /**
  * 自适应URL规则
  * @param string $str URL路径
@@ -670,93 +430,6 @@ function match_url($str,$params = array(), $mustParams = array()){
     $newParams = array_filter($newParams);
     return url($str, $newParams);
 }
-function get_table_last_id($table='weichat_material_news'){
-    //查询最后一条数据主键设置为分组
-    $last_info=Db::query("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name='".config('database.prefix')."$table'");
-    return $last_info[0]['AUTO_INCREMENT'];
-}
-/*******************************微信相关开始**********************************/
-/**
- * 获取当前微信配置信息
- */
-function get_weichat_options(){
-    $where['is_bind']=1;
-    $weichat_info=Db::name('weichat')->where($where)->find();
-    return array(
-        'token' => $weichat_info['token'], //填写你设定的key
-        'encodingaeskey' => $weichat_info['encodingaeskey'], //填写加密用的EncodingAESKey
-        'appid' => $weichat_info['appid'], //填写高级调用功能的app id, 请在微信开发模式后台查询
-        'appsecret' => $weichat_info['secret'] //填写高级调用功能的密钥
-    );
-}
-/**
- * 获取微信配置信息
- * $weichat_id  微信配置id
- */
-function weichat_info($weichat_id){
-    if (empty($weichat_id)){
-        return ;
-    }
-    return Db::name('wechat')->where('weichat_id',$weichat_id)->find();
-}
-// 防超时的file_get_contents改造函数
-function wp_file_get_contents($url) {
-    $context = stream_context_create ( array (
-        'https' => array (
-            'timeout' => 30
-        )
-    ) ); // 超时时间，单位为秒
-
-    return file_get_contents ( $url, 0, $context );
-}
-// 创建多级目录
-function mkdirs($dir) {
-    if (! is_dir ( $dir )) {
-        if (! mkdirs ( dirname ( $dir ) )) {
-            return false;
-        }
-        if (! mkdir ( $dir, 0777 )) {
-            return false;
-        }
-    }
-    return true;
-}
-// 全局的安全过滤函数
-function safe($text, $type = 'html') {
-    // 无标签格式
-    $text_tags = '';
-    // 只保留链接
-    $link_tags = '<a>';
-    // 只保留图片
-    $image_tags = '<img>';
-    // 只存在字体样式
-    $font_tags = '<i><b><u><s><em><strong><font><big><small><sup><sub><bdo><h1><h2><h3><h4><h5><h6>';
-    // 标题摘要基本格式
-    $base_tags = $font_tags . '<p><br><hr><a><img><map><area><pre><code><q><blockquote><acronym><cite><ins><del><center><strike><section><header><footer><article><nav><audio><video>';
-    // 兼容Form格式
-    $form_tags = $base_tags . '<form><input><textarea><button><select><optgroup><option><label><fieldset><legend>';
-    // 内容等允许HTML的格式
-    $html_tags = $base_tags . '<meta><ul><ol><li><dl><dd><dt><table><caption><td><th><tr><thead><tbody><tfoot><col><colgroup><div><span><object><embed><param>';
-    // 全HTML格式
-    $all_tags = $form_tags . $html_tags . '<!DOCTYPE><html><head><title><body><base><basefont><script><noscript><applet><object><param><style><frame><frameset><noframes><iframe>';
-    // 过滤标签
-    $text = html_entity_decode ( $text, ENT_QUOTES, 'UTF-8' );
-    $text = strip_tags ( $text, ${$type . '_tags'} );
-
-    // 过滤攻击代码
-    if ($type != 'all') {
-        // 过滤危险的属性，如：过滤on事件lang js
-        while ( preg_match ( '/(<[^><]+)(ondblclick|onclick|onload|onerror|unload|onmouseover|onmouseup|onmouseout|onmousedown|onkeydown|onkeypress|onkeyup|onblur|onchange|onfocus|codebase|dynsrc|lowsrc)([^><]*)/i', $text, $mat ) ) {
-            $text = str_ireplace ( $mat [0], $mat [1] . $mat [3], $text );
-        }
-        while ( preg_match ( '/(<[^><]+)(window\.|javascript:|js:|about:|file:|document\.|vbs:|cookie)([^><]*)/i', $text, $mat ) ) {
-            $text = str_ireplace ( $mat [0], $mat [1] . $mat [3], $text );
-        }
-    }
-    return $text;
-}
-
-/*******************************微信相关结束**********************************/
 /*******************************验证规则开始**********************************/
 function is_url($str){
     return preg_match("/^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\’:+!]*([^<>\"])*$/", $str);

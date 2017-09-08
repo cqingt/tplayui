@@ -36,21 +36,6 @@ class AdminMenu extends Model{
         $where['id']=input('post.id');
         return $this->allowField(true)->save($_POST,$where);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	/**
      * 获取所有菜单
      */

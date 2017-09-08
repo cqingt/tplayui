@@ -83,7 +83,5 @@ class UserType extends Admin {
             return ajaxReturn(0,'会员类型删除失败！');
         }
     }
-
-
 }
 

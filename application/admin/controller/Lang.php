@@ -89,8 +89,5 @@ class Lang extends Admin {
             return ajaxReturn(0,'语言删除失败！');
         }
     }
-    
-
-
 }
 

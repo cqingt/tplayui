@@ -77,8 +77,5 @@ class AdminFragment extends Admin {
             return ajaxReturn(0,'碎片删除失败！');
         }
     }
-    
-
-
 }
 

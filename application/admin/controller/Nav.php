@@ -84,8 +84,5 @@ class Nav extends Admin {
             return ajaxReturn(0,'导航删除失败！');
         }
     }
-    
-
-
 }
 

@@ -79,7 +79,5 @@ class AdminPosition extends Admin {
             return ajaxReturn(0,'推荐位删除失败！');
         }
     }
-
-
 }
 
