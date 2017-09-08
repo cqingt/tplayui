@@ -1,10 +1,10 @@
-# 1kbcms内容管理系统
+# 1kbcmsv2.0内容管理系统（基础版）
 * * * * *
 * 1kbcms是一款基于thinkphp5.0开发，为小型企业建站，灵活组装开发的管理系统。
 * 1kbcms完全开放源代码，具有良好的开放性、高可扩展性、安全性和透明性，您可以进行二次开发以满足自身需求；
 * 在线浏览：http://cms.yikaiba.com/
 * 后台：http://cms.yikaiba.com/admin
-* git：http://git.oschina.net/yihank/yikaibacms
+* git：https://git.oschina.net/yihank/YiKaiBacmsV2.0.git
 * 看云手册： https://www.kancloud.cn/zz52998/cms1kb
 * 后台账号：admin 后台密码：peixun
 
