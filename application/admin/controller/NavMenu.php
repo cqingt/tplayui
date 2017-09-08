@@ -52,7 +52,7 @@ class NavMenu extends Admin{
         $model = model('NavMenu');
         if (input('post.')){
             if ($id){
-                $check_status=$this->parentMenuCheck();
+                $check_status=$this->parentCheck($id,input('post.parent_id'),'admin/NavMenu');
                 if ($check_status!==true){
                     return ajaxReturn(0,$check_status);
                 }

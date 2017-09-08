@@ -93,46 +93,5 @@ class Setting extends Admin {
             return $this->fetch();
         }
     }
-    /**
-     * 性能设置
-     */
-    public function performance(){
-        if (input('post.')){
-            if(model('Config')->edit()){
-                if (input('post.lang_open')==1){//如果开启多语言
-
-                }else{
-
-                }
-                return ajaxReturn(200,'站点配置成功！');
-            }else{
-                return ajaxReturn(0,'站点配置失败！');
-            }
-        }else{
-            $value = Lang::get('hello thinkphp');
-            var_dump($value);
-            $this->assign('langList',model('Lang')->allList());
-            $this->assign('info',model('Config')->getInfo());
-            return $this->fetch();
-        }
-    }
-    /**
-     * 上传设置
-     */
-    public function upload(){
-        $file = CONFIG_PATH . 'upload.php';
-        if(!IS_POST){
-            $breadCrumb = array('上传设置'=>url());
-            $this->assign('breadCrumb',$breadCrumb);
-            $this->assign('info',load_config($file));
-            $this->adminDisplay();
-        }else{
-            if(save_config($file, $_POST)){
-                $this->success('上传配置成功！');
-            }else{
-                $this->error('上传配置失败');
-            }
-        }
-    }
 }
 

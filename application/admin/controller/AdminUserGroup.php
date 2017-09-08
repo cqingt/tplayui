@@ -89,25 +89,11 @@ class AdminUserGroup extends Admin {
                 $this->error('该组信息不存在');
             }
             $AdminMenu = model('AdminMenu')->getPurMenu();//后台菜单
-            /*$AdminPurvew = $AdminMenu;//权限菜单
-            if ($AdminPurvew){
-                foreach ($AdminPurvew as $key => $val) {
-                    if (!empty($val['sub'])){
-                        foreach ($val['sub'] as $k=>$v){
-                            if ($v['url']){
-                                //print_r();break;
-                                $url_string=explode('/',explode('.',$v['url'])[0]);
-                                //$AdminPurvew[$key]['sub'][$k]['url_string']=$url_string[1].'_'.$url_string[2].'_'.$url_string[3];
-
-                            }
-                        }
-                    }
-                }
-            }
-            print_r($AdminPurvew);*/
-            $this->assign('AdminPurvew', array());
+            $AdminPurvew = $AdminMenu;//权限菜单
+            $this->assign('AdminPurvew',$AdminPurvew);
             $this->assign('AdminMenu', $AdminMenu);
             $this->assign('menu_purview', $info['menu_purview']);
+            $this->assign('base_purview', $info['base_purview']);
             $this->assign('info',$info);
             return $this->fetch();
         }

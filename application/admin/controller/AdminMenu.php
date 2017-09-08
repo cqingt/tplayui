@@ -13,7 +13,7 @@ class AdminMenu extends Admin{
             ),
             'menu' => array(
                 array(
-                    'name' => '菜单',
+                    'name' => '菜单列表',
                     'url' => url('index'),
                     'icon' => 'list',
                 ),
@@ -26,6 +26,7 @@ class AdminMenu extends Admin{
             )
         );
     }
+    //首页
     public function index(){
         $list = model('admin/AdminMenu')->loadList();
         $this->assign('list',$list);
@@ -36,8 +37,12 @@ class AdminMenu extends Admin{
         $id = input('id');
         $model = model('admin/AdminMenu');
         if (input('post.')){
+            if ($_POST['act']){
+                $_POST['act']=json_encode($_POST['act']);
+            }
             if ($id){
-                $check_status=$this->menuCheck();
+                //$check_status=$this->menuCheck();
+                $check_status=$this->parentCheck($id,input('post.pid'),'admin/AdminMenu');
                 if ($check_status!==true){
                     return ajaxReturn(0,$check_status);
                 }
@@ -57,36 +62,11 @@ class AdminMenu extends Admin{
                 $info['rs']=$status;
             }
             $this->assign('info', $info);
+            $this->assign('start_act',count($info['act'])+1);
             $this->assign('menuList',$model->menuLoadlist());
             $this->assign('iconFont',(array)get_all_service('Font','Admin')['data']['list']);
             return $this->fetch();
         }
-    }
-    /**
-     * 检查分类修改信息
-     */
-    public function menuCheck(){
-        //获取变量
-        $id = input('post.id');
-        $parentId = input('post.pid');
-        //判断空上级
-        if(!$parentId){
-            return true;
-        }
-        // 分类检测
-        if ($id == $parentId){
-            return '不可以将当前菜单设置为上一级菜单';
-        }
-        $cat = model('admin/AdminMenu')->loadList(array(),$id);
-        if(empty($cat)){
-            return true;
-        }
-        foreach ($cat as $vo) {
-            if ($parentId == $vo['id']) {
-                return '不可以将上一级菜单移动到子菜单';
-            }
-        }
-        return true;
     }
     //菜单删除
     public function del(){
@@ -117,12 +97,6 @@ class AdminMenu extends Admin{
         if ($id==0){
             return 2;
         }
-        /*$where['pid']=$id;
-        $info=model('admin/AdminMenu')->loadData($where);
-        if (empty($info)){
-            return 2;
-        }*/
         return 1;
-
     }
 }

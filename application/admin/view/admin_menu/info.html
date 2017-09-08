@@ -36,18 +36,6 @@
                         </div>
                     </div>
                     {/neq}
-                    <!--<div class="layui-form-item icon_lists clear">
-                        <label class="layui-form-label">图标</label>
-                        <div class="layui-input-inline" style="text-align:center;">
-                            <i class="icon iconfont">{$info.iconfont}</i>
-                        </div>
-
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-small modal" data-params='{";content";:";.add-subcat";,";area";:";600px,430px";,";title";:";添加分类";,";action";:";add";}' bind="1">
-                                <i class="iconfont"></i> 选择图标
-                            </button>
-                        </div>
-                    </div>-->
                     <div class="layui-form-item" pane>
                         <label class="layui-form-label">选择图标</label>
                         <div class="layui-input-block" >
@@ -64,6 +52,23 @@
                             <input type="radio" name="status" {eq name="info.status" value="2"}checked{/eq} title="禁用" value="2" />
                         </div>
                     </div>
+                    <div id="act">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">操作内容</label>
+                            <button class="layui-btn" id='add_act' type="button">新增</button>
+                        </div>
+                        {foreach name='info.act' item='vo'}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">名称</label>
+                            <div class="layui-input-inline" style='width: 500px;'>
+                                <input name="act[{$key}][name]" value="{$vo.name}" placeholder="请输入" class="layui-input " type="text"></div>
+                            <label class="layui-form-label">方法</label>
+                            <div class="layui-input-inline">
+                                <input name="act[{$key}][act]" value="{$vo.act}" placeholder="请输入" class="layui-input" type="text"></div>
+                            <button class="layui-btn layui-btn-danger del_act" onclick="del_act(this)" type="button">-</button>
+                        </div>
+                        {/foreach}
+                    </div>
                     <div class="layui-input-block">
                         <input type="hidden" name="id" type="hidden" value="{$info.id|default=''}">
                         <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">立即提交</button>
@@ -78,9 +83,31 @@
 {/block}
 {block name="script"}
 <script>
+    var num="{$start_act|default='1'}";
     layui.use('myform', function(){
         var form = layui.form();
         var $= layui.jquery;
+        $("#add_act").click(function() {
+            $("#act").append(
+                    "<div class='layui-form-item' style='width: 500px;'>" +
+                    "<label class='layui-form-label'>名称</label>" +
+                    "<div class='layui-input-inline'>" +
+                    "<input type='text' name='act["+num+"][name]' value='' placeholder='请输入' class='layui-input '>" +
+                    "</div>" +
+                    "<label class='layui-form-label'>方法</label>" +
+                    "<div class='layui-input-inline' style='width: 500px;'>" +
+                    "<input type='text' name='act["+num+"][act]' value='' placeholder='请输入' class='layui-input'>" +
+                    "</div>" +
+                    "<button class='layui-btn layui-btn-danger del_act'  onclick='del_act(this)' type='button'>-</button>" +
+                    "</div>");
+            num++;
+        });
     });
+    function del_act(obj) {
+        var $= layui.jquery;
+        $(obj).parent().remove();
+        num--;
+    }
+
 </script>
 {/block}

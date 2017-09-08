@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-08-14 14:06:53
+Date: 2017-09-08 13:19:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,9 +32,9 @@ CREATE TABLE `ykb_admin_group` (
 -- ----------------------------
 -- Records of ykb_admin_group
 -- ----------------------------
-INSERT INTO `ykb_admin_group` VALUES ('1', '管理员', 'a:2:{i:0;s:15:\"Admin_AppManage\";i:1;s:21:\"Admin_AppManage_index\";}', 'a:4:{i:0;s:19:\"首页_管理首页\";i:1;s:19:\"内容_栏目管理\";i:2;s:19:\"内容_文章管理\";i:3;s:22:\"系统_用户组管理\";}', '1');
-INSERT INTO `ykb_admin_group` VALUES ('3', '测试', null, '10,11,12,20,21,22,30,301,302,40,31,50,51,52,53', '1');
-INSERT INTO `ykb_admin_group` VALUES ('4', '测试2', null, null, '1');
+INSERT INTO `ykb_admin_group` VALUES ('1', '管理员', null, null, '1');
+INSERT INTO `ykb_admin_group` VALUES ('3', '测试', null, '10,11,12,164,20,21,22,30,301,302,40,31,34,32,33,50,51,52,53,54,55,63,60,62,165,166,167,168,169,170,171,172', '1');
+INSERT INTO `ykb_admin_group` VALUES ('4', '测试2', null, '10,11,12,164,20,21,22,30,301,302', '1');
 
 -- ----------------------------
 -- Table structure for ykb_admin_log
@@ -49,7 +49,7 @@ CREATE TABLE `ykb_admin_log` (
   `content` text,
   PRIMARY KEY (`log_id`),
   KEY `user_id` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
 
 -- ----------------------------
 -- Records of ykb_admin_log
@@ -177,6 +177,84 @@ INSERT INTO `ykb_admin_log` VALUES ('120', '0', '1502265446', '::1', 'admin', '�
 INSERT INTO `ykb_admin_log` VALUES ('121', '0', '1502334675', '::1', 'admin', '登录系统');
 INSERT INTO `ykb_admin_log` VALUES ('122', '0', '1502417336', '::1', 'admin', '登录系统');
 INSERT INTO `ykb_admin_log` VALUES ('123', '0', '1502420854', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('124', '0', '1502691413', '192.168.1.2', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('125', '0', '1502691463', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('126', '0', '1502765809', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('127', '0', '1502846367', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('128', '0', '1502933302', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('129', '0', '1502935722', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('130', '0', '1502956199', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('131', '0', '1502956972', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('132', '0', '1502958238', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('133', '0', '1503018968', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('134', '0', '1503025913', '116.52.180.72', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('135', '0', '1503039303', '1.31.55.139', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('136', '0', '1503049034', '39.169.235.12', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('137', '0', '1503050191', '219.137.67.85', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('138', '0', '1503110166', '120.202.149.222', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('139', '0', '1503185142', '49.77.223.235', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('140', '0', '1503206079', '101.232.185.168', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('141', '0', '1503274187', '118.212.217.147', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('142', '0', '1503274188', '118.212.217.147', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('143', '0', '1503274190', '118.212.217.147', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('144', '0', '1503279276', '60.191.25.202', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('145', '0', '1503283586', '106.58.39.124', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('146', '0', '1503285417', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('147', '0', '1503285947', '113.246.153.21', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('148', '0', '1503285948', '113.246.153.21', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('149', '0', '1503295110', '111.172.11.4', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('150', '0', '1503297288', '61.145.213.29', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('151', '0', '1503298685', '116.252.222.186', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('152', '0', '1503298862', '116.252.222.186', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('153', '0', '1503300599', '116.252.222.186', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('154', '0', '1503301432', '116.252.222.186', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('155', '0', '1503306555', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('156', '0', '1503307448', '36.5.181.0', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('157', '0', '1503311202', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('158', '0', '1503326795', '183.63.97.188', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('159', '0', '1503365783', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('160', '0', '1503368665', '121.239.135.225', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('161', '0', '1503370189', '113.246.155.232', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('162', '0', '1503370434', '36.5.181.0', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('163', '0', '1503370650', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('164', '0', '1503376190', '113.88.64.17', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('165', '0', '1503386760', '182.150.27.61', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('166', '0', '1503387480', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('167', '0', '1503390316', '106.120.209.34', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('168', '0', '1503390996', '183.22.249.88', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('169', '0', '1503391084', '125.106.179.33', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('170', '0', '1503391310', '113.99.3.159', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('171', '0', '1503395624', '124.205.139.34', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('172', '0', '1503403300', '36.57.183.43', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('173', '0', '1503408070', '171.8.153.228', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('174', '0', '1503408116', '223.11.210.215', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('175', '0', '1503411165', '27.152.178.3', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('176', '0', '1503451293', '183.22.249.73', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('177', '0', '1503451979', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('178', '0', '1503454514', '183.3.132.156', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('179', '0', '1503467239', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('180', '0', '1503469293', '101.38.3.205', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('181', '0', '1503477376', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('182', '0', '1503478567', '153.35.178.50', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('183', '0', '1503489449', '180.115.35.255', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('184', '0', '1503490519', '183.233.89.106', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('185', '0', '1503537495', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('186', '0', '1503538269', '222.66.185.86', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('187', '0', '1503538396', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('188', '0', '1503541917', '116.3.10.127', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('189', '0', '1503624140', '116.3.6.103', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('190', '0', '1503628139', '116.3.6.103', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('191', '0', '1503648751', '116.3.6.103', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('192', '0', '1503887548', '36.5.143.235', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('193', '0', '1503887598', '36.5.143.235', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('194', '0', '1503888923', '116.3.6.103', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('195', '0', '1503889432', '116.3.6.103', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('196', '0', '1503970746', '36.5.140.134', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('197', '0', '1504591780', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('198', '0', '1504591833', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('199', '0', '1504690716', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('200', '0', '1504835724', '::1', 'admin', '登录系统');
+INSERT INTO `ykb_admin_log` VALUES ('201', '0', '1504836591', '::1', 'admin', '登录系统');
 
 -- ----------------------------
 -- Table structure for ykb_admin_menu
@@ -186,40 +264,51 @@ CREATE TABLE `ykb_admin_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) DEFAULT '0' COMMENT '父级菜单id',
   `name` varchar(255) DEFAULT NULL COMMENT '菜单名称',
-  `url` varchar(255) DEFAULT NULL COMMENT '菜单链接地址',
+  `url` varchar(500) DEFAULT NULL COMMENT '菜单链接地址',
+  `act` text COMMENT '操作',
   `iconfont` varchar(255) DEFAULT NULL COMMENT '图标',
   `sort` int(11) DEFAULT '50' COMMENT '排序',
   `lang_id` int(11) DEFAULT '1' COMMENT '语言id',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态1开启2关闭',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=165 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=175 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ykb_admin_menu
 -- ----------------------------
-INSERT INTO `ykb_admin_menu` VALUES ('10', '0', '首页', '', '#xe610;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('11', '10', '管理首页', '/admin/index/home.html', '#xe64c;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('12', '10', '后台菜单', '/admin/admin_menu/index.html', '#xe635;', '2', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('20', '0', '内容', '', '#xe637;', '2', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('21', '20', '栏目管理', '/kbcms/admin_category/index.html', '#xe635;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('22', '20', '文章管理', '/article/admin_content/index.html', '#xe62a;', '2', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('30', '0', '表单', '', '#xe64a;', '3', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('40', '0', '功能', '', '#xe637;', '4', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('31', '40', '碎片管理', '/kbcms/admin_fragment/index.html', '#xe611;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('32', '40', '推荐位管理', '/kbcms/admin_position/index.html', '#xe62a;', '3', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('33', '40', '扩展模型管理', '/kbcms/admin_expand/index.html', '#xe62a;', '4', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('34', '40', '表单管理', '/kbcms/admin_form/index.html', '#xe62a;', '2', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('50', '0', '系统', '', '#xe646;', '5', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('51', '50', '系统设置', '/admin/setting/site.html', '#xe689;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('52', '50', '后台用户', '/admin/admin_user/index.html', '#xe672;', '2', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('53', '50', '后台用户组', '/admin/admin_user_group/index.html', '#xe668;', '3', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('54', '50', '会员管理', '/admin/user/index.html', '#xe608;', '4', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('55', '50', '会员类型', '/admin/user_type/index.html', '#xe630;', '5', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('60', '0', '插件中心', '', '#xe637;', '6', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('61', '60', '插件管理', '', '#xe62a;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('62', '61', '插件工具', '/plug/plugin/index.html', '#xe62a;', '1', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('63', '50', '语言管理', '/admin/lang/index.html', '#xe60e;', '6', '1', '1');
-INSERT INTO `ykb_admin_menu` VALUES ('164', '10', '导航管理', '/admin/nav/index', '#xe634;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('10', '0', '首页', '', '', '#xe610;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('11', '10', '管理首页', '/admin/index/home.html', '{\"1\":{\"name\":\"\\u9996\\u9875\",\"act\":\"admin_index_home\"}}', '#xe64c;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('12', '10', '后台菜单', '/admin/admin_menu/index.html', '{\"1\":{\"name\":\"\\u5217\\u8868\",\"act\":\"admin_admin_menu_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u83dc\\u5355\",\"act\":\"admin_admin_menu_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\\u83dc\\u5355\",\"act\":\"admin_admin_menu_info_id\"},\"5\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_admin_menu_del\"}}', '#xe635;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('20', '0', '内容', '', '', '#xe637;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('21', '20', '栏目管理', '/kbcms/admin_category/index.html', '{\"1\":{\"name\":\"\\u680f\\u76ee\\u5217\\u8868\",\"act\":\"kbcms_admin_category_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u9875\\u9762\\u680f\\u76ee\",\"act\":\"page_admin_category_info\"},\"3\":{\"name\":\"\\u4fee\\u6539\\u9875\\u9762\\u680f\\u76ee\",\"act\":\"page_admin_category_info_id\"},\"4\":{\"name\":\"\\u5220\\u9664\\u9875\\u9762\\u680f\\u76ee\",\"act\":\"page_admin_category_del\"},\"5\":{\"name\":\"\\u6dfb\\u52a0\\u6587\\u7ae0\\u680f\\u76ee\",\"act\":\"article_admin_category_info\"},\"6\":{\"name\":\"\\u4fee\\u6539\\u6587\\u7ae0\\u680f\\u76ee\",\"act\":\"article_admin_category_info_id\"},\"7\":{\"name\":\"\\u5220\\u9664\\u6587\\u7ae0\\u680f\\u76ee\",\"act\":\"article_admin_category_del\"}}', '#xe635;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('22', '20', '文章管理', '/article/admin_content/index.html', '{\"1\":{\"name\":\"\\u6587\\u7ae0\\u5217\\u8868\",\"act\":\"article_admin_content_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u6587\\u7ae0\",\"act\":\"article_admin_content_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\\u6587\\u7ae0\",\"act\":\"article_admin_content_info_id\"},\"4\":{\"name\":\"\\u5220\\u9664\\u6587\\u7ae0\",\"act\":\"article_admin_content_del\"}}', '#xe62a;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('30', '0', '表单', '', '', '#xe64a;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('40', '0', '功能', '', '', '#xe637;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('31', '40', '碎片管理', '/kbcms/admin_fragment/index.html', '{\"1\":{\"name\":\"\\u788e\\u7247\\u5217\\u8868\",\"act\":\"kbcms_admin_fragment_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u788e\\u7247\",\"act\":\"kbcms_admin_fragment_info\"},\"3\":{\"name\":\"\\u4fee\\u6539\\u788e\\u7247\",\"act\":\"kbcms_admin_fragment_info_fragment_id\"},\"4\":{\"name\":\"\\u5220\\u9664\\u788e\\u7247\",\"act\":\"kbcms_admin_fragment_del\"}}', '#xe611;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('32', '40', '推荐位管理', '/kbcms/admin_position/index.html', '{\"1\":{\"name\":\"\\u63a8\\u8350\\u4f4d\\u5217\\u8868\",\"act\":\"kbcms_admin_position_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u63a8\\u8350\\u4f4d\",\"act\":\"kbcms_admin_position_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"kbcms_admin_position_info_position_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"kbcms_admin_position_del\"}}', '#xe62a;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('33', '40', '扩展模型管理', '/kbcms/admin_expand/index.html', '{\"1\":{\"name\":\"\\u6a21\\u578b\\u5217\\u8868\",\"act\":\"kbcms_admin_expand_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u6a21\\u578b\",\"act\":\"kbcms_admin_expand_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"kbcms_admin_expand_info_fieldset_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"kbcms_admin_expand_del\"},\"5\":{\"name\":\"\\u7ba1\\u7406\",\"act\":\"kbcms_admin_expand_field_index_fieldset_id\"}}', '#xe62a;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('34', '40', '表单管理', '/kbcms/admin_form/index.html', '{\"1\":{\"name\":\"\\u8868\\u5355\\u5217\\u8868\",\"act\":\"kbcms_admin_form_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u8868\\u5355\",\"act\":\"kbcms_admin_form_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"kbcms_admin_form_info_fieldset_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"kbcms_admin_form_del\"},\"5\":{\"name\":\"\\u7ba1\\u7406\",\"act\":\"kbcms_admin_form_field_index_fieldset_id\"}}', '#xe62a;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('50', '0', '系统', '', '', '#xe646;', '5', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('51', '50', '系统设置', '/admin/setting/site.html', '{\"1\":{\"name\":\"\\u7ad9\\u70b9\\u4fe1\\u606f\",\"act\":\"admin_setting_site\"},\"2\":{\"name\":\"\\u6a21\\u677f\\u8bbe\\u7f6e\",\"act\":\"admin_setting_tpl\"},\"3\":{\"name\":\"\\u624b\\u673a\\u8bbe\\u7f6e\",\"act\":\"admin_setting_mobile\"}}', '#xe689;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('52', '50', '后台用户', '/admin/admin_user/index.html', '{\"1\":{\"name\":\"\\u7528\\u6237\\u5217\\u8868\",\"act\":\"admin_admin_user_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u7528\\u6237\",\"act\":\"admin_admin_user_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"admin_admin_user_info_user_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_admin_user_del\"}}', '#xe672;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('53', '50', '后台用户组', '/admin/admin_user_group/index.html', '{\"1\":{\"name\":\"\\u7528\\u6237\\u7ec4\\u5217\\u8868\",\"act\":\"admin_admin_user_group_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u7528\\u6237\\u7ec4\",\"act\":\"admin_admin_user_group_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"admin_admin_user_group_info_group_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_admin_user_group_del\"},\"5\":{\"name\":\"\\u6743\\u9650\",\"act\":\"admin_admin_user_group_purview_group_id\"}}', '#xe668;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('54', '50', '会员管理', '/admin/user/index.html', '{\"1\":{\"name\":\"\\u4f1a\\u5458\\u5217\\u8868\",\"act\":\"admin_user_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u4f1a\\u5458\",\"act\":\"admin_user_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"admin_user_info_user_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_user_del\"}}', '#xe608;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('55', '50', '会员类型', '/admin/user_type/index.html', '{\"1\":{\"name\":\"\\u4f1a\\u5458\\u7c7b\\u578b\\u5217\\u8868\",\"act\":\"admin_user_type_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u4f1a\\u5458\\u7c7b\\u578b\",\"act\":\"admin_user_type_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"admin\\/user_type\\/info\\/type_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_user_type_del\"}}', '#xe630;', '5', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('60', '0', '插件中心', '', '', '#xe637;', '6', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('61', '60', '插件管理', '', '', '#xe62a;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('62', '61', '插件工具', '/plug/plugin/index.html', '{\"1\":{\"name\":\"\\u63d2\\u4ef6\\u5217\\u8868\",\"act\":\"plug_plugin_index\"},\"2\":{\"name\":\"\\u914d\\u7f6e\",\"act\":\"plug_plugin_setting\"}}', '#xe62a;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('63', '50', '语言管理', '/admin/lang/index.html', '{\"1\":{\"name\":\"\\u8bed\\u8a00\\u5217\\u8868\",\"act\":\"admin_lang_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u8bed\\u8a00\",\"act\":\"admin_lang_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"admin_lang_info_lang_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"admin_lang_del\"}}', '#xe60e;', '6', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('164', '10', '导航管理', '/admin/nav/index', '{\"1\":{\"name\":\"\\u5bfc\\u822a\\u5217\\u8868\",\"act\":\"admin_nav_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u5bfc\\u822a\",\"act\":\"admin_nav_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\\u5bfc\\u822a\",\"act\":\"admin_nav_info_nav_id\"},\"4\":{\"name\":\"\\u5220\\u9664\\u5bfc\\u822a\",\"act\":\"admin_nav_del\"},\"5\":{\"name\":\"\\u83dc\\u5355\\u7ba1\\u7406\",\"act\":\"admin_nav_menu_index_nav_id\"}}', '#xe634;', '3', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('165', '0', '微信', '', '', '#xe63e;', '7', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('166', '165', '公众号列表', '/weichat/weichat/index.html', '{\"1\":{\"name\":\"\\u516c\\u4f17\\u53f7\\u5217\\u8868\",\"act\":\"weichat_weichat_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u516c\\u4f17\\u53f7\",\"act\":\"weichat_weichat_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"weichat_weichat_info_weichat_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"weichat_weichat_del\"}}', '#xe63d;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('167', '165', '微信设置', '', '', '#xe617;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('168', '167', '自定义菜单', '/weichat/weichat_menu/index.html', '{\"1\":{\"name\":\"\\u516c\\u4f17\\u53f7\\u83dc\\u5355\\u5217\\u8868\",\"act\":\"weichat_weichat_menu_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u516c\\u4f17\\u53f7\\u83dc\\u5355\",\"act\":\"weichat_weichat_menu_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"weichat_weichat_menu_info_menu_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"weichat_weichat_menu_del\"},\"5\":{\"name\":\"\\u540c\\u6b65\\u83dc\\u5355\",\"act\":\"weichat_index_weichatMenu\"}}', '#xe61a;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('169', '167', '未识别回复', '/weichat/no_answer/index', '{\"1\":{\"name\":\"\\u672a\\u8bc6\\u522b\\u56de\\u590d\",\"act\":\"weichat_no_answer_index\"}}', '#xe63d;', '2', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('170', '165', '素材管理', '', '', '#xe62c;', '8', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('171', '170', '图片素材', '/weichat/weichat_material_image/index.html', '{\"1\":{\"name\":\"\\u56fe\\u7247\\u7d20\\u6750\\u5217\\u8868\",\"act\":\"weichat_weichat_material_image_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u56fe\\u7247\",\"act\":\"weichat_weichat_material_image_info\"},\"3\":{\"name\":\"\\u5220\\u9664\",\"act\":\"weichat_weichat_material_image_del\"},\"4\":{\"name\":\"\\u4e00\\u952e\\u4e0b\\u8f7d\\u5fae\\u4fe1\\u7d20\\u6750\\u5e93\\u5230\\u672c\\u5730\",\"act\":\"weichat_weichat_material_image_downwximage\"},\"5\":{\"name\":\"\\u4e00\\u952e\\u4e0a\\u4f20\\u7d20\\u6750\\u5230\\u5fae\\u4fe1\\u7d20\\u6750\\u5e93\",\"act\":\"weichat_weichat_material_image_uploadwximage\"}}', '#xe60b;', '1', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('172', '170', '视频素材', '/weichat/weichat_material_video/index', '', '#xe659;', '2', '1', '2');
+INSERT INTO `ykb_admin_menu` VALUES ('173', '170', '图文素材', '/weichat/weichat_material_news/index', '{\"1\":{\"name\":\"\\u56fe\\u6587\\u7d20\\u6750\\u5217\\u8868\",\"act\":\"weichat_weichat_material_news_index\"},\"2\":{\"name\":\"\\u6dfb\\u52a0\\u56fe\\u6587\",\"act\":\"weichat_weichat_material_news_info\"},\"3\":{\"name\":\"\\u7f16\\u8f91\",\"act\":\"weichat_weichat_material_news_info_material_id\"},\"4\":{\"name\":\"\\u5220\\u9664\",\"act\":\"weichat_weichat_material_news_del\"},\"5\":{\"name\":\"\\u4e00\\u952e\\u4e0b\\u8f7d\\u5fae\\u4fe1\\u7d20\\u6750\\u5e93\\u5230\\u672c\\u5730\",\"act\":\"weichat_weichat_material_news_downwxvideo\"},\"6\":{\"name\":\"\\u4e00\\u952e\\u4e0a\\u4f20\\u7d20\\u6750\\u5230\\u5fae\\u4fe1\\u7d20\\u6750\\u5e93\",\"act\":\"weichat_weichat_material_news_uploadwxvideo\"}}', '#xe67a;', '4', '1', '1');
+INSERT INTO `ykb_admin_menu` VALUES ('174', '170', '语音素材', '/weichat/weichat_material_voice/index', '', '#xe652;', '3', '1', '2');
 
 -- ----------------------------
 -- Table structure for ykb_admin_user
@@ -241,13 +330,14 @@ CREATE TABLE `ykb_admin_user` (
   KEY `username` (`username`),
   KEY `group_id` (`group_id`) USING BTREE,
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='后台管理员';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='后台管理员';
 
 -- ----------------------------
 -- Records of ykb_admin_user
 -- ----------------------------
-INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', 'eff938d0cb3a9e7c2a3ed097acb0d64e', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1502420853', '::1');
-INSERT INTO `ykb_admin_user` VALUES ('2', '3', 'zz52998', 'e10adc3949ba59abbe56e057f20f883e', '测试管理', '529988248@qq.com', '1', '1', null, '1501222383', '::1');
+INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', 'a66abb5684c45962d887564f08346e8d', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1504836591', '::1');
+INSERT INTO `ykb_admin_user` VALUES ('2', '4', 'zz52998', 'e10adc3949ba59abbe56e057f20f883e', '测试管理', '529988248@qq.com', '1', '1', null, '1504591832', '::1');
+INSERT INTO `ykb_admin_user` VALUES ('3', '4', '654321', '96e79218965eb72c92a549dd5a330112', '123456', '1111112111@qq.com', '1', '1', null, null, '未知');
 
 -- ----------------------------
 -- Table structure for ykb_category
@@ -415,12 +505,12 @@ CREATE TABLE `ykb_content` (
 -- ----------------------------
 -- Records of ykb_content
 -- ----------------------------
-INSERT INTO `ykb_content` VALUES ('133', '59', '守得初心自清宁，扪心无愧如坦途', '', null, null, null, '1', null, '阿萨达', '1497231583', '', '', null, '0', '1', null, '26', '0', '', '1', '0');
-INSERT INTO `ykb_content` VALUES ('134', '59', '任岁月变迁，我心不惊', '', null, null, null, null, null, '', '1497259707', '', '', null, '0', '1', null, '2', '0', '', '1', '0');
-INSERT INTO `ykb_content` VALUES ('137', '59', '时光且长，一切都来得及', '', null, null, null, '2', null, '', '1497259621', '', '', null, '0', '1', null, '5', '0', '', '1', '0');
-INSERT INTO `ykb_content` VALUES ('138', '59', '不殆时间，不负自己', '', null, null, null, null, null, '', '1497259940', '', '', null, '0', '1', null, '10', '0', '', '1', '0');
-INSERT INTO `ykb_content` VALUES ('139', '59', '相遇文字，相遇你', '', null, null, null, null, null, '', '1501662959', '', '', null, '0', '1', null, '7', '0', '', '1', '0');
-INSERT INTO `ykb_content` VALUES ('140', '65', 'Meets the character, meets you', '', null, null, null, null, null, '', '1502180876', '', '', null, '0', '1', null, '1', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('133', '59', '守得初心自清宁，扪心无愧如坦途', '', null, null, null, '1', null, '阿萨达', '1497231583', '', '', null, '0', '1', null, '55', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('134', '59', '任岁月变迁，我心不惊', '', null, null, null, null, null, '', '1497259707', '', '', null, '0', '1', null, '11', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('137', '59', '时光且长，一切都来得及', '', null, null, null, '2', null, '', '1497259621', '', '', null, '0', '1', null, '8', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('138', '59', '不殆时间，不负自己', '', null, null, null, null, null, '', '1497259940', '', '', null, '0', '1', null, '17', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('139', '59', '相遇文字，相遇你', '', null, null, null, null, null, '', '1501662959', '', '', null, '0', '1', null, '26', '0', '', '1', '0');
+INSERT INTO `ykb_content` VALUES ('140', '65', 'Meets the character, meets you', '', null, null, null, null, null, '', '1502180876', '', '', null, '0', '1', null, '2', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('141', '65', 'Not dangerous time, not their own negative', '', null, null, null, null, null, '', '1502181023', '', '', null, '0', '1', null, '0', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('142', '65', 'Let the years change, my heart is not surprised', '', null, null, null, null, null, '', '1502181147', '', '', null, '0', '1', null, '1', '0', '', '1', '0');
 INSERT INTO `ykb_content` VALUES ('143', '65', 'Time and long, everything is in time', '', null, null, null, null, null, '', '1502181264', '', '', null, '0', '1', null, '0', '0', '', '1', '0');
@@ -460,7 +550,7 @@ CREATE TABLE `ykb_ext_guestbook` (
   `content` text,
   `time` int(10) DEFAULT NULL,
   PRIMARY KEY (`data_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ykb_ext_guestbook
@@ -468,6 +558,7 @@ CREATE TABLE `ykb_ext_guestbook` (
 INSERT INTO `ykb_ext_guestbook` VALUES ('6', '222', '529988248@qq.com', 'asd', '1501657736');
 INSERT INTO `ykb_ext_guestbook` VALUES ('7', '2', '3@qq.com', '4', '1501657766');
 INSERT INTO `ykb_ext_guestbook` VALUES ('8', '2', '3@qq.com', 'asd', '1501657863');
+INSERT INTO `ykb_ext_guestbook` VALUES ('9', 'noytnfMak', 'vidjwnuumm@mailermails.info', 'no credit check payday loans <a href=\"http://cashadvances2017.com\"> payday loans</a> &lt;a href=&quot;http://cashadvances2017.com&quot;&gt; payday loans online no credit check&lt;/a&gt; <a href=http://cashadvances2017.com>online payday loans no credit check</a>  payday loans houston', '1503877924');
 
 -- ----------------------------
 -- Table structure for ykb_ext_link
@@ -652,7 +743,7 @@ CREATE TABLE `ykb_file` (
   PRIMARY KEY (`file_id`),
   KEY `ext` (`ext`),
   KEY `time` (`time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=342 DEFAULT CHARSET=utf8 COMMENT='上传文件';
+) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=utf8 COMMENT='上传文件';
 
 -- ----------------------------
 -- Records of ykb_file
@@ -998,6 +1089,107 @@ INSERT INTO `ykb_file` VALUES ('338', '/uploads/home/20170801/5df55db898ccd9dc2f
 INSERT INTO `ykb_file` VALUES ('339', '/uploads/home/20170801/98805f8102662c36e2fc4b02ab085973.jpg', '/uploads/home/20170801/98805f8102662c36e2fc4b02ab085973.jpg', null, 'jpg', '86731', '1501585826');
 INSERT INTO `ykb_file` VALUES ('340', '/uploads/home/20170801/4a31d1c482ad334d100816b850e1e6d7.jpg', '/uploads/home/20170801/4a31d1c482ad334d100816b850e1e6d7.jpg', null, 'jpg', '61980', '1501585858');
 INSERT INTO `ykb_file` VALUES ('341', '/uploads/home/20170802/4991a27914d770eaded6eab73786b54a.jpg', '/uploads/home/20170802/4991a27914d770eaded6eab73786b54a.jpg', null, 'jpg', '49607', '1501640590');
+INSERT INTO `ykb_file` VALUES ('342', '/uploads/wx/20170821/259510e69bd5f4d3c5bca30f10be2416.jpg', '/uploads/wx/20170821/259510e69bd5f4d3c5bca30f10be2416.jpg', null, 'jpg', '8063', '1503295519');
+INSERT INTO `ykb_file` VALUES ('343', '/uploads/wx/20170821/09e8dd41cd9257bccd9b5fe4e5aa5156.jpg', '/uploads/wx/20170821/09e8dd41cd9257bccd9b5fe4e5aa5156.jpg', null, 'jpg', '8063', '1503295578');
+INSERT INTO `ykb_file` VALUES ('344', '/uploads/wx/20170821/96ce3de5ce371e801eb4d01ab2942e61.jpg', '/uploads/wx/20170821/96ce3de5ce371e801eb4d01ab2942e61.jpg', null, 'jpg', '8063', '1503295619');
+INSERT INTO `ykb_file` VALUES ('345', '/uploads/wx/20170821/780859d5983b488098f837854666fee9.jpg', '/uploads/wx/20170821/780859d5983b488098f837854666fee9.jpg', null, 'jpg', '8063', '1503295671');
+INSERT INTO `ykb_file` VALUES ('346', '/uploads/wx/20170821/0b74904a628f1ad445561d9c3ac3e129.jpg', '/uploads/wx/20170821/0b74904a628f1ad445561d9c3ac3e129.jpg', null, 'jpg', '8063', '1503295732');
+INSERT INTO `ykb_file` VALUES ('347', '/uploads/wx/20170821/aa9fa9422ebe8da92dacf03b984cb1ea.jpg', '/uploads/wx/20170821/aa9fa9422ebe8da92dacf03b984cb1ea.jpg', null, 'jpg', '8063', '1503296784');
+INSERT INTO `ykb_file` VALUES ('348', '/uploads/wx/20170821/14059ca43306fc517179103bbdcefc00.jpg', '/uploads/wx/20170821/14059ca43306fc517179103bbdcefc00.jpg', null, 'jpg', '8063', '1503296879');
+INSERT INTO `ykb_file` VALUES ('349', '/uploads/wx/20170821/c20f82c433068dc91ae87337bf239222.jpg', '/uploads/wx/20170821/c20f82c433068dc91ae87337bf239222.jpg', null, 'jpg', '8063', '1503297100');
+INSERT INTO `ykb_file` VALUES ('350', '/uploads/wx/20170821/89395bcb1de823548745b49e77ca3f0c.jpg', '/uploads/wx/20170821/89395bcb1de823548745b49e77ca3f0c.jpg', null, 'jpg', '8063', '1503297124');
+INSERT INTO `ykb_file` VALUES ('351', '/uploads/wx/20170821/6fb722a64ba2a897b3f78b317683cba3.jpg', '/uploads/wx/20170821/6fb722a64ba2a897b3f78b317683cba3.jpg', null, 'jpg', '17499', '1503297170');
+INSERT INTO `ykb_file` VALUES ('352', '/uploads/wx/20170821/82ab385dc107706827eb710b19b54a80.jpg', '/uploads/wx/20170821/82ab385dc107706827eb710b19b54a80.jpg', null, 'jpg', '8063', '1503297210');
+INSERT INTO `ykb_file` VALUES ('353', '/uploads/wx/20170821/5267c714c3b1b9b545a0074a75ce13f5.jpg', '/uploads/wx/20170821/5267c714c3b1b9b545a0074a75ce13f5.jpg', null, 'jpg', '8063', '1503297311');
+INSERT INTO `ykb_file` VALUES ('354', '/uploads/wx/20170821/98b660e1dc4cbdc0c145cc9d0ac999d0.jpg', '/uploads/wx/20170821/98b660e1dc4cbdc0c145cc9d0ac999d0.jpg', null, 'jpg', '8063', '1503301801');
+INSERT INTO `ykb_file` VALUES ('355', '/uploads/wx/20170821/71630a1b222bffceab5b8a112edd6bb8.jpg', '/uploads/wx/20170821/71630a1b222bffceab5b8a112edd6bb8.jpg', null, 'jpg', '17499', '1503302670');
+INSERT INTO `ykb_file` VALUES ('356', '/uploads/wx/20170821/88cce52e72c546144516b12c181bccf6.jpg', '/uploads/wx/20170821/88cce52e72c546144516b12c181bccf6.jpg', null, 'jpg', '8063', '1503302820');
+INSERT INTO `ykb_file` VALUES ('357', '/uploads/wx/20170821/47be5f40924abd09a3a513b82c3dc24d.jpg', '/uploads/wx/20170821/47be5f40924abd09a3a513b82c3dc24d.jpg', null, 'jpg', '8063', '1503309314');
+INSERT INTO `ykb_file` VALUES ('358', '/uploads/wx/20170821/50f2e8b58bf115fdd43c8e4b0aecc390.jpg', '/uploads/wx/20170821/50f2e8b58bf115fdd43c8e4b0aecc390.jpg', null, 'jpg', '156528', '1503309739');
+INSERT INTO `ykb_file` VALUES ('359', '/uploads/wx/20170821/24a3a90ce2ea893862544f9e9edbdaab.jpg', '/uploads/wx/20170821/24a3a90ce2ea893862544f9e9edbdaab.jpg', null, 'jpg', '17981', '1503309850');
+INSERT INTO `ykb_file` VALUES ('360', '/uploads/wx/20170821/302dbe7023092bed45f242bacff38ed0.jpg', '/uploads/wx/20170821/302dbe7023092bed45f242bacff38ed0.jpg', null, 'jpg', '17981', '1503309870');
+INSERT INTO `ykb_file` VALUES ('361', '/uploads/wx/20170821/877e56f3b1fd7eeb82bc885d7511db7a.jpg', '/uploads/wx/20170821/877e56f3b1fd7eeb82bc885d7511db7a.jpg', null, 'jpg', '17499', '1503310736');
+INSERT INTO `ykb_file` VALUES ('362', '/uploads/wx/20170822/4556dc3ceb193e36572bb27eb40b3d7f.jpg', '/uploads/wx/20170822/4556dc3ceb193e36572bb27eb40b3d7f.jpg', null, 'jpg', '8063', '1503390546');
+INSERT INTO `ykb_file` VALUES ('363', '/uploads/wx/20170822/6c8031b124a415f9c43d6b2ecf30c50e.jpg', '/uploads/wx/20170822/6c8031b124a415f9c43d6b2ecf30c50e.jpg', null, 'jpg', '8063', '1503390758');
+INSERT INTO `ykb_file` VALUES ('364', '/uploads/wx/20170822/bda1ad2ba0bd6f58af43880856a96e9e.jpg', '/uploads/wx/20170822/bda1ad2ba0bd6f58af43880856a96e9e.jpg', null, 'jpg', '8063', '1503391538');
+INSERT INTO `ykb_file` VALUES ('365', '/uploads/wx/20170822/91b003fd7530f946c99852f2df1ae62e.jpg', '/uploads/wx/20170822/91b003fd7530f946c99852f2df1ae62e.jpg', null, 'jpg', '8063', '1503391566');
+INSERT INTO `ykb_file` VALUES ('366', '/uploads/wx/20170822/84bad8408df53eaaff9ebb76e38caf79.jpg', '/uploads/wx/20170822/84bad8408df53eaaff9ebb76e38caf79.jpg', null, 'jpg', '8063', '1503392900');
+INSERT INTO `ykb_file` VALUES ('367', '/uploads/wx/20170822/91474c4ab4232895c54ef3c1b9fdc188.jpg', '/uploads/wx/20170822/91474c4ab4232895c54ef3c1b9fdc188.jpg', null, 'jpg', '8063', '1503395714');
+INSERT INTO `ykb_file` VALUES ('368', '/uploads/wx/20170822/325b537feb42e524568bfee6c33d4dc7.jpg', '/uploads/wx/20170822/325b537feb42e524568bfee6c33d4dc7.jpg', null, 'jpg', '8063', '1503395888');
+INSERT INTO `ykb_file` VALUES ('369', '/uploads/wx/20170822/3d86c4289a6f47e27cdb231d6c1a90b2.jpg', '/uploads/wx/20170822/3d86c4289a6f47e27cdb231d6c1a90b2.jpg', null, 'jpg', '8063', '1503395930');
+INSERT INTO `ykb_file` VALUES ('370', '/uploads/wx/20170822/567e2eab99e8666bee61ed5582e3f9f2.jpg', '/uploads/wx/20170822/567e2eab99e8666bee61ed5582e3f9f2.jpg', null, 'jpg', '8063', '1503395942');
+INSERT INTO `ykb_file` VALUES ('371', '/uploads/wx/20170822/03fb4966b3fd3232a15cad66f1996d6a.jpg', '/uploads/wx/20170822/03fb4966b3fd3232a15cad66f1996d6a.jpg', null, 'jpg', '8063', '1503395957');
+INSERT INTO `ykb_file` VALUES ('372', '/uploads/wx/20170822/b55c8cbc7b01b20294e910ee336ecb8b.jpg', '/uploads/wx/20170822/b55c8cbc7b01b20294e910ee336ecb8b.jpg', null, 'jpg', '8063', '1503396006');
+INSERT INTO `ykb_file` VALUES ('373', '/uploads/wx/20170822/75109be5bb2a4a56bb81462492869024.jpg', '/uploads/wx/20170822/75109be5bb2a4a56bb81462492869024.jpg', null, 'jpg', '8063', '1503396012');
+INSERT INTO `ykb_file` VALUES ('374', '/uploads/wx/20170822/0bb64fa4ab8ad09548a9a59f1fb5d9d3.jpg', '/uploads/wx/20170822/0bb64fa4ab8ad09548a9a59f1fb5d9d3.jpg', null, 'jpg', '8063', '1503396097');
+INSERT INTO `ykb_file` VALUES ('375', '/uploads/wx/20170822/943873cea3d7ae76d76690029b1dcfdc.jpg', '/uploads/wx/20170822/943873cea3d7ae76d76690029b1dcfdc.jpg', null, 'jpg', '8063', '1503396105');
+INSERT INTO `ykb_file` VALUES ('376', '/uploads/wx/20170822/bfa4870aa4f462eb23a8853e01d5eff3.jpg', '/uploads/wx/20170822/bfa4870aa4f462eb23a8853e01d5eff3.jpg', null, 'jpg', '8063', '1503396111');
+INSERT INTO `ykb_file` VALUES ('377', '/uploads/wx/20170822/3ff9e09c701a9bd647dc0179eae5bbc5.jpg', '/uploads/wx/20170822/3ff9e09c701a9bd647dc0179eae5bbc5.jpg', null, 'jpg', '8063', '1503396145');
+INSERT INTO `ykb_file` VALUES ('378', '/uploads/wx/20170822/00654b892e61e9dfd25e602b9b2f3376.jpg', '/uploads/wx/20170822/00654b892e61e9dfd25e602b9b2f3376.jpg', null, 'jpg', '8063', '1503396180');
+INSERT INTO `ykb_file` VALUES ('379', '/uploads/wx/20170822/8fde818b38b7110f93ca4f37c5672ac7.jpg', '/uploads/wx/20170822/8fde818b38b7110f93ca4f37c5672ac7.jpg', null, 'jpg', '8063', '1503396337');
+INSERT INTO `ykb_file` VALUES ('380', '/uploads/wx/20170822/63bb44cc88be28dd47bc49520d66d65d.jpg', '/uploads/wx/20170822/63bb44cc88be28dd47bc49520d66d65d.jpg', null, 'jpg', '8063', '1503396366');
+INSERT INTO `ykb_file` VALUES ('381', '/uploads/wx/20170823/9bfc69fe7b59315907557ac52825c347.jpg', '/uploads/wx/20170823/9bfc69fe7b59315907557ac52825c347.jpg', null, 'jpg', '513286', '1503454649');
+INSERT INTO `ykb_file` VALUES ('382', '/uploads/wx/20170823/8b6ef93d6d73b8ea7ce4b2eb8e45fdc4.jpg', '/uploads/wx/20170823/8b6ef93d6d73b8ea7ce4b2eb8e45fdc4.jpg', null, 'jpg', '156528', '1503467708');
+INSERT INTO `ykb_file` VALUES ('383', '/uploads/wx/20170823/731359cde5df1d1084fe2be7a9ccb463.png', '/uploads/wx/20170823/731359cde5df1d1084fe2be7a9ccb463.png', null, 'png', '21497', '1503467761');
+INSERT INTO `ykb_file` VALUES ('384', '/uploads/wx/20170823/6ce545705107c27a1cd26f57cad4a452.png', '/uploads/wx/20170823/6ce545705107c27a1cd26f57cad4a452.png', null, 'png', '63390', '1503467820');
+INSERT INTO `ykb_file` VALUES ('385', '/uploads/wx/20170823/4e414d123b619aba7d0fda950a2d3795.png', '/uploads/wx/20170823/4e414d123b619aba7d0fda950a2d3795.png', null, 'png', '63390', '1503467826');
+INSERT INTO `ykb_file` VALUES ('386', '/uploads/wx/20170823/216b2887eab97f8b9ee099193db0ba33.png', '/uploads/wx/20170823/216b2887eab97f8b9ee099193db0ba33.png', null, 'png', '63390', '1503467883');
+INSERT INTO `ykb_file` VALUES ('387', '/uploads/wx/20170823/11f582643bc33fe843c7cb0f2624c5fa.jpg', '/uploads/wx/20170823/11f582643bc33fe843c7cb0f2624c5fa.jpg', null, 'jpg', '17981', '1503467900');
+INSERT INTO `ykb_file` VALUES ('388', '/uploads/wx/20170823/427bfe602e7b1806ff4e632157f2aa74.jpg', '/uploads/wx/20170823/427bfe602e7b1806ff4e632157f2aa74.jpg', null, 'jpg', '17981', '1503468967');
+INSERT INTO `ykb_file` VALUES ('389', '/uploads/wx/20170823/887a64a7a4172acecbb6d5f6f7c7cb0a.png', '/uploads/wx/20170823/887a64a7a4172acecbb6d5f6f7c7cb0a.png', null, 'png', '21497', '1503470250');
+INSERT INTO `ykb_file` VALUES ('390', '/uploads/wx/20170823/37d5523691e4a7117a98d9c40982f6ee.jpg', '/uploads/wx/20170823/37d5523691e4a7117a98d9c40982f6ee.jpg', null, 'jpg', '17981', '1503470327');
+INSERT INTO `ykb_file` VALUES ('391', '/uploads/wx/20170823/10ef2b1406f47b352fb7085df01cf064.jpg', '/uploads/wx/20170823/10ef2b1406f47b352fb7085df01cf064.jpg', null, 'jpg', '8063', '1503472164');
+INSERT INTO `ykb_file` VALUES ('392', '/uploads/wx/20170823/af6be1551edc151b27b2c79740ca8947.png', '/uploads/wx/20170823/af6be1551edc151b27b2c79740ca8947.png', null, 'png', '63390', '1503472528');
+INSERT INTO `ykb_file` VALUES ('393', '/uploads/wx/20170823/7a028ed1cf7dfff39a105988d9addcdb.jpg', '/uploads/wx/20170823/7a028ed1cf7dfff39a105988d9addcdb.jpg', null, 'jpg', '8063', '1503472535');
+INSERT INTO `ykb_file` VALUES ('394', '/uploads/wx/20170823/f58cd2ac128bb9c6a15af17c6fc326a9.png', '/uploads/wx/20170823/f58cd2ac128bb9c6a15af17c6fc326a9.png', null, 'png', '21497', '1503472583');
+INSERT INTO `ykb_file` VALUES ('395', '/uploads/wx/20170823/5cead24af41245d1b4a2cc68483b2e9e.jpg', '/uploads/wx/20170823/5cead24af41245d1b4a2cc68483b2e9e.jpg', null, 'jpg', '17981', '1503472789');
+INSERT INTO `ykb_file` VALUES ('396', '/uploads/wx/20170823/48812b95486fe2e118e8f427454b32db.jpg', '/uploads/wx/20170823/48812b95486fe2e118e8f427454b32db.jpg', null, 'jpg', '8063', '1503473162');
+INSERT INTO `ykb_file` VALUES ('397', '/uploads/wx/20170823/839397ee760502f612c81f2239834cf9.jpg', '/uploads/wx/20170823/839397ee760502f612c81f2239834cf9.jpg', null, 'jpg', '17499', '1503473265');
+INSERT INTO `ykb_file` VALUES ('398', '/uploads/wx/20170823/de12d99056d8c9ef9fb48f4c407386a9.jpg', '/uploads/wx/20170823/de12d99056d8c9ef9fb48f4c407386a9.jpg', null, 'jpg', '8063', '1503473397');
+INSERT INTO `ykb_file` VALUES ('399', '/uploads/wx/20170823/c80f411a546b7798f24ed9b3794bf140.png', '/uploads/wx/20170823/c80f411a546b7798f24ed9b3794bf140.png', null, 'png', '117448', '1503473571');
+INSERT INTO `ykb_file` VALUES ('400', '/uploads/wx/20170823/cb02686073a9309272f8bdcef73f7b36.jpg', '/uploads/wx/20170823/cb02686073a9309272f8bdcef73f7b36.jpg', null, 'jpg', '17981', '1503474220');
+INSERT INTO `ykb_file` VALUES ('401', '/uploads/wx/20170823/d5d6ce5cd67ec489980cc997530f1aac.jpg', '/uploads/wx/20170823/d5d6ce5cd67ec489980cc997530f1aac.jpg', null, 'jpg', '8063', '1503474225');
+INSERT INTO `ykb_file` VALUES ('402', '/uploads/wx/20170823/f6c67954b2509040e82bad0664d47985.jpg', '/uploads/wx/20170823/f6c67954b2509040e82bad0664d47985.jpg', null, 'jpg', '8063', '1503475220');
+INSERT INTO `ykb_file` VALUES ('403', '/uploads/wx/20170823/b2bb927ccd125590a37fff42a5d424f2.jpg', '/uploads/wx/20170823/b2bb927ccd125590a37fff42a5d424f2.jpg', null, 'jpg', '8063', '1503476637');
+INSERT INTO `ykb_file` VALUES ('404', '/uploads/wx/20170823/e6e2010778a12f9fc52625524bd346d0.png', '/uploads/wx/20170823/e6e2010778a12f9fc52625524bd346d0.png', null, 'png', '21497', '1503476892');
+INSERT INTO `ykb_file` VALUES ('405', '/uploads/wx/20170823/8db2f7210569e3925db4b05344f6f45a.jpg', '/uploads/wx/20170823/8db2f7210569e3925db4b05344f6f45a.jpg', null, 'jpg', '8063', '1503476940');
+INSERT INTO `ykb_file` VALUES ('406', '/uploads/wx/20170823/bd708a5f0fd6dd9788c9cc072d3ca22b.jpg', '/uploads/wx/20170823/bd708a5f0fd6dd9788c9cc072d3ca22b.jpg', null, 'jpg', '8063', '1503476950');
+INSERT INTO `ykb_file` VALUES ('407', '/uploads/wx/20170823/507efaf04d3b681a1b95a6892deae587.png', '/uploads/wx/20170823/507efaf04d3b681a1b95a6892deae587.png', null, 'png', '21497', '1503476994');
+INSERT INTO `ykb_file` VALUES ('408', '/uploads/wx/20170823/24236690327c5c00540fdd8435edbe64.png', '/uploads/wx/20170823/24236690327c5c00540fdd8435edbe64.png', null, 'png', '21497', '1503477003');
+INSERT INTO `ykb_file` VALUES ('409', '/uploads/wx/20170823/f8c2d9e9c9b858a9a70ffa02f26e6602.jpg', '/uploads/wx/20170823/f8c2d9e9c9b858a9a70ffa02f26e6602.jpg', null, 'jpg', '8063', '1503477013');
+INSERT INTO `ykb_file` VALUES ('410', '/uploads/wx/20170823/7fa3f98447e632b38b02fa6aec709743.png', '/uploads/wx/20170823/7fa3f98447e632b38b02fa6aec709743.png', null, 'png', '21497', '1503477421');
+INSERT INTO `ykb_file` VALUES ('411', '/uploads/wx/20170823/758f87368b9537b930ad270fdf0db6c0.png', '/uploads/wx/20170823/758f87368b9537b930ad270fdf0db6c0.png', null, 'png', '21497', '1503477688');
+INSERT INTO `ykb_file` VALUES ('412', '/uploads/wx/20170823/46aa2d8d71a052333b7ad583646f9715.jpg', '/uploads/wx/20170823/46aa2d8d71a052333b7ad583646f9715.jpg', null, 'jpg', '8063', '1503477697');
+INSERT INTO `ykb_file` VALUES ('413', '/uploads/wx/20170823/82844268073616846ebf20608d5762a3.png', '/uploads/wx/20170823/82844268073616846ebf20608d5762a3.png', null, 'png', '21497', '1503479554');
+INSERT INTO `ykb_file` VALUES ('414', '/uploads/wx/20170823/ea2cb398d8ad17c3a4f0369f59c70f83.png', '/uploads/wx/20170823/ea2cb398d8ad17c3a4f0369f59c70f83.png', null, 'png', '21497', '1503480001');
+INSERT INTO `ykb_file` VALUES ('415', '/uploads/wx/20170823/0a8f9b8fb231f0e92c2ef7cc1527d2e5.png', '/uploads/wx/20170823/0a8f9b8fb231f0e92c2ef7cc1527d2e5.png', null, 'png', '117448', '1503480103');
+INSERT INTO `ykb_file` VALUES ('416', '/uploads/wx/20170823/aa15165eb0e24dd0d92c3048bb8edfd2.png', '/uploads/wx/20170823/aa15165eb0e24dd0d92c3048bb8edfd2.png', null, 'png', '117448', '1503480148');
+INSERT INTO `ykb_file` VALUES ('417', '/uploads/wx/20170823/014254dd256c08d9000d3a706cbcb390.png', '/uploads/wx/20170823/014254dd256c08d9000d3a706cbcb390.png', null, 'png', '21497', '1503481920');
+INSERT INTO `ykb_file` VALUES ('418', '/uploads/wx/20170823/ccdbf657814c7cc74aecd9c951272aa1.png', '/uploads/wx/20170823/ccdbf657814c7cc74aecd9c951272aa1.png', null, 'png', '21497', '1503482149');
+INSERT INTO `ykb_file` VALUES ('419', '/uploads/wx/20170824/f6f929c9886da2db770c9fd69d3c203e.jpg', '/uploads/wx/20170824/f6f929c9886da2db770c9fd69d3c203e.jpg', null, 'jpg', '17499', '1503540254');
+INSERT INTO `ykb_file` VALUES ('420', '/uploads/wx/20170824/42af2e5ec4b88aaedaadc91136fa52fd.jpg', '/uploads/wx/20170824/42af2e5ec4b88aaedaadc91136fa52fd.jpg', null, 'jpg', '17981', '1503540284');
+INSERT INTO `ykb_file` VALUES ('421', '/uploads/wx/20170824/cd92263f5b544475e82f004e0b68e5e1.jpg', '/uploads/wx/20170824/cd92263f5b544475e82f004e0b68e5e1.jpg', null, 'jpg', '8063', '1503546791');
+INSERT INTO `ykb_file` VALUES ('422', '/uploads/wx/20170824/67047e5a67945f2afb452758f818c524.jpg', '/uploads/wx/20170824/67047e5a67945f2afb452758f818c524.jpg', null, 'jpg', '156528', '1503546823');
+INSERT INTO `ykb_file` VALUES ('423', '/uploads/wx/20170824/2c49b097af6b6bdf3257bd7faefd5eb2.png', '/uploads/wx/20170824/2c49b097af6b6bdf3257bd7faefd5eb2.png', null, 'png', '122026', '1503566073');
+INSERT INTO `ykb_file` VALUES ('424', '/uploads/wx/20170824/810bd20442e3fca6f9aa78da8f807290.png', '/uploads/wx/20170824/810bd20442e3fca6f9aa78da8f807290.png', null, 'png', '122026', '1503567591');
+INSERT INTO `ykb_file` VALUES ('425', '/uploads/wx/20170824/ba59256e9951de23c4177f0b63cc01ff.jpg', '/uploads/wx/20170824/ba59256e9951de23c4177f0b63cc01ff.jpg', null, 'jpg', '43827', '1503569600');
+INSERT INTO `ykb_file` VALUES ('426', '/uploads/wx/20170824/dad347cb5f9631233600e382ea70e914.jpg', '/uploads/wx/20170824/dad347cb5f9631233600e382ea70e914.jpg', null, 'jpg', '43827', '1503570837');
+INSERT INTO `ykb_file` VALUES ('427', '/uploads/wx/20170825/bd725401be43992d726e92d563e19d33.jpg', '/uploads/wx/20170825/bd725401be43992d726e92d563e19d33.jpg', null, 'jpg', '43827', '1503625044');
+INSERT INTO `ykb_file` VALUES ('428', '/uploads/wx/20170825/de07d188a1d8b35cb95e4071b3afb191.jpg', '/uploads/wx/20170825/de07d188a1d8b35cb95e4071b3afb191.jpg', null, 'jpg', '43827', '1503625553');
+INSERT INTO `ykb_file` VALUES ('429', '/uploads/wx/20170825/e6a56d10dfc31a40ba6f7ab28e8a93d4.jpg', '/uploads/wx/20170825/e6a56d10dfc31a40ba6f7ab28e8a93d4.jpg', null, 'jpg', '43827', '1503625567');
+INSERT INTO `ykb_file` VALUES ('430', '/uploads/wx/20170825/24af73137c75d977c7b6d03cf75baf8a.jpg', '/uploads/wx/20170825/24af73137c75d977c7b6d03cf75baf8a.jpg', null, 'jpg', '43827', '1503625644');
+INSERT INTO `ykb_file` VALUES ('431', '/uploads/wx/20170825/0d65fd05c4458147289e5a58f8dea032.jpg', '/uploads/wx/20170825/0d65fd05c4458147289e5a58f8dea032.jpg', null, 'jpg', '43827', '1503625650');
+INSERT INTO `ykb_file` VALUES ('432', '/uploads/wx/20170825/9e61712ec93b8786da7aad3b32cf10c3.jpg', '/uploads/wx/20170825/9e61712ec93b8786da7aad3b32cf10c3.jpg', null, 'jpg', '43827', '1503626067');
+INSERT INTO `ykb_file` VALUES ('433', '/uploads/wx/20170825/76367367dd179b08b52d65e4bb51d4e6.jpg', '/uploads/wx/20170825/76367367dd179b08b52d65e4bb51d4e6.jpg', null, 'jpg', '43827', '1503626077');
+INSERT INTO `ykb_file` VALUES ('434', '/uploads/wx/20170825/a103b56ea2358791a2c7345fc5cbe6e6.jpg', '/uploads/wx/20170825/a103b56ea2358791a2c7345fc5cbe6e6.jpg', null, 'jpg', '43827', '1503626173');
+INSERT INTO `ykb_file` VALUES ('435', '/uploads/wx/20170825/3aa7ded65df8e07c55954a2fc9486e86.jpg', '/uploads/wx/20170825/3aa7ded65df8e07c55954a2fc9486e86.jpg', null, 'jpg', '43827', '1503629326');
+INSERT INTO `ykb_file` VALUES ('436', '/uploads/wx/20170825/0703c8a245e22edadea905c99a24e59b.jpg', '/uploads/wx/20170825/0703c8a245e22edadea905c99a24e59b.jpg', null, 'jpg', '17499', '1503630168');
+INSERT INTO `ykb_file` VALUES ('437', '/uploads/wx/20170825/bcdefecbe102c073bd0951ccddbda8e0.jpg', '/uploads/wx/20170825/bcdefecbe102c073bd0951ccddbda8e0.jpg', null, 'jpg', '60866', '1503655277');
+INSERT INTO `ykb_file` VALUES ('438', '/uploads/wx/20170828/2e781a46a98dcdf15c5c87187fe50c7e.jpg', '/uploads/wx/20170828/2e781a46a98dcdf15c5c87187fe50c7e.jpg', null, 'jpg', '17981', '1503889459');
+INSERT INTO `ykb_file` VALUES ('439', '/uploads/wx/20170828/462cef7c0e92d6baca3feb21ebc64f34.jpg', '/uploads/wx/20170828/462cef7c0e92d6baca3feb21ebc64f34.jpg', null, 'jpg', '17499', '1503889472');
+INSERT INTO `ykb_file` VALUES ('440', '/uploads/wx/20170828/dd07f0a5fd1cf117516635304bad7151.jpg', '/uploads/wx/20170828/dd07f0a5fd1cf117516635304bad7151.jpg', null, 'jpg', '17981', '1503900663');
+INSERT INTO `ykb_file` VALUES ('441', '/uploads/wx/20170828/5232a5102ed9b04bcf5e38978dbfa999.jpg', '/uploads/wx/20170828/5232a5102ed9b04bcf5e38978dbfa999.jpg', null, 'jpg', '73882', '1503900714');
+INSERT INTO `ykb_file` VALUES ('442', '/uploads/wx/20170828/0c90b2aa428e4788d359edd1e009790e.jpg', '/uploads/wx/20170828/0c90b2aa428e4788d359edd1e009790e.jpg', null, 'jpg', '17981', '1503901114');
 
 -- ----------------------------
 -- Table structure for ykb_fragment
@@ -1213,13 +1405,14 @@ CREATE TABLE `ykb_user` (
   `last_login_time` int(11) DEFAULT NULL,
   `last_login_ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='前台会员表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='前台会员表';
 
 -- ----------------------------
 -- Records of ykb_user
 -- ----------------------------
-INSERT INTO `ykb_user` VALUES ('1', null, 'e10adc3949ba59abbe56e057f20f883e', '/uploads/home/20170802/4991a27914d770eaded6eab73786b54a.jpg', '壹凯', '529988248@qq.com', '大连高新园区', '1', '122222', '1', '1', '1501662959', '1502184626', '::1');
+INSERT INTO `ykb_user` VALUES ('1', null, 'e10adc3949ba59abbe56e057f20f883e', '/uploads/home/20170802/4991a27914d770eaded6eab73786b54a.jpg', '壹凯', '529988248@qq.com', '大连高新园区', '1', '122222', '1', '1', '1501662959', '1502784935', '::1');
 INSERT INTO `ykb_user` VALUES ('2', 'ccc', 'e10adc3949ba59abbe56e057f20f883e', null, '333', '444@qq.com', null, '1', '', '2', '1', '1501662959', null, null);
+INSERT INTO `ykb_user` VALUES ('3', '23523523', '96e79218965eb72c92a549dd5a330112', null, '34242', 'admin@163.com', null, '1', '', '1', '1', '0', null, null);
 
 -- ----------------------------
 -- Table structure for ykb_user_type
@@ -1236,3 +1429,173 @@ CREATE TABLE `ykb_user_type` (
 -- Records of ykb_user_type
 -- ----------------------------
 INSERT INTO `ykb_user_type` VALUES ('1', '默认用户', '1');
+
+-- ----------------------------
+-- Table structure for ykb_weichat
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat`;
+CREATE TABLE `ykb_weichat` (
+  `weichat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(10) DEFAULT NULL COMMENT '用户ID',
+  `weichat_name` varchar(50) DEFAULT NULL COMMENT '公众号名称',
+  `public_id` varchar(100) DEFAULT NULL COMMENT '公众号原始id',
+  `wechat_number` varchar(100) DEFAULT NULL COMMENT '微信号',
+  `interface_url` varchar(255) DEFAULT NULL COMMENT '接口地址',
+  `headface_url` varchar(255) DEFAULT NULL COMMENT '公众号头像',
+  `area` varchar(50) DEFAULT NULL COMMENT '地区',
+  `addon_config` text COMMENT '插件配置',
+  `addon_status` text COMMENT '插件状态',
+  `token` varchar(100) DEFAULT NULL COMMENT 'Token',
+  `is_use` tinyint(2) DEFAULT '0' COMMENT '是否为当前公众号',
+  `type` char(10) DEFAULT '0' COMMENT '公众号类型',
+  `appid` varchar(255) DEFAULT NULL COMMENT 'AppID',
+  `secret` varchar(255) DEFAULT NULL COMMENT 'AppSecret',
+  `group_id` int(10) unsigned DEFAULT '0' COMMENT '等级',
+  `encodingaeskey` varchar(255) DEFAULT NULL COMMENT 'EncodingAESKey',
+  `tips_url` varchar(255) DEFAULT NULL COMMENT '提示关注公众号的文章地址',
+  `domain` varchar(30) DEFAULT NULL COMMENT '自定义域名',
+  `is_bind` tinyint(2) DEFAULT '0' COMMENT '是否为微信开放平台绑定账号',
+  PRIMARY KEY (`weichat_id`),
+  KEY `token` (`token`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat
+-- ----------------------------
+INSERT INTO `ykb_weichat` VALUES ('1', '1', '海城家源五金', 'gh_43fe1d4bc22a', 'hcjiayuan', null, null, null, null, null, 'yikaiba', '0', '3', 'wx8fce20d8d7ccc673', 'be1d02ecd47e3fe00c4a0d72a2ec77c9', '0', '2YZjnTVzz6EJRgQmKIgFs2oNSvugWdYUAX6QkpOPOJt', null, null, '1');
+INSERT INTO `ykb_weichat` VALUES ('2', null, '潮搜', 'gh_b4f85a2b3925', 'ichaosou', null, null, null, null, null, 'weifangke', '0', '0', 'wx342bd3d0f7870ce9', '68f40171af536649e58517158e2cd9ef', '0', '5YlcrVO3ogDnvqi8vJ9VXE8tDECf5a2kbktm5r6vA1x', null, null, '2');
+
+-- ----------------------------
+-- Table structure for ykb_weichat_material_image
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat_material_image`;
+CREATE TABLE `ykb_weichat_material_image` (
+  `material_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `media_id` varchar(100) NOT NULL DEFAULT '',
+  `name` varchar(255) DEFAULT NULL,
+  `image` varchar(250) NOT NULL DEFAULT '',
+  `url` varchar(250) NOT NULL DEFAULT '',
+  `weichat_id` int(11) DEFAULT '1' COMMENT '微信公众号id',
+  `add_time` int(10) NOT NULL,
+  PRIMARY KEY (`material_id`),
+  KEY `media_id` (`media_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat_material_image
+-- ----------------------------
+INSERT INTO `ykb_weichat_material_image` VALUES ('173', 'GgLJUrcKt-y2CyAuUKdQopXpYnXFRwN48GF15J0kLX8', '/alidata/www/default/cms/public/uploads/wx/20170821/302dbe7023092bed45f242bacff38ed0.jpg', '/uploads/wx/20170821/14de5f4f61a070714f3bf2101a670d9f.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibfu8UAHKv5SPVQcuxaqiaV5YOpxUrAMPXxTKIcvNJPFBpdpYlpoCaibTA/0?wx_fmt=jpeg', '1', '1503310647');
+INSERT INTO `ykb_weichat_material_image` VALUES ('175', 'GgLJUrcKt-y2CyAuUKdQos92MtSlkX2bsTOQTTTvsIU', '/alidata/www/default/cms/public/uploads/wx/20170821/302dbe7023092bed45f242bacff38ed0.jpg', '/uploads/wx/20170821/e9076afd9560e15fc2672d659fe1728c.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibfu8UAHKv5SPVQcuxaqiaV5YOpxUrAMPXxTKIcvNJPFBpdpYlpoCaibTA/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('176', 'GgLJUrcKt-y2CyAuUKdQombZVBuqHCXkDckle9fQngs', '/alidata/www/default/cms/public/uploads/wx/20170821/24a3a90ce2ea893862544f9e9edbdaab.jpg', '/uploads/wx/20170821/cdafff21051d393e1fd545a11e9b281c.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibfu8UAHKv5SPVQcuxaqiaV5YOpxUrAMPXxTKIcvNJPFBpdpYlpoCaibTA/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('177', 'GgLJUrcKt-y2CyAuUKdQoi2huzEbXggLOw5SkTdZZvc', '/alidata/www/default/cms/public/uploads/wx/20170821/50f2e8b58bf115fdd43c8e4b0aecc390.jpg', '/uploads/wx/20170821/8964e3fabc1e0a4955af772ef85d5245.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibcxFBY4eVVdx2yBcaicicUPWAYIOhUgibck0RrdggEVredxDzwguw15Kaw/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('178', 'GgLJUrcKt-y2CyAuUKdQovsJxgrOP1WU6lrisuw70xw', '/alidata/www/default/cms/public/uploads/wx/20170821/50f2e8b58bf115fdd43c8e4b0aecc390.jpg', '/uploads/wx/20170821/de49e0b8f9e0531d96046e717e3309f2.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibcxFBY4eVVdx2yBcaicicUPWAYIOhUgibck0RrdggEVredxDzwguw15Kaw/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('179', 'GgLJUrcKt-y2CyAuUKdQogAeFXOLqOwn41ZekucMIhU', '/alidata/www/default/cms/public/uploads/wx/20170821/47be5f40924abd09a3a513b82c3dc24d.jpg', '/uploads/wx/20170821/7ca23938f2cd8688919a006f35431ca7.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibRt8RaOmds4uutKbtcJ49NZTBgtujqPicF2ZVwTHTtj6J6OaNOMACQYA/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('180', 'GgLJUrcKt-y2CyAuUKdQog4AU48-LQVanrYBAYI9INc', '/alidata/www/default/cms/public/uploads/wx/20170821/88cce52e72c546144516b12c181bccf6.jpg', '/uploads/wx/20170821/fb7bc74f5a01f6da7fc4f8dcd8fb7da1.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibRt8RaOmds4uutKbtcJ49NZTBgtujqPicF2ZVwTHTtj6J6OaNOMACQYA/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('181', 'GgLJUrcKt-y2CyAuUKdQoth0Or5S5bnqse83__lfvdk', '/alidata/www/default/cms/public/uploads/wx/20170821/71630a1b222bffceab5b8a112edd6bb8.jpg', '/uploads/wx/20170821/8cdf77ea64b8a121f521fa0c32d71c17.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAib3rVybFJSztK8ycILcLVxOViaCASh7kYlpNZgEQSLyecQiadckqXia1yZQ/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('182', 'GgLJUrcKt-y2CyAuUKdQohRC0DEPgSxiLFz-TClfUac', 'YR-601花洒350.jpg', '/uploads/wx/20170821/ba99504238b5a8ea8a0aecc3d076e573.jpg', 'http://mmbiz.qpic.cn/mmbiz/Acta2Rg01CSqicBXIW6Yuib6UMXocRhXvgnXIP0sVUib3UkibBT3dCMomnnf87SUeicS2SGdKtzq1icV9erC2UGzPR1g/0?wx_fmt=jpeg', '1', '1503310648');
+INSERT INTO `ykb_weichat_material_image` VALUES ('188', 'GgLJUrcKt-y2CyAuUKdQogqAo64NDG4gSK8pRKb8hvc', '/alidata/www/default/cms/public/uploads/wx/20170821/24a3a90ce2ea893862544f9e9edbdaab.jpg', '/uploads/wx/20170821/bb054bf435258f6c925ac14126921c78.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAibfu8UAHKv5SPVQcuxaqiaV5YOpxUrAMPXxTKIcvNJPFBpdpYlpoCaibTA/0?wx_fmt=jpeg', '1', '1503310701');
+INSERT INTO `ykb_weichat_material_image` VALUES ('189', 'GgLJUrcKt-y2CyAuUKdQojXXQ3nYhUTX0O9diy5VlVg', null, '/uploads/wx/20170821/877e56f3b1fd7eeb82bc885d7511db7a.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQJ2POW40HyhqNOvKhIOBAib3rVybFJSztK8ycILcLVxOViaCASh7kYlpNZgEQSLyecQiadckqXia1yZQ/0?wx_fmt=jpeg', '1', '1503310736');
+INSERT INTO `ykb_weichat_material_image` VALUES ('190', 'GgLJUrcKt-y2CyAuUKdQorpqAXWNiP8qmr2tqf1rSNU', '/alidata/www/default/cms/public/uploads/wx/20170824/67047e5a67945f2afb452758f818c524.jpg', '/uploads/wx/20170824/1e6be6a9a19b0fe0aea2842f8c835097.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGYyP8YgaMYDHjP03f78PrUQ8tNvYR0ibK1MYw6v53BVzgUic6GYAuic7Eg/0?wx_fmt=jpeg', '1', '1503565343');
+INSERT INTO `ykb_weichat_material_image` VALUES ('191', 'GgLJUrcKt-y2CyAuUKdQotnCyG_MfsRxJwFC5YSDkCU', '/alidata/www/default/cms/public/uploads/wx/20170824/cd92263f5b544475e82f004e0b68e5e1.jpg', '/uploads/wx/20170824/c9376114f4fb323018a127c62b7b6786.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGmwIGud0rR1BmnFhGglcWGE946MzpFoAqKdsygJfGpqu2I09rnyC0BQ/0?wx_fmt=jpeg', '1', '1503565343');
+INSERT INTO `ykb_weichat_material_image` VALUES ('192', 'GgLJUrcKt-y2CyAuUKdQosvzLbTz_q7zjsRolYAiOhk', '/alidata/www/default/cms/public/uploads/wx/20170824/42af2e5ec4b88aaedaadc91136fa52fd.jpg', '/uploads/wx/20170824/64362a0586f02cd1db6ba09836502d98.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGeQzGdYr2jibiarQydVhbTAqZUkELtsa9iaRKVg3d2IyucdFDL0j1iaHjyw/0?wx_fmt=jpeg', '1', '1503565343');
+INSERT INTO `ykb_weichat_material_image` VALUES ('193', 'GgLJUrcKt-y2CyAuUKdQonw_JoYTve7me6CT5d1dIZE', '/alidata/www/default/cms/public/uploads/wx/20170824/f6f929c9886da2db770c9fd69d3c203e.jpg', '/uploads/wx/20170824/4297d641a687afcd2c222dae473be380.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGOdWfIn3RricPtBo2EIuT6HpuFMGRsK557miasZGn745TeQwWHVMibjeLw/0?wx_fmt=jpeg', '1', '1503565343');
+INSERT INTO `ykb_weichat_material_image` VALUES ('197', 'GgLJUrcKt-y2CyAuUKdQotAbSCog_jN10u2mqN7vyDE', '/alidata/www/default/cms/public/uploads/wx/20170824/ba59256e9951de23c4177f0b63cc01ff.jpg', '/uploads/wx/20170824/0ec4f83c49a1a5bc55aaf15090a9baf4.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGP2XnygwRVJmyrJictQ691Dg7pC17Drzt2bwS5DXmnyicBME2La2ic9xAg/0?wx_fmt=jpeg', '1', '1503569798');
+INSERT INTO `ykb_weichat_material_image` VALUES ('198', 'GgLJUrcKt-y2CyAuUKdQov_YYyn1UODSfUpuTOioJLU', '/alidata/www/default/cms/public/uploads/wx/20170824/2c49b097af6b6bdf3257bd7faefd5eb2.png', '/uploads/wx/20170824/b1dac77bd39c44c4d52c2da2b0208dbf.png', 'http://mmbiz.qpic.cn/mmbiz_png/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGw7tWcn7XteYyhMqWWTHctEWoJBsZ1jDfAOAmXPybjMy1GticFclQzBw/0?wx_fmt=png', '1', '1503569798');
+INSERT INTO `ykb_weichat_material_image` VALUES ('199', 'GgLJUrcKt-y2CyAuUKdQouB_VukibvirGS_Z2d6NEHw', '/alidata/www/default/cms/public/uploads/wx/20170824/67047e5a67945f2afb452758f818c524.jpg', '/uploads/wx/20170824/e60ef100b0f2826dce542bfbcd9bf04d.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGYyP8YgaMYDHjP03f78PrUQ8tNvYR0ibK1MYw6v53BVzgUic6GYAuic7Eg/0?wx_fmt=jpeg', '1', '1503569799');
+INSERT INTO `ykb_weichat_material_image` VALUES ('200', 'GgLJUrcKt-y2CyAuUKdQot5Kp7eM5ktAfV_XRLXkHz0', '/alidata/www/default/cms/public/uploads/wx/20170824/cd92263f5b544475e82f004e0b68e5e1.jpg', '/uploads/wx/20170824/1b094b0038a24a58f2c58ee540a4a52a.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGmwIGud0rR1BmnFhGglcWGE946MzpFoAqKdsygJfGpqu2I09rnyC0BQ/0?wx_fmt=jpeg', '1', '1503569799');
+INSERT INTO `ykb_weichat_material_image` VALUES ('201', 'GgLJUrcKt-y2CyAuUKdQomNK1IM4B47tJFuihhgnS6A', '/alidata/www/default/cms/public/uploads/wx/20170824/67047e5a67945f2afb452758f818c524.jpg', '/uploads/wx/20170824/71a0332f7da9cbb407bbe41ee872a3da.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGYyP8YgaMYDHjP03f78PrUQ8tNvYR0ibK1MYw6v53BVzgUic6GYAuic7Eg/0?wx_fmt=jpeg', '1', '1503569799');
+INSERT INTO `ykb_weichat_material_image` VALUES ('202', 'GgLJUrcKt-y2CyAuUKdQosHR4Mb90R54TXSIhUhQFRo', '/alidata/www/default/cms/public/uploads/wx/20170824/cd92263f5b544475e82f004e0b68e5e1.jpg', '/uploads/wx/20170824/26986a03132fd2199021a43927c5a397.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGmwIGud0rR1BmnFhGglcWGE946MzpFoAqKdsygJfGpqu2I09rnyC0BQ/0?wx_fmt=jpeg', '1', '1503569799');
+INSERT INTO `ykb_weichat_material_image` VALUES ('203', 'GgLJUrcKt-y2CyAuUKdQoowP18NEHeIwyJOUt60dhAg', '/alidata/www/default/cms/public/uploads/wx/20170824/42af2e5ec4b88aaedaadc91136fa52fd.jpg', '/uploads/wx/20170824/ea5de93c72e324d3efde20b32da89821.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGeQzGdYr2jibiarQydVhbTAqZUkELtsa9iaRKVg3d2IyucdFDL0j1iaHjyw/0?wx_fmt=jpeg', '1', '1503569799');
+INSERT INTO `ykb_weichat_material_image` VALUES ('204', 'GgLJUrcKt-y2CyAuUKdQooTj92_PBkrooiDFBIVIsWw', '/alidata/www/default/cms/public/uploads/wx/20170824/f6f929c9886da2db770c9fd69d3c203e.jpg', '/uploads/wx/20170824/1cbfbc79c12ec163361c3b7e6447ef8b.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGOdWfIn3RricPtBo2EIuT6HpuFMGRsK557miasZGn745TeQwWHVMibjeLw/0?wx_fmt=jpeg', '1', '1503569800');
+INSERT INTO `ykb_weichat_material_image` VALUES ('205', 'GgLJUrcKt-y2CyAuUKdQovHZFitzQUzke1NiLVN3OtE', '/alidata/www/default/cms/public/uploads/wx/20170824/f6f929c9886da2db770c9fd69d3c203e.jpg', '/uploads/wx/20170824/e5f167bdee058fd9d097c70032c2a5d1.jpg', 'http://mmbiz.qpic.cn/mmbiz_jpg/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGOdWfIn3RricPtBo2EIuT6HpuFMGRsK557miasZGn745TeQwWHVMibjeLw/0?wx_fmt=jpeg', '1', '1503569800');
+INSERT INTO `ykb_weichat_material_image` VALUES ('206', 'GgLJUrcKt-y2CyAuUKdQoj_1mmUjkT_XAN0vPkbVfko', '/alidata/www/default/cms/public/uploads/wx/20170824/810bd20442e3fca6f9aa78da8f807290.png', '/uploads/wx/20170824/17443fd99974cab8fcca4a4f29873287.png', 'http://mmbiz.qpic.cn/mmbiz_png/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlGw7tWcn7XteYyhMqWWTHctEWoJBsZ1jDfAOAmXPybjMy1GticFclQzBw/0?wx_fmt=png', '1', '1503569800');
+INSERT INTO `ykb_weichat_material_image` VALUES ('207', 'GgLJUrcKt-y2CyAuUKdQosQOXCcBaOcyqt3fSuwYRoI', 'QQ图片20170823101219.png', '/uploads/wx/20170824/55437f13b5060352b56374c20fbe224c.png', 'http://mmbiz.qpic.cn/mmbiz_png/Acta2Rg01CQ5CLDTuSq5Cc3pMOYxOGlG5hNvHzZXKqmuMBkaOWwq1htwsSQ1sIy0S6fwWC0Q2aaWEzRIyp00ow/0?wx_fmt=png', '1', '1503569800');
+INSERT INTO `ykb_weichat_material_image` VALUES ('212', 'D3aBUwTE6fSSeAzvo76KO9wRk6XcO6BlnDfebudNvMI', 'customer_service.png', '/uploads/wx/20170828/d7fa3da7e53ca31874ed8171cd360a73.png', 'http://mmbiz.qpic.cn/mmbiz_png/off1llQ3giaoAfrhjeWVmrdRiaxibEUcyQhPicTBaDruXcxM8nfMzAfkPMm9K4B8IH27dwvOhtGjuaicB9EMPtdkBbQ/0?wx_fmt=png', '1', '1503905558');
+
+-- ----------------------------
+-- Table structure for ykb_weichat_material_news
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat_material_news`;
+CREATE TABLE `ykb_weichat_material_news` (
+  `material_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `media_id` varchar(100) DEFAULT '0',
+  `data` text,
+  `weichat_id` int(11) DEFAULT '1' COMMENT '微信公众号id',
+  `add_time` int(10) DEFAULT '0',
+  PRIMARY KEY (`material_id`),
+  KEY `media_id` (`media_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat_material_news
+-- ----------------------------
+INSERT INTO `ykb_weichat_material_news` VALUES ('57', 'GgLJUrcKt-y2CyAuUKdQoi1s_M1Qm-NnnQnTQH-gpVU', '[{\"title\":\"\\u6d4b\\u8bd5\\u4e24\\u4e2a\\u56fe1\",\"author\":\"\\u5de6\\u4fa7\",\"image\":\"\\/uploads\\/wx\\/20170828\\/28b4171d1cc7ebc884a30665dea4fe4a.jpg\",\"thumb_media_id\":\"GgLJUrcKt-y2CyAuUKdQoicuhGiYbBlFpO1DzLehqrE\",\"content\":\"\\u963f\\u8428\\u8fbe\",\"content_source_url\":\"\",\"digest\":\"456\",\"show_cover_pic\":1},{\"title\":\"\\u6253\\u7b972\",\"author\":\"44\",\"image\":\"\\/uploads\\/wx\\/20170828\\/cf70c1d478ac9f8efa64564a6c6cb195.jpg\",\"thumb_media_id\":\"GgLJUrcKt-y2CyAuUKdQou4upUfSc6ux8tpvOw5EZMA\",\"content\":\"44\",\"content_source_url\":\"\",\"digest\":\"546\",\"show_cover_pic\":1}]', '1', '1503898730');
+
+-- ----------------------------
+-- Table structure for ykb_weichat_material_video
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat_material_video`;
+CREATE TABLE `ykb_weichat_material_video` (
+  `material_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `media_id` varchar(100) NOT NULL DEFAULT '',
+  `url` varchar(250) NOT NULL DEFAULT '',
+  `title` varchar(250) NOT NULL DEFAULT '',
+  `description` varchar(250) NOT NULL DEFAULT '',
+  `weichat_id` int(11) DEFAULT '1' COMMENT '微信公众号id',
+  `add_time` int(10) NOT NULL,
+  PRIMARY KEY (`material_id`),
+  KEY `media_id` (`media_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat_material_video
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ykb_weichat_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat_menu`;
+CREATE TABLE `ykb_weichat_menu` (
+  `menu_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `key` varchar(250) NOT NULL DEFAULT '',
+  `type` tinyint(1) NOT NULL,
+  `sort` int(10) NOT NULL,
+  `weichat_id` int(11) DEFAULT '0' COMMENT '微信公众平台id',
+  PRIMARY KEY (`menu_id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat_menu
+-- ----------------------------
+INSERT INTO `ykb_weichat_menu` VALUES ('12', '0', '首页', '我是首页', '1', '1', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('13', '0', '二级页面', '我是二级页面', '1', '2', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('14', '12', '公司简介', '我是公司简介', '1', '1', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('15', '12', '联系我们', '我是联系我们', '1', '2', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('16', '0', '产品介绍', '我是产品介绍', '1', '3', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('17', '12', '联系我们2', '3', '1', '3', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('18', '12', '联系我们3', '1', '1', '4', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('19', '12', '联系我们4', '3', '1', '5', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('22', '13', '二级菜单', '2', '1', '1', '1');
+INSERT INTO `ykb_weichat_menu` VALUES ('23', '0', '潮搜', '222', '1', '0', '2');
+
+-- ----------------------------
+-- Table structure for ykb_weichat_reply_config
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_weichat_reply_config`;
+CREATE TABLE `ykb_weichat_reply_config` (
+  `config_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL DEFAULT '',
+  `content` text NOT NULL,
+  `description` varchar(250) NOT NULL DEFAULT '',
+  `weichat_id` int(11) DEFAULT '0' COMMENT '微信公众平台id',
+  PRIMARY KEY (`config_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ykb_weichat_reply_config
+-- ----------------------------
+INSERT INTO `ykb_weichat_reply_config` VALUES ('5', '', '', '', '2');
+INSERT INTO `ykb_weichat_reply_config` VALUES ('6', '', '', '', '1');

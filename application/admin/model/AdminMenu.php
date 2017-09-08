@@ -56,7 +56,8 @@ class AdminMenu extends Model{
      */
 	public function getMenu($loginUserInfo = array(),$cutUrl = '',$urlComplete = true){
 		$list = (array)get_all_service('Menu','Admin');
-        if (!empty($loginUserInfo)&&(ADMIN_ID!=1)){
+
+        if (!empty($loginUserInfo)&&(ADMIN_ID!=1)&&!empty($loginUserInfo['menu_purview'])){
             $list=get_menu_purview($list['data']['list'],$loginUserInfo['menu_purview']);
         }
         return $list;
@@ -75,6 +76,9 @@ class AdminMenu extends Model{
                 $data[$key]['url']=$val['url'];
                 $data[$key]['name']=$val['name'];
                 $data[$key]['iconfont']=$val['iconfont'];
+                if (!empty($val['act'])){
+                    $data[$key]['act']=json_decode($val['act'],true);
+                }
                 if (!empty($val['sub'])){
                     $i=1000;
                     foreach ($val['sub'] as $kk=>$vv){
@@ -83,6 +87,9 @@ class AdminMenu extends Model{
                         $data[$key]['sub'][$kk]['url']=$vv['url'];
                         $data[$key]['sub'][$kk]['name']=$vv['name'];
                         $data[$key]['sub'][$kk]['iconfont']=$vv['iconfont'];
+                        if (!empty($vv['act'])){
+                            $data[$key]['sub'][$kk]['act']=json_decode($vv['act'],true);
+                        }
                         if (!empty($vv['sub'])){
                             foreach ($vv['sub'] as $kkk=>$vvv){
                                 $i++;
@@ -91,6 +98,9 @@ class AdminMenu extends Model{
                                 $data[$key]['sub'][$i]['url']=$vvv['url'];
                                 $data[$key]['sub'][$i]['name']=$vvv['name'];
                                 $data[$key]['sub'][$i]['iconfont']=$vvv['iconfont'];
+                                if (!empty($vvv['act'])){
+                                    $data[$key]['sub'][$i]['act']=json_decode($vvv['act'],true);
+                                }
                             }
                         }
                     }
@@ -172,6 +182,9 @@ class AdminMenu extends Model{
      */
     public function getWhereInfo($where){
         $info = $this->where($where)->find();
+        if (!empty($info['act'])){
+            $info['act']=json_decode($info['act'],true);
+        }
         return $info;
     }
     /**
