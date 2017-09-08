@@ -60,10 +60,10 @@
                         {foreach name='info.act' item='vo'}
                         <div class="layui-form-item">
                             <label class="layui-form-label">名称</label>
-                            <div class="layui-input-inline" style='width: 500px;'>
+                            <div class="layui-input-inline">
                                 <input name="act[{$key}][name]" value="{$vo.name}" placeholder="请输入" class="layui-input " type="text"></div>
                             <label class="layui-form-label">方法</label>
-                            <div class="layui-input-inline">
+                            <div class="layui-input-inline" style='width: 500px;'>
                                 <input name="act[{$key}][act]" value="{$vo.act}" placeholder="请输入" class="layui-input" type="text"></div>
                             <button class="layui-btn layui-btn-danger del_act" onclick="del_act(this)" type="button">-</button>
                         </div>
@@ -89,7 +89,7 @@
         var $= layui.jquery;
         $("#add_act").click(function() {
             $("#act").append(
-                    "<div class='layui-form-item' style='width: 500px;'>" +
+                    "<div class='layui-form-item'>" +
                     "<label class='layui-form-label'>名称</label>" +
                     "<div class='layui-input-inline'>" +
                     "<input type='text' name='act["+num+"][name]' value='' placeholder='请输入' class='layui-input '>" +
