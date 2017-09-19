@@ -37,7 +37,7 @@ class AdminMenu extends Admin{
         $id = input('id');
         $model = model('admin/AdminMenu');
         if (input('post.')){
-            if ($_POST['act']){
+            if (!empty($_POST['act'])){
                 $_POST['act']=json_encode($_POST['act']);
             }
             if ($id){
