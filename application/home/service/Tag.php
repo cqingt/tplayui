@@ -12,6 +12,7 @@ class Tag extends TagLib
         'close' => ['attr' => 'time,format', 'close' => 0], //闭合标签，默认为不闭合
 
         //闭合标签
+        'navmenulist' => ['attr' => 'name,key,nav_id,limit,where'],//栏目列表
         'catlist' => ['attr' => 'name,key,parent_id,class_id,type,limit,where'],//栏目列表
         'contentlist' => ['attr' => 'name,key'],//内容列表
         'formlist' => ['attr' => 'name,key,table'],
@@ -64,6 +65,32 @@ class Tag extends TagLib
     /**
      * cms模块
      */
+    //导航列表
+    public function tagnavmenulist($tag,$content){
+        $name   = $tag['name'];
+        /********************条件开始***************************/
+        $nav_id=isset($tag['nav_id']) ? $tag['nav_id'] : '';
+        $parent_id=isset($tag['parent_id']) ? $tag['parent_id'] : '';
+        /********************条件结束***************************/
+        $limit  = isset($tag['limit']) ? $tag['limit'] : '';
+        $order    = isset($tag['order']) ? $tag['order'] : '';
+        $where    = isset($tag['where']) ? $tag['where'] : '';
+        $key    = isset($tag['key']) ? $tag['key'] : '';
+        $tag_str='';
+        $tag_str .=!empty($nav_id)?'nav_id:'.$nav_id:'';
+        $tag_str .=!empty($parent_id)?';parent_id:'.$parent_id:'';
+        $tag_str .=!empty($limit)?';limit:'.$limit:'';
+        $tag_str .=!empty($order)?';order:'.$order:'';
+        $tag_str .=!empty($where)?';where:'.$where:'';
+        if(substr($tag_str, 0, 1)==';') $tag_str=substr($tag_str,1);
+        $parseStr = '<?php ';
+        $parseStr .='$__LIST__=get_nav_menu('.'"'.$tag_str.'");';
+        $parseStr .="?>";
+        $parseStr .= '{volist name="__LIST__" id="' . $name . '" key="'.$key.'"}';
+        $parseStr .= $content;
+        $parseStr .= '{/volist}';
+        return $parseStr;
+    }
     //栏目列表
     public function tagcatlist($tag,$content){
         $name   = $tag['name'];

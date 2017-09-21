@@ -14,6 +14,45 @@ use \think\Db;
 
 /***************标签方法开始****************/
 /**
+ * 获取导航列表
+ * @param $tag 搜索条件
+ * @return
+ */
+function get_nav_menu($tag){
+    $tag=param2array($tag);
+    $limit = !empty($tag['limit']) ? $tag['limit'] : '';
+    $order = !empty($tag['order']) ? $tag['order'] : 'sort ASC';
+    //根据参数生成查询条件
+    $where['nm.status'] = array('eq',1);
+    $where['n.lang_id'] = array('eq',get_lang_id());
+    if (!empty($tag['nav_id'])) {
+        $where['nm.nav_id'] = array('eq',$tag['nav_id']);
+    }
+    if (!empty($tag['parent_id'])) {
+        $where['nm.parent_id'] = array('eq',$tag['parent_id']);
+    }else{
+        $where['nm.parent_id']=array('eq',0);
+    }
+    if (!empty($tag['where'])) {
+        $where[] = $tag['where'];
+    }
+    $list=Db::name('nav_menu')
+        ->alias('nm')
+        ->field('nm.*')
+        ->join('nav n','nm.nav_id=n.nav_id','left')
+        ->where($where)
+        ->order($order)
+        ->limit($limit)
+        ->select();
+    if ($list){
+        $i = 0;
+        foreach ($list as $key=>$val){
+            $list[$key]['i'] = $i++;
+        }
+    }
+    return $list;
+}
+/**
  * 获取分类列表（导航）
  * @param $tag 搜索条件
  * @return
