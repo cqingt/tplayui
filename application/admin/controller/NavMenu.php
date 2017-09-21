@@ -51,6 +51,16 @@ class NavMenu extends Admin{
         $nav_model=model('Nav');
         $model = model('NavMenu');
         if (input('post.')){
+            $type=input('type');
+            if ($type==1){
+                $_POST['href']=$_POST['href1'];
+                unset($_POST['href1']);
+                unset($_POST['href2']);
+            }else{
+                $_POST['href']=$_POST['href2'];
+                unset($_POST['href1']);
+                unset($_POST['href2']);
+            }
             if ($id){
                 $check_status=$this->parentCheck($id,input('post.parent_id'),'admin/NavMenu');
                 if ($check_status!==true){

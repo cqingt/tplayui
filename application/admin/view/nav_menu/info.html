@@ -34,13 +34,13 @@
                     <div class="layui-form-item" id="dizhi"{eq name="info.type" value="2"}style="display: none;"{/eq}>
                         <label class="layui-form-label">地址url</label>
                         <div class="layui-input-block">
-                            <input type="text" name="href" value="{$info.href|default='/'}" required jq-verify="required" jq-error="请输入" placeholder="请输入" class="layui-input ">
+                            <input type="text" name="href1" value="{$info.href|default='/'}" required jq-verify="required" jq-error="请输入" placeholder="请输入" class="layui-input ">
                         </div>
                     </div>
                     <div class="layui-form-item" id="lanmu" {neq name="info.type" value="2"}style="display: none;"{/neq}>
                         <label class="layui-form-label">栏目列表</label>
                         <div class="layui-input-inline">
-                            <select name="href">
+                            <select name="href2">
                                 <option value="__ROOT__/">首页</option>
                                 {foreach name="categoryList" item="vo"}
                                 <option value="{$vo.curl}" {if condition="$vo.curl eq $info.href"}selected{/if}>{$vo.cname}</option>
