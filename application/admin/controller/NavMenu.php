@@ -76,7 +76,8 @@ class NavMenu extends Admin{
                 return ajaxReturn(0,'操作失败');
             }
         }else{
-            $this->assign('navList',model('NavMenu')->loadList());//导航菜单分类
+            $where_nav['nm.nav_id']=$navId;
+            $this->assign('navList',model('NavMenu')->loadList($where_nav));//导航菜单分类
             $this->assign('categoryList',model('kbcms/Category')->loadList());//栏目分类
             $this->assign('info',$model->getInfo($id));
             $this->assign('navInfo',$nav_model->getInfo($navId));
