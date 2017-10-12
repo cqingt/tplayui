@@ -56,8 +56,11 @@ class AdminFragment extends Admin {
                 return ajaxReturn(0,'操作失败');
             }
         }else{
-
-            $this->assign('info',$model->getInfo(input('fragment_id')));
+            $info=$model->getInfo(input('fragment_id'));
+            if (!empty($info['pics'])){
+                $info['pics']=json_decode($info['pics'],true);
+            }
+            $this->assign('info',$info);
             return $this->fetch();
         }
     }

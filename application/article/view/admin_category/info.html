@@ -81,7 +81,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">栏目图片</label>
                                     <div class="layui-input-block">
-                                        <input type="file" name="image" class="layui-upload-file">
+                                        <input type="file" name="image" class="layui-upload-file" id="upload_one">
                                         <input type="hidden" name="image" value="{$info.image|default=''}" jq-error="请上传栏目图片" error-id="img-error">
                                         <p id="img-error" class="error"></p>
                                     </div>
@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">内容列表排序</label>
+                                    <label class="layui-form-label">列表排序</label>
                                     <div class="layui-input-inline">
                                         <select name="content_order" jq-verify="" jq-error=" 发布时间新->旧" lay-filter="verify">
                                             <option value=""> 发布时间新->旧</option>
@@ -143,10 +143,10 @@
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">内容列表排序</label>
+                                    <label class="layui-form-label">绑定字段集</label>
                                     <div class="layui-input-inline">
                                         <select name="fieldset_id" jq-verify="" jq-error="绑定字段集" lay-filter="verify">
-                                            <option value="0"></option>
+                                            <option value="0">请选择</option>
                                             {foreach name='expandList' item='vo'}
                                             <option value="{$vo.fieldset_id}" {if condition="$vo.fieldset_id eq $info.fieldset_id"}selected{/if}>{$vo.name}</option>
                                             {/foreach}

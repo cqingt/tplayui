@@ -83,10 +83,10 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload'], func
     });*/
     tags.init();
 
-    //上传文件设置
+    //单图上传
     layui.upload({
         //url: '/static/jqadmin/php/upload.php',
-        url: '/kbcms/admin_upload/upload',
+        url: '/kbcms/admin_upload/upload',elem: '#upload_one',
         before: function(input) {
             box = $(input).parent('form').parent('div').parent('.layui-input-block');
             if (box.next('div').length > 0) {

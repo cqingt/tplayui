@@ -481,7 +481,7 @@ class Field extends Model {
                 break;
             case 'imgUpload':
                 $html .= '<div class="layui-input-block">
-                              <input type="file" name="'.$config['name'].'" class="layui-upload-file">
+                              <input type="file" name="'.$config['name'].'" class="layui-upload-file" >
                               <input type="hidden" name="'.$config['name'].'" value="'.$config['value'].'" jq-error="请上传形象图" error-id="img-error">
                               <p id="img-error" class="error"></p>
                           </div>';
