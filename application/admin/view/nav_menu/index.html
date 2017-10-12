@@ -18,7 +18,7 @@
         <tr>
             <td>{$vo.id}</td>
             <td>{$vo.cname}</td>
-            <td><input type="text" class="layui-input ajax-blur" name="field_value" value="{$vo.sort}" data-params='{"url":"{:url("api/api/upField")}","data":"table=category&id_name=id&id_value={$vo.id}&field=sort","loading":"false","complete":"up"}'> </td>
+            <td><input type="text" class="layui-input ajax-blur" name="field_value" value="{$vo.sort}" data-params='{"url":"{:url("api/api/upField")}","data":"table=nav_menu&id_name=id&id_value={$vo.id}&field=sort","loading":"false","complete":"up"}'> </td>
             <td class="layui-form">
                 <input type="checkbox" name="field_value" lay-skin="switch" value="1" lay-text="显示|关闭" {eq name="vo.status" value="1"}checked{/eq}  lay-filter="ajax" data-params='{"url":"{:url("api/api/upField")}","confirm":"true","data":"table=nav_menu&id_name=id&id_value={$vo.id}&field=status","complete":"up"}'></td>
             <td>
