@@ -71,7 +71,7 @@ class NavMenu extends Admin{
                 $status=$model->add();
             }
             if($status!==false){
-                return ajaxReturn(200,'操作成功',url('index'));
+                return ajaxReturn(200,'操作成功',url('index',array('nav_id'=>$navId)));
             }else{
                 return ajaxReturn(0,'操作失败');
             }
