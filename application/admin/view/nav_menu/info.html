@@ -13,7 +13,7 @@
                             <select name="parent_id">
                                 <option value="0">顶级导航</option>
                                 {foreach name="navList" item="vo"}
-                                <option value="{$vo.id}" {if condition="$vo.nav_id eq $info.parent_id"}selected{/if}>{$vo.cname}</option>
+                                <option value="{$vo.id}" {if condition="$vo.id eq $info.parent_id"}selected{/if}>{$vo.cname}</option>
                                 {/foreach}
                             </select>
                         </div>
