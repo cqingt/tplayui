@@ -485,6 +485,11 @@ class Field extends Model {
                               <input type="hidden" name="'.$config['name'].'" value="'.$config['value'].'" jq-error="请上传形象图" error-id="img-error">
                               <p id="img-error" class="error"></p>
                           </div>';
+                if (!empty($config['value'])){
+                    $html .= '<div class="layui-input-block">
+                                    <div class="imgbox"><img src="'.$config['value'].'" alt="..." class="img-thumbnail"></div>
+                              </div>';
+                }
                 break;
             case 'imagesUpload':
                 $html .= '
