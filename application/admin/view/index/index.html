@@ -43,25 +43,21 @@
         </div>
         <!-- 头部右侧导航 -->
         <div class="header-right">
-            <ul class="layui-nav right-menu" style="position: absolute; right:260px;">
+            <ul class="layui-nav right-menu" style="position: absolute; right:210px;">
                 <li class="layui-nav-item first">
                     <a href="javascript:;">
-                        <cite id="cite_admin_lang_name"> {$Think.lang.lang_name}</cite>
+                        <cite id="cite_admin_lang_name"> 前台引导</cite>
                         <span class="layui-nav-more"></span>
                     </a>
                     <dl class="layui-nav-child">
-                        {foreach name='langList' item='vo'}
-                        <dd>
-                            <a class="ajax" style="cursor: pointer" data-params='{"url": "{:url("api/api/change")}","confirm":"false","data":"lang={$vo.lang}","complete":"chang"}'>
-                               {$vo.name}
-                            </a>
-                        </dd>
+                        <dd><a href="__ROOT__/" target="_blank" style="cursor: pointer" >首页</a></dd>
+                        {foreach name='home_url' item='vo'}
+                        <dd><a href="{$vo.url}" target="_blank" style="cursor: pointer" >{$vo.name}</a></dd>
                         {/foreach}
                     </dl>
                 </li>
             </ul>
             <a class="layui-btn layui-btn-small ajax" data-params='{"url": "{:url("admin/Admin/delcache")}","data":"","complete":"delcache"}' style="position: absolute; top: 14px; right:135px;">清理缓存</a>
-            <a class="layui-btn layui-btn-small" href="{:url('home/index/index')}" target="_blank" style="position: absolute; top: 14px; right:210px;">前台</a>
 
 
             <ul class="layui-nav right-menu">
