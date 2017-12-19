@@ -21,7 +21,7 @@ class File extends Model{
 		if (!empty($_FILES[$file]['name'])){
 			$file = request()->file($file);
 			// 移动到框架应用根目录/public/uploads/ 目录下
-			$info = $file->validate(['size'=>1024*2*1000,'ext'=>'jpg,png,gif'])->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . $location);
+			$info = $file->validate(['size'=>1024*3*1000,'ext'=>'jpg,jpeg,gif,bmp,png'])->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . $location);
             if($info){
 				// 成功上传后 获取上传信息
 				$data['url']='/uploads/'.$location.'/'.str_replace('\\','/',$info->getSaveName());
