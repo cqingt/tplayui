@@ -15,7 +15,7 @@ $config = [
     'endPage'       => 'd_success',             // 安装页
     'errorPage'     => 'error',                 // 错误页
 
-    'sqlName'       => 'kbcms',             // 安装的sql文件名，同该文件同级的sql文件名相同
+    'sqlName'       => 'kblite',             // 安装的sql文件名，同该文件同级的sql文件名相同
     'tableName'     => 'ykb_',                  // 安转的sql文件中的表名前缀，该项是被用户输入替换的
     'databaseUrl'   => '../../application/database.php',    // database.php安装地址
 
