@@ -250,17 +250,17 @@ class Field extends Model {
                 'property'=>3,
                 'html'=>'editor',
                 ),
-            4=> array(
+            /*4=> array(
                 'name'=>'文件上传',
                 'property'=>1,
                 'html'=>'fileUpload',
-                ),
+                ),*/
             5=> array(
                 'name'=>'单图片上传',
                 'property'=>1,
                 'html'=>'imgUpload',
                 ),
-            6=> array(
+            /*6=> array(
                 'name'=>'多图上传',
                 'property'=>3,
                 'html'=>'imagesUpload',
@@ -289,7 +289,7 @@ class Field extends Model {
                 'name'=>'货币',
                 'property'=>4,
                 'html'=>'currency',
-                ),
+                ),*/
             
         );
         return $list;
