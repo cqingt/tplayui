@@ -493,30 +493,51 @@ class Field extends Model {
                 break;
             case 'imagesUpload':
                 $html .= '
-                    <div>
-                    <a class="button bg-blue button-small js-multi-upload" data="'.$config['name'].'" id="'.$config['name'].'_button" href="javascript:;" ><span class="icon-upload"> 上传</span></a>
-                    <span class="suffix">上传后可拖动图片进行排序</span>
-                    </div>
-                    <br>
-                    <div class="media-inline  clearfix dux-multi-image" id="'.$config['name'].'">';
-                    if(!empty($config['value'])){
-                        $list = unserialize($config['value']);
-                        if(is_array($list)&&!empty($list)){
-                            foreach ($list as $value) {
-                                $html.='
-                                <div class="media radius clearfix">
-                                    <a class="del" href="javascript:;" alt="删除"><img src="'.$value['url'].'" ></a>
-                                    <div class="media-body">
-                                        <input name="'.$config['name'].'[url][]" type="hidden" class="input" value="'.$value['url'].'" />
-                                        <input name="'.$config['name'].'[title][]" type="text" class="input" value="'.$value['title'].'" />
+                        <div class="layui-input-block">
+                            <div id="uploader" class="wu-example">
+                                <div class="queueList">
+                                    <div id="dndArea" class="placeholder">
+                                        <div id="filePicker"></div>
+                                        <p>或将照片拖到这里，单次最多可选300张</p>
                                     </div>
                                 </div>
-                                ';
-                            }
+                                <div class="statusBar" style="display:none;">
+                                    <div class="progress">
+                                        <span class="text">0%</span>
+                                        <span class="percentage"></span>
+                                    </div>
+                                    <div class="info"></div>
+                                    <div class="btns">
+                                        <div id="filePicker2"></div>
+                                        <div class="uploadBtn">开始上传</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-input-block" id="webupload_hidden_img_show">';
+                if(!empty($config['value'])){
+                    $list = json_decode($config['value'],true);
+                    if(is_array($list)&&!empty($list)){
+                        foreach ($list as $value) {
+                            $html .= '
+                            <div style="float: left">
+                                <img src="'.$value['url'].'" width="150px" class="img-thumbnail img_show"><br /><br />
+                                <div style="text-align: center;cursor: pointer;" onclick="webupload_img_del(this)" webupload_img_del_id="{$key}" class="webupload_img_del">删除</div>
+                            </div>';
                         }
                     }
+                }
                 $html .= '</div>
-                ';
+                        <div id="webupload_hidden_input">';
+                            if(!empty($config['value'])){
+                                $list = json_decode($config['value'],true);
+                                if(is_array($list)&&!empty($list)){
+                                    foreach ($list as $value) {
+                                        $html .= '<input type="hidden" name="pics[{$key}][url]" value="'.$value['url'].'">';
+                                    }
+                                }
+                            }
+                $html .= '</div>';
                 break;
             case 'select':
                 $html .= '<div class="layui-input-block"><select class="input" name="'.$config['name'].'" id="'.$config['name'].'">';
