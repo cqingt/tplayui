@@ -21,6 +21,8 @@ class Index extends Admin{
         );
     }
     public function index(){
+        //前台引导
+        $this->assign('home_url',model('HomeUrl')->loadList());
         $this->assign('langList',model('Lang')->loadList());
         $this->assign('loginUserInfo',$this->loginUserInfo);
         return $this->fetch();
