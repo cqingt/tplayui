@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-09-08 13:22:39
+Date: 2018-01-04 11:10:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,11 +49,12 @@ CREATE TABLE `ykb_admin_log` (
   `content` text,
   PRIMARY KEY (`log_id`),
   KEY `user_id` (`user_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台操作记录';
 
 -- ----------------------------
 -- Records of ykb_admin_log
 -- ----------------------------
+INSERT INTO `ykb_admin_log` VALUES ('1', '0', '1515035194', '::1', 'admin', '登录系统');
 
 -- ----------------------------
 -- Table structure for ykb_admin_menu
@@ -121,7 +122,7 @@ CREATE TABLE `ykb_admin_user` (
 -- ----------------------------
 -- Records of ykb_admin_user
 -- ----------------------------
-INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', 'a66abb5684c45962d887564f08346e8d', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1504835724', '::1');
+INSERT INTO `ykb_admin_user` VALUES ('1', '1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '529988248@qq.com', '1', '1', '1399361747', '1515035193', '::1');
 INSERT INTO `ykb_admin_user` VALUES ('2', '4', 'zz52998', 'e10adc3949ba59abbe56e057f20f883e', '测试管理', '529988248@qq.com', '1', '1', null, '1504591832', '::1');
 INSERT INTO `ykb_admin_user` VALUES ('3', '4', '654321', '96e79218965eb72c92a549dd5a330112', '123456', '1111112111@qq.com', '1', '1', null, null, '未知');
 
@@ -552,6 +553,23 @@ INSERT INTO `ykb_fragment` VALUES ('8', 'bottom', '底部信息', '地址：辽�
 INSERT INTO `ykb_fragment` VALUES ('9', 'logo', 'logo图片', '<img src=\"/static/plug/kingeditor/attached/image/20170802/20170802024117_78307.png\" alt=\"\" />');
 INSERT INTO `ykb_fragment` VALUES ('10', 'en_logo', '英文版logo', '<img src=\"/static/plug/kingeditor/attached/image/20170808/20170808084322_50470.png\" alt=\"\" />');
 INSERT INTO `ykb_fragment` VALUES ('11', 'en_bottom', '英文版底部信息', 'Address: High-tech Park, Dalian City, Liaoning Province&nbsp;&nbsp;&nbsp;tel：13488888888&nbsp; &nbsp; Copyright &copy;\n                2002-2017 all rights reserved 1kbcms<br />\nTechnical Support：<a href=\"http://www.yikaiba.com\" target=\"_blank\">yikaiba</a> &nbsp; &nbsp;ICPRecord number：<a href=\"http://www.miitbeian.gov.cn/\" target=\"_blank\">ICP备20160524号</a>1');
+
+-- ----------------------------
+-- Table structure for ykb_home_url
+-- ----------------------------
+DROP TABLE IF EXISTS `ykb_home_url`;
+CREATE TABLE `ykb_home_url` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
+  `url` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of ykb_home_url
+-- ----------------------------
+INSERT INTO `ykb_home_url` VALUES ('1', '百度', 'https://www.baidu.com');
+INSERT INTO `ykb_home_url` VALUES ('2', '新浪', 'http://www.sina.com.cn/');
 
 -- ----------------------------
 -- Table structure for ykb_lang
