@@ -22,9 +22,6 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload','ajax'
         "complete":"abc"
     }).init();
     form.abc = function(ret, options, that) {
-          //console.log(ret);
-         // console.log(options);
-         // console.log(that);
         if (ret.status==200){
             layer.msg(ret.msg, {icon: 6,time:1000}, function(index){
                 if (ret.url!=''){
@@ -34,9 +31,8 @@ layui.define(['jquery', 'tags', 'layedit', 'laydate' , 'jqform', 'upload','ajax'
         }else{
             layer.msg(ret.msg, {icon: 5,time:2000});
         }
-
-
     }
+
     //自定义
     form.verify({
         username: function(value) {

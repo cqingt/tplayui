@@ -14,7 +14,7 @@ class Index extends Site{
     //注册
     public function reg(){
         if (input('post.')){
-            $status=model('User')->add();
+            $status = model('User')->add();
             if ($status>0){
                 return ajaxReturn(200,'注册成功',url('login'));
             }else{
@@ -59,5 +59,10 @@ class Index extends Site{
     public function loginOut(){
         model('User')->logout();
         return redirect('index/index');
+    }
+
+    public function forget()
+    {
+        return $this->siteFetch('forget');
     }
 }

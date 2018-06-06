@@ -46,7 +46,7 @@
               <div class="layui-form-item">
                 <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">{$Think.lang.zhuce}</button>
               </div>
-              <div class="layui-form-item fly-form-app">
+              <div class="layui-form-item fly-form-app" style="display: none;">
                 <span>{$Think.lang.huozheshiyong}</span>
                 <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
                 <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
@@ -61,12 +61,13 @@
 </div>
 {include file="default/footer" /}
 <script>
-    layui.define(['jquery', 'layer', 'ajax'], function(exports) {
-        jqMain = function() {};
-        var main = new jqMain();
-        main.init();
-        exports('main', {});
-    });
+    layui.use('pageform');
+//    layui.define(['jquery', 'layer', 'ajax'], function(exports) {
+//        jqMain = function() {};
+//        var main = new jqMain();
+//        main.init();
+//        exports('main', {});
+//    });
 </script>
 </body>
 </html>

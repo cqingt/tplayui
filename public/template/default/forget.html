@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="default/resource" /}
+</head>
+<body>
+{include file="default/header" /}
+<div class="main layui-clear">
+
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief">
+            <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form layui-form-pane">
+                        <form id="form1" action="{:url('')}">
+                            <div class="layui-form-item">
+                                <label for="L_email" class="layui-form-label">{$Think.lang.youxiang}</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="L_email"
+                                           placeholder="{$Think.lang.qingshuru}{$Think.lang.youxiang}" name="email"
+                                           required jq-verify="required|email" jq-error=" 邮箱不能为空|邮箱格式不正确"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label for="L_email" class="layui-form-label">验证码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="verify_code"
+                                           placeholder="请输入验证码" name="verify_code"
+                                           required jq-verify="required|number" jq-error=" 验证码不能为空|验证码格式有误"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <button class="layui-btn" jq-submit lay-filter="submit" jq-tab="true">发送验证码</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{include file="default/footer" /}
+<script>
+    layui.use('pageform');
+</script>
+</body>
+</html>
