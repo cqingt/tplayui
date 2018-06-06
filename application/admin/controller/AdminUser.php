@@ -115,5 +115,23 @@ class AdminUser extends Admin {
             return ajaxReturn(0,'用户删除失败');
         }
     }
+
+    /**
+     * 修改密码
+     * @return mixed|\think\response\Json
+     */
+    public function updatePassword()
+    {
+        if (input('post.')){
+            $status = model('AdminUser')->updatePwd();
+            if($status !== false){
+                return ajaxReturn(200,'操作成功');
+            }else{
+                return ajaxReturn(0, model('AdminUser')->getError());
+            }
+        } else {
+            return $this->fetch();
+        }
+    }
 }
 

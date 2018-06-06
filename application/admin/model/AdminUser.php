@@ -81,6 +81,41 @@ class AdminUser extends Model {
     }
 
     /**
+     * 修改密码
+     * @return bool|false|int|\think\response\Json
+     */
+    public function updatePwd()
+    {
+        if (empty(input('post.'))){
+            return false;
+        }
+        $userId = session('admin_user')['user_id'];
+        $oldpwd = input('post.oldpwd', '', 'trim');
+        $password = input('post.password', '', 'trim');
+        $password2 = input('post.password2', '', 'trim');
+
+        $oldpwd = md5($oldpwd);
+        $userInfo = $this->getWhereInfo(['user_id' => $userId, 'password' => $oldpwd]);
+
+        if (empty($userInfo)) {
+            $this->error = '旧密码错误！';
+            return false;
+        }
+
+        if (mb_strlen($password) < 6 || mb_strlen($password) > 12) {
+            $this->error = '请输入6-12位新密码！';
+            return false;
+        }
+
+        if ($password !== $password2) {
+            $this->error = '两次密码不一致！';
+            return false;
+        }
+
+        return $this->allowField(true)->save(['password' => md5($password)], ['user_id' => $userId]);
+    }
+
+    /**
      * 更新权限
      * @param string $type 更新类型
      * @return bool 更新状态
